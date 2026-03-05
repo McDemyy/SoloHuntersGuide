@@ -10,13 +10,27 @@ function initPortals() {
   entries.forEach(entry => {
     const header = entry.querySelector('.portal-header');
     if (!header) return;
-    header.addEventListener('click', () => {
+
+    const toggle = () => {
       const wasExpanded = entry.classList.contains('expanded');
       // Collapse all
-      entries.forEach(e => e.classList.remove('expanded'));
+      entries.forEach(e => {
+        e.classList.remove('expanded');
+        const h = e.querySelector('.portal-header');
+        if (h) h.setAttribute('aria-expanded', 'false');
+      });
       // Toggle clicked
       if (!wasExpanded) {
         entry.classList.add('expanded');
+        header.setAttribute('aria-expanded', 'true');
+      }
+    };
+
+    header.addEventListener('click', toggle);
+    header.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggle();
       }
     });
   });
