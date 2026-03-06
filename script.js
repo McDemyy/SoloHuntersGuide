@@ -1,3 +1,85 @@
+// ---- Dungeon Card Glow & Map Modal ----
+document.addEventListener('DOMContentLoaded', function() {
+  // Recommendation logic: highlight recommended dungeon
+  function setRecommendedDungeon(dungeonName) {
+    document.querySelectorAll('.dungeon-card').forEach(card => {
+      card.classList.remove('recommended');
+      const header = card.querySelector('.dungeon-header');
+      if (header && header.textContent.includes(dungeonName)) {
+        card.classList.add('recommended');
+      }
+    });
+  }
+
+  // Example: set recommended dungeon after form submit
+  const recommendForm = document.getElementById('recommend-form');
+  if (recommendForm) {
+    recommendForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Simple logic: recommend based on power
+      const power = parseInt(document.getElementById('player-power').value, 10);
+      let dungeon = '';
+      if (power < 20_000) dungeon = 'Subway';
+      else if (power < 80_000) dungeon = 'Caves';
+      else if (power < 200_000) dungeon = 'Jungle';
+      else if (power < 300_000) dungeon = 'Desert';
+      else if (power < 380_000) dungeon = 'Snow Forest';
+      else dungeon = 'Spider Cave';
+      setRecommendedDungeon(dungeon);
+      // Optionally show result text
+      const result = document.getElementById('recommend-result');
+      if (result) result.textContent = `Recommended: ${dungeon}`;
+    });
+  }
+
+  // Dungeon map modal logic
+  const mapModal = document.getElementById('dungeon-map-modal');
+  const mapImg = document.getElementById('dungeon-map-img');
+  const closeMapBtn = mapModal ? mapModal.querySelector('.close-map-modal') : null;
+  // Map images for each dungeon
+  const dungeonMaps = {
+    'Subway': 'images/MAP/map.png',
+    'Caves': 'images/MAP/map.png',
+    'Jungle': 'images/MAP/map.png',
+    'Desert': 'images/MAP/map.png',
+    'Snow Forest': 'images/MAP/map.png',
+    'Spider Cave': 'images/MAP/map.png',
+  };
+  document.querySelectorAll('.dungeon-card').forEach(card => {
+    card.addEventListener('click', function() {
+      const header = card.querySelector('.dungeon-header');
+      if (!header) return;
+      // Find dungeon name
+      let dungeon = header.textContent.split('Lv')[0].trim();
+      // Map dungeon names to anchor IDs or hash fragments
+      const anchorMap = {
+        'Subway': '#subway',
+        'Caves': '#caves',
+        'Jungle': '#jungle',
+        'Desert': '#desert',
+        'Snow Forest': '#snowforest',
+        'Spider Cave': '#spidercave',
+      };
+      const anchor = anchorMap[dungeon] || '';
+      window.location.href = `levelguide.html${anchor}`;
+    });
+  });
+  if (closeMapBtn) {
+    closeMapBtn.addEventListener('click', function() {
+      mapModal.classList.remove('active');
+      document.body.classList.remove('modal-open');
+    });
+  }
+  // Close modal on background click
+  if (mapModal) {
+    mapModal.addEventListener('click', function(e) {
+      if (e.target === mapModal) {
+        mapModal.classList.remove('active');
+        document.body.classList.remove('modal-open');
+      }
+    });
+  }
+});
 // ---- Artifact Materials Modal ----
 function initArtifactMaterialsModal() {
   const modal = document.getElementById('materials-modal');
@@ -33,7 +115,7 @@ function initArtifactMaterialsModal() {
         default:
           locations = 'Material locations and requirements coming soon.';
       }
-      html += `<div style=\"font-size:1.1em;\"><b>Locations:</b> ${locations}</div>`;
+      html += `<div style="font-size:1.1em;"><b>Locations:</b> ${locations}</div>`;
       modalContent.innerHTML = html;
       modal.style.display = 'flex';
     });
@@ -46,6 +128,52 @@ function initArtifactMaterialsModal() {
     if (e.target === modal) modal.style.display = 'none';
   });
 }
+
+// ---- Prevent background scroll when modal is open ----
+(function() {
+  function setModalOpen(open) {
+    if (open) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+  }
+  // Patch all modal open/close logic
+  document.addEventListener('click', function(e) {
+    // If a modal is opened
+    if (e.target.classList && e.target.classList.contains('system-modal')) {
+      if (e.target.style.display === 'flex' || getComputedStyle(e.target).display === 'flex') {
+        setModalOpen(true);
+      }
+    }
+    // If a modal is closed by clicking overlay or close button
+    if (
+      (e.target.classList && e.target.classList.contains('system-modal-close')) ||
+      (e.target.classList && e.target.classList.contains('system-modal'))
+    ) {
+      setTimeout(function() {
+        // If no modals are open, remove modal-open
+        var anyOpen = !!document.querySelector('.system-modal[style*="display: flex"]');
+        if (!anyOpen) setModalOpen(false);
+      }, 100);
+    }
+  });
+  // Also patch all code that sets display:flex on .system-modal
+  const origSetProperty = CSSStyleDeclaration.prototype.setProperty;
+  CSSStyleDeclaration.prototype.setProperty = function(prop, value) {
+    origSetProperty.apply(this, arguments);
+    if (prop === 'display' && value === 'flex' && this.parentRule == null) {
+      setModalOpen(true);
+    }
+    if (prop === 'display' && value === 'none' && this.parentRule == null) {
+      setTimeout(function() {
+        var anyOpen = !!document.querySelector('.system-modal[style*="display: flex"]');
+        if (!anyOpen) setModalOpen(false);
+      }, 100);
+    }
+  };
+})();
+
 // ---- Dungeon Card Click-to-Dropdown ----
 function initDungeonCardDropdowns() {
   const cards = document.querySelectorAll('.dungeon-card.clickable');
@@ -357,3 +485,28 @@ function initShinyToggle() {
     });
   });
 }
+
+// ---- Mobile Side Nav Logic ----
+document.addEventListener('DOMContentLoaded', function() {
+  const navBtn = document.getElementById('nav-mobile-btn');
+  const sidepanel = document.getElementById('nav-sidepanel');
+  const overlay = document.getElementById('nav-sidepanel-overlay');
+  const closeBtn = document.getElementById('nav-sidepanel-close');
+  if (navBtn && sidepanel && overlay) {
+    navBtn.style.display = '';
+    navBtn.addEventListener('click', function() {
+      sidepanel.classList.add('open');
+      overlay.classList.add('active');
+    });
+    overlay.addEventListener('click', function() {
+      sidepanel.classList.remove('open');
+      overlay.classList.remove('active');
+    });
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function() {
+        sidepanel.classList.remove('open');
+        overlay.classList.remove('active');
+      });
+    }
+  }
+});

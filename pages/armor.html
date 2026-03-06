@@ -75,21 +75,8 @@ body {
 }
 .system-bg-glitches {
   position: fixed;
-        <rect x="320" y="320" width="1280" height="440" rx="22" stroke="#7b2fff" stroke-width="1.5"/>
-        <path d="M200 540 H80 V1040 H1840 V540 H1720" stroke="#00d4ff" stroke-width="1.2"/>
-        <path d="M960 200 V80" stroke="#00d4ff" stroke-width="1.2"/>
-        <circle cx="960" cy="200" r="8" fill="#00d4ff"/>
-        document.getElementById('armor-modal-content').innerHTML = html;
-        document.getElementById('armor-modal').style.display = 'flex';
-      });
-        <circle cx="320" cy="320" r="6" fill="#7b2fff"/>
-        <circle cx="1600" cy="320" r="6" fill="#7b2fff"/>
-        <circle cx="320" cy="760" r="6" fill="#7b2fff"/>
-        <circle cx="1600" cy="760" r="6" fill="#7b2fff"/>
-      </g>
-    </svg>
-  </div>
-  <div class="system-bg-scanlines"></div>
+  /* SVG/HTML removed from CSS, should be in HTML or JS if needed */
+}
 </style>
 <!-- FINAL OVERRIDE: Force all armor cards to animate and glow by rarity -->
 <style>
@@ -370,102 +357,7 @@ body .item-card.epic-glow.floaty-card {
   </div>
   <script src="../script.js"></script>
   <script src="./armor-bg-animate.js"></script>
-  <script>
-    // Armor info data with rarity
-    const armorInfo = {
-      "Iron Set": {
-        Location: "ALL Gate",
-        BaseHealth: "18% Health",
-        MaxHealth: "56.8% Health",
-        Bonus2: "20% Melee Damage",
-        Bonus3: "20% Melee Damage",
-        Rarity: "Epic"
-      },
-      "Sunforge Set": {
-        Location: "Spider Cave",
-        BaseHealth: "57% Health",
-        MaxHealth: "243% Health",
-        Bonus2: "15% Extra Health",
-        Bonus3: "20% Melee Damage",
-        Rarity: "Mythic"
-      },
-      "Bloodsteel Set": {
-        Location: "Jungle",
-        BaseHealth: "32% Health",
-        MaxHealth: "146.8% Health",
-        Bonus2: "8% Extra Health",
-        Bonus3: "20% Melee Damage",
-        Rarity: "Mythic"
-      },
-      "Oathkeeper Set": {
-        Location: "Desert",
-        BaseHealth: "78% Health",
-        MaxHealth: "347.1% Health",
-        Bonus2: "18% Extra Health",
-        Bonus3: "Burn Passive",
-        Rarity: "Mythic"
-      },
-      "Serpent Set": {
-        Location: "Subway",
-        BaseHealth: "48% Health",
-        MaxHealth: "220.2% Health",
-        Bonus2: "12% Extra Health",
-        Bonus3: "25% Melee Damage",
-        Rarity: "Mythic"
-      },
-      "Venomspike Set": {
-        Location: "Caves",
-        BaseHealth: "46% Health",
-        MaxHealth: "218.2% Health",
-        Bonus2: "10% Extra Health",
-        Bonus3: "25% Melee Damage",
-        Rarity: "Mythic"
-      },
-      "Astral Set": {
-        Location: "Snow Forest",
-        BaseHealth: "44% Health",
-        MaxHealth: "187.5% Health",
-        Bonus2: "14% Extra Health",
-        Bonus3: "20% Magic Damage",
-        Rarity: "Mythic"
-      },
-      "Commander Set": {
-        Location: "Cursed Commander",
-        BaseHealth: "63% Health",
-        MaxHealth: "362% Health",
-        Bonus2: "30% Melee Damage",
-        Bonus3: "Burn Passive",
-        Rarity: "Mythic"
-      }
-    };
-    document.querySelectorAll('.armor-popup').forEach(card => {
-      card.addEventListener('click', function() {
-        const name = card.getAttribute('data-armor');
-        const info = armorInfo[name];
-        if (!info) return;
-        let rarityClass = info.Rarity === 'Mythic' ? 'rarity-mythic' : 'rarity-epic';
-        let html = `<div style='background:rgba(10,18,40,0.60);border-radius:18px;padding:2.2em 2.2em 1.5em 2.2em;box-shadow:0 0 32px #00d4ff55,0 0 0 2.5px #00d4ff inset;width:1000px;max-width:1000px;display:flex;flex-direction:column;align-items:center;justify-content:center;word-break:break-word;'>`;
-        html += `<h2 style='color:#00d4ff;margin-bottom:0.5em;font-size:2em;text-shadow:0 0 8px #00d4ff88;'>${name}</h2>`;
-        html += `<span class='card-rarity ${rarityClass}' style='font-size:1.15em;margin-bottom:1.2em;display:inline-block;letter-spacing:0.08em;background:rgba(0,0,0,0.18);padding:0.3em 1.2em 0.3em 1.2em;border-radius:8px;border:1.5px solid #00d4ff;box-shadow:0 0 8px #00d4ff33;'>${info.Rarity}</span>`;
-        html += `<table class='system-table' style='margin:0 auto 1.2em auto;font-size:1.08em;width:100%;max-width:960px;word-break:break-word;table-layout:fixed;'><colgroup><col span='5' style='width:20%;'></colgroup>`;
-        html += `<tr><th>Location</th><th>Total Base Health</th><th>Total Max/Shiny Health</th><th>2-Piece Bonus</th><th>3-Piece Bonus</th></tr>`;
-        html += `<tr><td>${info.Location}</td><td>${info.BaseHealth}</td><td>${info.MaxHealth}</td><td>${info.Bonus2}</td><td>${info.Bonus3}</td></tr>`;
-        html += `</table>`;
-        if (name === "Commander Set") {
-          html += `<div style='margin:1.5em 0 0 0;text-align:center;'><img src='../images/MAP/Igrislocation.png' alt='Cursed Commander Location' style='max-width:420px;width:100%;border-radius:1em;box-shadow:0 0 18px #00d4ff55;'/><div style='color:#00d4ff;font-size:1.08em;margin-top:0.5em;'>Cursed Commander Location</div></div>`;
-        }
-        html += `</div>`;
-        document.getElementById('armor-modal-content').innerHTML = html;
-        document.getElementById('armor-modal').style.display = 'flex';
-      });
-    });
-    document.getElementById('close-armor-modal').onclick = function() {
-      document.getElementById('armor-modal').style.display = 'none';
-    };
-    document.getElementById('armor-modal').onclick = function(e) {
-      if (e.target === this) this.style.display = 'none';
-    };
-  </script>
+<!-- Removed duplicate armorInfo and event listeners. Only one definition should exist. -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="description" content="Solo Leveling Armor Guide – Stats, effects, and how to obtain every armor set." />
   <title>Armor Guide | Solo Leveling System DB</title>

@@ -12,14 +12,69 @@
   <!-- Navigation -->
   <nav class="navbar">
     <a href="../index.html" class="nav-logo">⚔ SH System DB</a>
-      <a href="../index.html" class="nav-logo">⚔ SH System DB</a>
-    <ul class="nav-links">
-      <li><a href="../index.html" class="nav-back">⬅ Home</a></li>
-      <li><a href="armor.html">Armor</a></li>
-      <li><a href="weapons.html">Weapons</a></li>
-      <li><a href="builds.html">Builds</a></li>
-      <li><a href="levelguide.html" class="active">Level Guide</a></li>
-    </ul>
+      <ul class="nav-links">
+        <li><a href="../index.html" class="nav-back">⬅ Home</a></li>
+        <li><a href="armor.html">Armor</a></li>
+        <li><a href="weapons.html">Weapons</a></li>
+        <li><a href="builds.html">Builds</a></li>
+        <li><a href="levelguide.html" class="active">Level Guide</a></li>
+      </ul>
+    </nav>
+    <style>
+      .dungeon-flex-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 3em;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .dungeon-col {
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+        align-items: center;
+      }
+      .dungeon-center-panel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-width: 320px;
+        max-width: 420px;
+        flex: 0 0 340px;
+      }
+      @media (max-width: 900px) {
+        .dungeon-flex-row {
+          flex-direction: column !important;
+          align-items: center !important;
+          gap: 1.2em !important;
+        }
+        .dungeon-col {
+          flex-direction: column !important;
+          align-items: center !important;
+          width: 100vw !important;
+          max-width: 100vw !important;
+        }
+        .dungeon-card {
+          width: 98vw !important;
+          min-width: 0 !important;
+          max-width: 99vw !important;
+          margin: 1em 0 !important;
+        }
+        .dungeon-center-panel {
+          min-width: 0 !important;
+          max-width: 99vw !important;
+        }
+      }
+      .dungeon-card, .dungeon-header, .dungeon-table-wrap, .dropdown-table, .dropdown-toggle, .dropdown-content, .system-table {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+    </style>
   </nav>
 
   <div class="page-wrapper">
@@ -89,87 +144,6 @@
           </main>
         </div>
       </div>
-        <!-- Desert Lv 200+ -->
-        <div class="dropdown-table">
-          <button class="dropdown-toggle" aria-expanded="false">Desert Lv 200+</button>
-          <div class="dropdown-content">
-            <table class="system-table">
-              <thead><tr><th>Rank</th><th>Power</th><th>Exp</th><th>Gold</th></tr></thead>
-              <tbody>
-                <tr><td>F</td><td>32,000</td><td>125,240</td><td>22,500</td></tr>
-                <tr><td>F+</td><td>39,000</td><td>193,663</td><td>24,333</td></tr>
-                <tr><td>E</td><td>46,000</td><td>261,954</td><td>26,166</td></tr>
-                <tr><td>E+</td><td>53,000</td><td>330,390</td><td>27,500</td></tr>
-                <tr><td>D</td><td>59,000</td><td>390,756</td><td>29,000</td></tr>
-                <tr><td>D+</td><td>66,000</td><td>451,536</td><td>30,133</td></tr>
-                <tr><td>C</td><td>73,000</td><td>456,197</td><td>31,066</td></tr>
-                <tr><td>C+</td><td>80,000</td><td>460,986</td><td>32,000</td></tr>
-                <tr><td>B</td><td>110,000</td><td>581,116</td><td>35,500</td></tr>
-                <tr><td>B+</td><td>155,000</td><td>1,120,988</td><td>39,000</td></tr>
-                <tr><td>A</td><td>220,000</td><td>2,241,800</td><td>42,600</td></tr>
-                <tr><td>A+</td><td>310,000</td><td>3,042,058</td><td>46,500</td></tr>
-                <tr><td>S</td><td>420,000</td><td>5,201,672</td><td>50,000</td></tr>
-                <tr><td>S+</td><td>440,000</td><td>5,202,162</td><td>50,000</td></tr>
-                <tr><td>S++</td><td></td><td></td><td></td></tr>
-                <tr><td>S+++</td><td></td><td></td><td></td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <!-- Snow Forest Lv 300+ -->
-        <div class="dropdown-table">
-          <button class="dropdown-toggle" aria-expanded="false">Snow Forest Lv 300+</button>
-          <div class="dropdown-content">
-            <table class="system-table">
-              <thead><tr><th>Rank</th><th>Power</th><th>Exp</th><th>Gold</th></tr></thead>
-              <tbody>
-                <tr><td>F</td><td>80,000</td><td>460,020</td><td>32,000</td></tr>
-                <tr><td>F+</td><td>87,000</td><td>488,242</td><td>32,700</td></tr>
-                <tr><td>E</td><td>94,000</td><td>516,288</td><td>33,800</td></tr>
-                <tr><td>E+</td><td>101,000</td><td>544,000</td><td>34,600</td></tr>
-                <tr><td>D</td><td>108,000</td><td>572,588</td><td>35,300</td></tr>
-                <tr><td>D+</td><td>116,000</td><td>604,030</td><td>36,100</td></tr>
-                <tr><td>C</td><td>123,000</td><td>632,928</td><td>36,800</td></tr>
-                <tr><td>C+</td><td>130,000</td><td>661,020</td><td>37,500</td></tr>
-                <tr><td>B</td><td>170,000</td><td>1,301,044</td><td>40,000</td></tr>
-                <tr><td>B+</td><td>205,000</td><td>2,000,456</td><td>42,000</td></tr>
-                <tr><td>A</td><td>255,000</td><td>2,594,924</td><td>44,388</td></tr>
-                <tr><td>A+</td><td>320,000</td><td>3,306,441</td><td>46,547</td></tr>
-                <tr><td>S</td><td>395,000</td><td>3,629,650</td><td>48,791</td></tr>
-                <tr><td>S+</td><td></td><td></td><td></td></tr>
-                <tr><td>S++</td><td></td><td></td><td></td></tr>
-                <tr><td>S+++</td><td></td><td></td><td></td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <!-- Spider Cave Lv 380+ -->
-        <div class="dropdown-table">
-          <button class="dropdown-toggle" aria-expanded="false">Spider Cave Lv 380+</button>
-          <div class="dropdown-content">
-            <table class="system-table">
-              <thead><tr><th>Rank</th><th>Power</th><th>Exp</th><th>Gold</th></tr></thead>
-              <tbody>
-                <tr><td>F</td><td>145,000</td><td>1,000,240</td><td>38,500</td></tr>
-                <tr><td>F+</td><td>162,000</td><td>1,060,022</td><td>39,500</td></tr>
-                <tr><td>E</td><td>179,000</td><td>1,180,000</td><td>40,000</td></tr>
-                <tr><td>E+</td><td>196,000</td><td>1,300,026</td><td>41,300</td></tr>
-                <tr><td>D</td><td>218,000</td><td>1,420,000</td><td>42,500</td></tr>
-                <tr><td>D+</td><td>238,000</td><td>1,520,690</td><td>43,444</td></tr>
-                <tr><td>C</td><td>250,000</td><td>2,400,672</td><td>44,111</td></tr>
-                <tr><td>C+</td><td>265,000</td><td>2,540,748</td><td>44,500</td></tr>
-                <tr><td>B</td><td>300,000</td><td>2,680,036</td><td>45,888</td></tr>
-                <tr><td>B+</td><td>340,000</td><td>2,820,836</td><td>47,500</td></tr>
-                <tr><td>A</td><td>385,000</td><td>2,970,440</td><td>48,500</td></tr>
-                <tr><td>A+</td><td>440,000</td><td>3,040,000</td><td>50,000</td></tr>
-                <tr><td>S</td><td>490,000</td><td>3,400,000</td><td>50,000</td></tr>
-                <tr><td>S+</td><td>530,000</td><td>3,600,000</td><td>50,000</td></tr>
-                <tr><td>S++</td><td>565,000</td><td>3,651,768</td><td>50,000</td></tr>
-                <tr><td>S+++</td><td>600,000</td><td>5,001,792</td><td>50,000</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
               <!-- Weapons, armor, and materials dropped sections removed as requested -->
             </div>
 
@@ -186,6 +160,14 @@
   <footer class="site-footer">
     <p>SOLO LEVELING SYSTEM DATABASE — <span>PORTAL MODULE</span></p>
   </footer>
+
+  <!-- Dungeon Map Modal -->
+  <div id="dungeon-map-modal">
+    <div class="map-modal-content">
+      <img id="dungeon-map-img" src="" alt="Dungeon Map" />
+      <button class="close-map-modal">Close</button>
+    </div>
+  </div>
 
   <script src="../script.js"></script>
   <script>

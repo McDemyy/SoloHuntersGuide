@@ -135,21 +135,21 @@
   <!-- Navigation -->
   <nav class="navbar">
     <a href="index.html" class="nav-logo">SH System DB</a>
-    <ul class="nav-links">
-      <li><a href="pages/weapons.html">Weapons</a></li>
-      <li><a href="pages/magic.html">Magic</a></li>
-      <li><a href="pages/armor.html">Armor</a></li>
-      <li><a href="pages/artifacts.html">Artifacts</a></li>
-      <li><a href="pages/builds.html">Builds</a></li>
-      <li><a href="pages/levelguide.html">Gate Info</a></li>
-      <li><a href="#" id="open-map-modal">Map</a></li>
-      <li>
-        <a href="pages/redgates.html" id="open-redgates-page" style="display:flex;align-items:center;gap:0.5em;">
+    <!-- Removed nav-mobile-btn hamburger menu button -->
+    <ul class="nav-links" style="margin-left:auto;">
+      <li style="margin-left:auto;">
+        <a href="pages/redgates.html" id="open-redgates-page" style="display:flex;align-items:center;gap:0.5em;padding-right:0.5em;">
           <img src="images/Backgrounds/RedGateIcon.png" alt="Red Gates" style="height:1.3em;width:1.3em;vertical-align:middle;"/>
           <span>RedGates</span>
         </a>
       </li>
     </ul>
+    <div class="nav-sidepanel" id="nav-sidepanel">
+      <ul class="nav-sidepanel-links">
+        
+      </ul>
+    </div>
+    <div class="nav-sidepanel-overlay" id="nav-sidepanel-overlay"></div>
   </nav>
 
 *** End Patch
@@ -318,6 +318,43 @@
   </div>
 
   <script src="script.js"></script>
+      <script>
+        // Mobile navbar side panel logic
+        document.addEventListener('DOMContentLoaded', function() {
+          const mobileBtn = document.getElementById('nav-mobile-btn');
+          const sidepanel = document.getElementById('nav-sidepanel');
+          const closeBtn = document.getElementById('nav-sidepanel-close');
+          const overlay = document.getElementById('nav-sidepanel-overlay');
+          function showPanel() {
+            sidepanel.classList.add('open');
+            overlay.classList.add('open');
+          }
+          function hidePanel() {
+            sidepanel.classList.remove('open');
+            overlay.classList.remove('open');
+          }
+          if (mobileBtn && sidepanel) {
+            mobileBtn.addEventListener('click', showPanel);
+          }
+          if (closeBtn && sidepanel) {
+            closeBtn.addEventListener('click', hidePanel);
+          }
+          if (overlay) {
+            overlay.addEventListener('click', hidePanel);
+          }
+          // Show mobile button only on small screens
+          function updateMobileBtn() {
+            if (window.innerWidth <= 900) {
+              mobileBtn.style.display = 'block';
+            } else {
+              mobileBtn.style.display = 'none';
+              hidePanel();
+            }
+          }
+          window.addEventListener('resize', updateMobileBtn);
+          updateMobileBtn();
+        });
+      </script>
     <script>
       // Credits Modal Logic
       document.addEventListener('DOMContentLoaded', function() {
