@@ -2,6 +2,12 @@ html, body {
   overscroll-behavior: contain;
   overscroll-behavior-y: contain;
   touch-action: pan-x pan-y;
+  background: #0a1a2c !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 100vh !important;
+  width: 100vw !important;
+  box-sizing: border-box;
 }
 .system-table th, .system-table td {
   padding: 0.7em 1.5em !important;
