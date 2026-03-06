@@ -327,10 +327,7 @@ body {
 
 @media (max-width: 900px) {
   html, body {
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
-    overscroll-behavior: auto !important;
-    /* Removed touch-action: pan-y to allow normal one-finger scrolling */
+    /* Remove all overflow/overscroll/touch-action to restore default browser scrolling */
   }
 }
 body::before {
