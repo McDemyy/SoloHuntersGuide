@@ -1,40 +1,242 @@
+// ---- Artifact Materials Modal ----
+function initArtifactMaterialsModal() {
+  const modal = document.getElementById('materials-modal');
+  const modalContent = document.getElementById('materials-modal-content');
+  const closeBtn = document.getElementById('close-materials-modal');
+  if (!modal || !modalContent || !closeBtn) return;
+  // Attach click to all Materials buttons
+  document.querySelectorAll('.item-card .system-btn-system').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      // Find artifact name
+      const card = btn.closest('.item-card');
+      const name = card ? card.querySelector('.card-name').textContent.trim() : '';
+      // Custom content for each artifact
+      let html = `<h2 style="color:#00d4ff;margin-bottom:0.7em;">${name} Materials</h2>`;
+      let locations = '';
+      switch (name) {
+        case 'ShadowFang':
+          locations = 'Caves, Spider Cave, and Bloodmoons';
+          break;
+        case 'Deathwing':
+          locations = 'Subway and Desert';
+          break;
+        case 'Conqurers':
+          locations = 'Caves and Desert';
+          break;
+        case 'Guardian':
+          locations = 'Spider Cave and Jungle';
+          break;
+        case 'HeartBound':
+          locations = 'Snow Forest and Jungle';
+          break;
+        default:
+          locations = 'Material locations and requirements coming soon.';
+      }
+      html += `<div style=\"font-size:1.1em;\"><b>Locations:</b> ${locations}</div>`;
+      modalContent.innerHTML = html;
+      modal.style.display = 'flex';
+    });
+  });
+  closeBtn.addEventListener('click', function() {
+    modal.style.display = 'none';
+  });
+  // Close on background click
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) modal.style.display = 'none';
+  });
+}
+// ---- Dungeon Card Click-to-Dropdown ----
+function initDungeonCardDropdowns() {
+  const cards = document.querySelectorAll('.dungeon-card.clickable');
+  cards.forEach(card => {
+    card.addEventListener('click', function(e) {
+      // Only one open at a time
+      cards.forEach(c => {
+        if (c !== card) c.classList.remove('active');
+      });
+      card.classList.toggle('active');
+    });
+  });
+}
+
+// ---- Dungeon Recommendation Logic ----
+function recommendDungeon(power) {
+  // Updated dungeon tables from user
+  const dungeonTable = [
+    // Subway
+    { dungeon: 'Subway', rank: 'F', power: 0, exp: 320 },
+    { dungeon: 'Subway', rank: 'F+', power: 250, exp: 467 },
+    { dungeon: 'Subway', rank: 'E', power: 550, exp: 639 },
+    { dungeon: 'Subway', rank: 'E+', power: 1000, exp: 898 },
+    { dungeon: 'Subway', rank: 'D', power: 1400, exp: 1267 },
+    { dungeon: 'Subway', rank: 'D+', power: 1900, exp: 1825 },
+    { dungeon: 'Subway', rank: 'C', power: 2300, exp: 2295 },
+    { dungeon: 'Subway', rank: 'C+', power: 2600, exp: 2636 },
+    { dungeon: 'Subway', rank: 'B', power: 16000, exp: 37100 },
+    { dungeon: 'Subway', rank: 'B+', power: 22000, exp: 56771 },
+    { dungeon: 'Subway', rank: 'A', power: 30000, exp: 116488 },
+    { dungeon: 'Subway', rank: 'A+', power: 40000, exp: 203232 },
+    { dungeon: 'Subway', rank: 'S', power: 55000, exp: 351642 },
+    { dungeon: 'Subway', rank: 'S+', power: 115000, exp: 602870 },
+    { dungeon: 'Subway', rank: 'S++', power: 175000, exp: 1363650 },
+    { dungeon: 'Subway', rank: 'S+++', power: 405000, exp: 3699496 },
+    // Caves
+    { dungeon: 'Caves', rank: 'F', power: 2600, exp: 2080 },
+    { dungeon: 'Caves', rank: 'F+', power: 3800, exp: 3354 },
+    { dungeon: 'Caves', rank: 'E', power: 5000, exp: 5250 },
+    { dungeon: 'Caves', rank: 'E+', power: 6200, exp: 8104 },
+    { dungeon: 'Caves', rank: 'D', power: 7400, exp: 11346 },
+    { dungeon: 'Caves', rank: 'D+', power: 8600, exp: 11820 },
+    { dungeon: 'Caves', rank: 'C', power: 9800, exp: 16480 },
+    { dungeon: 'Caves', rank: 'C+', power: 11000, exp: 18396 },
+    { dungeon: 'Caves', rank: 'B', power: 25000, exp: 68333 },
+    { dungeon: 'Caves', rank: 'B+', power: 50000, exp: 300704 },
+    { dungeon: 'Caves', rank: 'A', power: 90000, exp: 500960 },
+    { dungeon: 'Caves', rank: 'A+', power: 160000, exp: 1181650 },
+    { dungeon: 'Caves', rank: 'S', power: 275000, exp: 2752145 },
+    { dungeon: 'Caves', rank: 'S+', power: 380000, exp: 3570586 },
+    { dungeon: 'Caves', rank: 'S++', power: 480000, exp: 5200800 },
+    // S+++ omitted (no data)
+    // Jungle
+    { dungeon: 'Jungle', rank: 'F', power: 11000, exp: 18160 },
+    { dungeon: 'Jungle', rank: 'F+', power: 14000, exp: 28815 },
+    { dungeon: 'Jungle', rank: 'E', power: 17000, exp: 40192 },
+    { dungeon: 'Jungle', rank: 'E+', power: 20000, exp: 49505 },
+    { dungeon: 'Jungle', rank: 'D', power: 23000, exp: 60224 },
+    { dungeon: 'Jungle', rank: 'D+', power: 26000, exp: 72530 },
+    { dungeon: 'Jungle', rank: 'C', power: 29000, exp: 85256 },
+    { dungeon: 'Jungle', rank: 'C+', power: 32000, exp: 125476 },
+    { dungeon: 'Jungle', rank: 'B', power: 52000, exp: 320288 },
+    { dungeon: 'Jungle', rank: 'B+', power: 85000, exp: 480794 },
+    { dungeon: 'Jungle', rank: 'A', power: 140000, exp: 950520 },
+    { dungeon: 'Jungle', rank: 'A+', power: 230000, exp: 2400840 },
+    { dungeon: 'Jungle', rank: 'S', power: 355000, exp: 3463160 },
+    { dungeon: 'Jungle', rank: 'S+', power: 435000, exp: 5000528 },
+    { dungeon: 'Jungle', rank: 'S++', power: 520000, exp: 5200836 },
+    // S+++ omitted (no data)
+    // Desert
+    { dungeon: 'Desert', rank: 'F', power: 32000, exp: 125240 },
+    { dungeon: 'Desert', rank: 'F+', power: 39000, exp: 193663 },
+    { dungeon: 'Desert', rank: 'E', power: 46000, exp: 261954 },
+    { dungeon: 'Desert', rank: 'E+', power: 53000, exp: 330390 },
+    { dungeon: 'Desert', rank: 'D', power: 59000, exp: 390756 },
+    { dungeon: 'Desert', rank: 'D+', power: 66000, exp: 451536 },
+    { dungeon: 'Desert', rank: 'C', power: 73000, exp: 456197 },
+    { dungeon: 'Desert', rank: 'C+', power: 80000, exp: 460986 },
+    { dungeon: 'Desert', rank: 'B', power: 110000, exp: 581116 },
+    { dungeon: 'Desert', rank: 'B+', power: 155000, exp: 1120988 },
+    { dungeon: 'Desert', rank: 'A', power: 220000, exp: 2241800 },
+    { dungeon: 'Desert', rank: 'A+', power: 310000, exp: 3042058 },
+    { dungeon: 'Desert', rank: 'S', power: 420000, exp: 5201672 },
+    { dungeon: 'Desert', rank: 'S+', power: 440000, exp: 5202162 },
+    // S++, S+++ omitted (no data)
+    // Snow Forest
+    { dungeon: 'Snow Forest', rank: 'F', power: 80000, exp: 460020 },
+    { dungeon: 'Snow Forest', rank: 'F+', power: 87000, exp: 488242 },
+    { dungeon: 'Snow Forest', rank: 'E', power: 94000, exp: 516288 },
+    { dungeon: 'Snow Forest', rank: 'E+', power: 101000, exp: 544000 },
+    { dungeon: 'Snow Forest', rank: 'D', power: 108000, exp: 572588 },
+    { dungeon: 'Snow Forest', rank: 'D+', power: 116000, exp: 604030 },
+    { dungeon: 'Snow Forest', rank: 'C', power: 123000, exp: 632928 },
+    { dungeon: 'Snow Forest', rank: 'C+', power: 130000, exp: 661020 },
+    { dungeon: 'Snow Forest', rank: 'B', power: 170000, exp: 1301044 },
+    { dungeon: 'Snow Forest', rank: 'B+', power: 205000, exp: 2000456 },
+    { dungeon: 'Snow Forest', rank: 'A', power: 255000, exp: 2594924 },
+    { dungeon: 'Snow Forest', rank: 'A+', power: 320000, exp: 3306441 },
+    { dungeon: 'Snow Forest', rank: 'S', power: 395000, exp: 3629650 },
+    // S+, S++, S+++ omitted (no data)
+    // Spider Cave
+    { dungeon: 'Spider Cave', rank: 'F', power: 145000, exp: 1000240 },
+    { dungeon: 'Spider Cave', rank: 'F+', power: 162000, exp: 1060022 },
+    { dungeon: 'Spider Cave', rank: 'E', power: 179000, exp: 1180000 },
+    { dungeon: 'Spider Cave', rank: 'E+', power: 196000, exp: 1300026 },
+    { dungeon: 'Spider Cave', rank: 'D', power: 218000, exp: 1420000 },
+    { dungeon: 'Spider Cave', rank: 'D+', power: 238000, exp: 1520690 },
+    { dungeon: 'Spider Cave', rank: 'C', power: 250000, exp: 2400672 },
+    { dungeon: 'Spider Cave', rank: 'C+', power: 265000, exp: 2540748 },
+    { dungeon: 'Spider Cave', rank: 'B', power: 300000, exp: 2680036 },
+    { dungeon: 'Spider Cave', rank: 'B+', power: 340000, exp: 2820836 },
+    { dungeon: 'Spider Cave', rank: 'A', power: 385000, exp: 2970440 },
+    { dungeon: 'Spider Cave', rank: 'A+', power: 440000, exp: 3040000 },
+    { dungeon: 'Spider Cave', rank: 'S', power: 490000, exp: 3400000 },
+    { dungeon: 'Spider Cave', rank: 'S+', power: 530000, exp: 3600000 },
+    { dungeon: 'Spider Cave', rank: 'S++', power: 565000, exp: 3651768 },
+    { dungeon: 'Spider Cave', rank: 'S+++', power: 600000, exp: 5001792 },
+  ];
+
+  // Find the highest gate power less than or equal to the player's power
+  let best = null;
+  let next = null;
+  dungeonTable.forEach(d => {
+    if (d.power <= power && (!best || d.power > best.power)) {
+      best = d;
+    }
+    if (d.power > power && (!next || d.power < next.power)) {
+      next = d;
+    }
+  });
+  if (!best) return 'No dungeon available. Increase your power!';
+  // Highlight the recommended portal card
+  setTimeout(() => {
+    document.querySelectorAll('.dungeon-card').forEach(card => {
+      card.classList.remove('recommended-glow');
+      const header = card.querySelector('.dungeon-header');
+      if (!header) return;
+      const name = header.textContent.split('Lv')[0].trim();
+      if (name === best.dungeon) {
+        card.classList.add('recommended-glow');
+      }
+    });
+  }, 10);
+  let result = `
+    <div style="background:linear-gradient(90deg,#0e1a2a 60%,#102a4a 100%);border-radius:1em;box-shadow:0 0 16px #00d4ff55,0 0 2px #7b2fff44;padding:1.1em 1.2em 1.2em 1.2em;text-align:center;margin-bottom:0.5em;max-width:340px;margin-left:auto;margin-right:auto;">
+      <div style="font-size:1.18em;font-family:'Orbitron','Segoe UI',monospace;color:#00d4ff;text-shadow:0 0 8px #00d4ffcc,0 0 2px #fff;margin-bottom:0.4em;">Recommended Gate</div>
+      <div style="font-size:1.08em;color:#eaf6ff;margin-bottom:0.2em;">Farm <b>${best.dungeon} <span style='color:#ffaa00;'>(${best.rank})</span></b></div>
+      <div style="font-size:1em;color:#b3eaff;margin-bottom:0.1em;">Power: <b>${best.power}</b> &nbsp;|&nbsp; EXP: <b>${best.exp}</b></div>
+    </div>`;
+  if (next) {
+    result += `
+      <div style="background:linear-gradient(90deg,#101a2a 60%,#1a2e4a 100%);border-radius:1em;box-shadow:0 0 12px #00d4ff33,0 0 2px #7b2fff22;padding:0.8em 1em 1em 1em;text-align:center;max-width:320px;margin-left:auto;margin-right:auto;">
+        <div style="font-size:1.08em;color:#b3eaff;margin-bottom:0.2em;">Next Gate: <b>${next.dungeon} <span style='color:#ffaa00;'>(${next.rank})</span></b></div>
+        <div style="font-size:1em;color:#eaf6ff;">Power: <b>${next.power}</b> &nbsp;|&nbsp; EXP: <b>${next.exp}</b></div>
+      </div>`;
+  }
+  return result;
+}
+
+function initRecommendForm() {
+  const form = document.getElementById('recommend-form');
+  const result = document.getElementById('recommend-result') || document.querySelector('.clean-recommend-result');
+  if (!form || !result) return;
+  form.addEventListener('submit', function(e) {
+    console.log('[DEBUG] Recommend form submitted');
+    e.preventDefault();
+    result.innerHTML = '';
+    const input = document.getElementById('player-power');
+    if (!input) {
+      result.innerHTML = '<span style="color:#ff4444">Error: Power input not found.</span>';
+      return;
+    }
+    const power = parseInt(input.value, 10);
+    if (isNaN(power) || power < 0) {
+      result.innerHTML = '<span style="color:#ff4444">Please enter a valid power value.</span>';
+      return;
+    }
+    const output = recommendDungeon(power);
+    result.innerHTML = output || '<span style="color:#ff4444">No recommendation found.</span>';
+  });
+}
+
+// ---- Spinning Portals: (handled by CSS animation) ----
+
 /* =============================================
    SOLO LEVELING SYSTEM DATABASE - Main Script
    ============================================= */
 
 'use strict';
 
-/* ---- Portal expand / collapse ---- */
-function initPortals() {
-  const entries = document.querySelectorAll('.portal-entry');
-  entries.forEach(entry => {
-    const header = entry.querySelector('.portal-header');
-    if (!header) return;
-
-    const toggle = () => {
-      const wasExpanded = entry.classList.contains('expanded');
-      // Collapse all
-      entries.forEach(e => {
-        e.classList.remove('expanded');
-        const h = e.querySelector('.portal-header');
-        if (h) h.setAttribute('aria-expanded', 'false');
-      });
-      // Toggle clicked
-      if (!wasExpanded) {
-        entry.classList.add('expanded');
-        header.setAttribute('aria-expanded', 'true');
-      }
-    };
-
-    header.addEventListener('click', toggle);
-    header.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        toggle();
-      }
-    });
-  });
-}
+// (Portal expand/collapse logic removed for portals.html)
 
 /* ---- Filter buttons ---- */
 function initFilters() {
@@ -99,9 +301,27 @@ function initTypingEffect() {
 
 /* ---- Init ---- */
 document.addEventListener('DOMContentLoaded', () => {
-  initPortals();
-  initFilters();
-  initCardAnimations();
-  initNavHighlight();
-  initTypingEffect();
+  initDungeonCardDropdowns();
+  initRecommendForm();
+  initArtifactMaterialsModal();
+  initShinyToggle();
 });
+
+function initShinyToggle() {
+  const shinyBtn = document.getElementById('shiny-toggle');
+  if (!shinyBtn) return;
+  let shiny = false;
+  shinyBtn.addEventListener('click', function() {
+    shiny = !shiny;
+    shinyBtn.classList.toggle('active', shiny);
+    shinyBtn.textContent = shiny ? 'Shiny (On)' : 'Shiny';
+    document.querySelectorAll('.card-desc[data-artifact]').forEach(desc => {
+      const base = desc.getAttribute('data-base') || '';
+      const shinyStat = desc.getAttribute('data-shiny') || '';
+      const statSpan = desc.querySelector('.artifact-stats');
+      if (statSpan) {
+        statSpan.textContent = shiny ? shinyStat : base;
+      }
+    });
+  });
+}

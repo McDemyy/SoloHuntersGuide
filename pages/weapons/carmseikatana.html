@@ -1,0 +1,142 @@
+  <div class="system-bg-scanlines"></div>
+  <div class="system-bg-shimmer"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Katana - Weapon Details | Solo Hunters" />
+  <title>Katana | Solo Hunters</title>
+  <link rel="stylesheet" href="../../style.css" />
+</head>
+
+  <body class="solo-bg" style="background:linear-gradient(120deg,#0a1a3a 0%,#003366 100%) fixed;">
+    <div style="position:fixed;left:0;top:0;width:100vw;height:100vh;z-index:0;background:linear-gradient(120deg,#0a1a3a 0%,#003366 100%);"></div>
+    <div class="system-bg-stars"></div>
+    <div class="system-bg-grid"></div>
+    <div class="system-bg-particles"></div>
+    <div class="system-bg-rays"></div>
+    <script>
+      // Generate random stars for the system background
+      const starCount = 36;
+      const starsContainer = document.querySelector('.system-bg-stars');
+      if (starsContainer) {
+        for (let i = 0; i < starCount; i++) {
+          const star = document.createElement('div');
+          star.className = 'system-star';
+          star.style.left = Math.random() * 100 + 'vw';
+          star.style.top = Math.random() * 100 + 'vh';
+          star.style.animationDelay = (Math.random() * 3) + 's';
+          star.style.opacity = 0.5 + Math.random() * 0.5;
+          starsContainer.appendChild(star);
+        }
+      }
+      // Animated background particles
+      const bg = document.querySelector('.system-bg-particles');
+      if (bg && !bg.hasChildNodes()) {
+        for (let i = 0; i < 24; i++) {
+          const p = document.createElement('div');
+          p.className = 'particle';
+          p.style.left = Math.random() * 100 + '%';
+          p.style.top = Math.random() * 100 + '%';
+          p.style.animationDuration = (6 + Math.random() * 8) + 's';
+          p.style.opacity = 0.15 + Math.random() * 0.25;
+          bg.appendChild(p);
+        }
+      }
+      // Animated light rays
+      const rays = document.querySelector('.system-bg-rays');
+      if (rays && !rays.hasChildNodes()) {
+        for (let i = 0; i < 7; i++) {
+          const r = document.createElement('div');
+          r.className = 'system-ray';
+          r.style.top = Math.random() * 100 + 'vh';
+          r.style.animationDelay = (Math.random() * 7) + 's';
+          rays.appendChild(r);
+        }
+      }
+    </script>
+    <div class="system-bg-stars"></div>
+    <div class="system-bg-grid"></div>
+    <div class="system-bg-particles"></div>
+    <div class="system-bg-rays"></div>
+    <script>
+      // Generate random stars for the system background
+      const starCount = 36;
+      const starsContainer = document.querySelector('.system-bg-stars');
+      if (starsContainer) {
+        for (let i = 0; i < starCount; i++) {
+          const star = document.createElement('div');
+          star.className = 'system-star';
+          star.style.left = Math.random() * 100 + 'vw';
+          star.style.top = Math.random() * 100 + 'vh';
+          star.style.animationDelay = (Math.random() * 3) + 's';
+          star.style.opacity = 0.5 + Math.random() * 0.5;
+          starsContainer.appendChild(star);
+        }
+      }
+      // Animated background particles
+      const bg = document.querySelector('.system-bg-particles');
+      if (bg && !bg.hasChildNodes()) {
+        for (let i = 0; i < 24; i++) {
+          const p = document.createElement('div');
+          p.className = 'particle';
+          p.style.left = Math.random() * 100 + '%';
+          p.style.top = Math.random() * 100 + '%';
+          p.style.animationDuration = (6 + Math.random() * 8) + 's';
+          p.style.opacity = 0.15 + Math.random() * 0.25;
+          bg.appendChild(p);
+        }
+      }
+      // Animated light rays
+      const rays = document.querySelector('.system-bg-rays');
+      if (rays && !rays.hasChildNodes()) {
+        for (let i = 0; i < 7; i++) {
+          const r = document.createElement('div');
+          r.className = 'system-ray';
+          r.style.top = Math.random() * 100 + 'vh';
+          r.style.animationDelay = (Math.random() * 7) + 's';
+          rays.appendChild(r);
+        }
+      }
+    </script>
+    <nav class="navbar">
+      <a href="../../index.html" class="nav-logo">⚔ Solo Hunters</a>
+      <ul class="nav-links">
+        <li><a href="../weaponstier.html" class="nav-back">&#8592; Back</a></li>
+        <li><a href="../weaponstier.html">Weapon Tier List</a></li>
+      </ul>
+    </nav>
+    <div class="system-container">
+      <div class="system-header">
+        <div class="system-tag">[ WEAPON DATA MODULE ]</div>
+        <h1 class="system-title">Katana</h1>
+        <p class="system-desc">A Tier Weapon</p>
+      </div>
+      <div class="dungeon-card recommended-glow" style="max-width:400px;margin:0 auto;background:rgba(10,20,40,0.82);box-shadow:0 0 18px #00d4ff55;border-radius:1.2em;">
+        <img src="../../images/weapons/carmseikatana.png" alt="Katana" style="width:120px;height:120px;filter:drop-shadow(0 0 18px #00d4ff);margin-bottom:18px;" />
+        <div style="margin-bottom:1.2em;">
+          <span class="system-tag" style="background:#00d4ff22;color:#00d4ff;padding:0.2em 1em;border-radius:1em;font-size:1em;">Katana</span>
+          <span class="system-tag" style="background:#7b2fff22;color:#7b2fff;padding:0.2em 1em;border-radius:1em;font-size:1em;margin-left:0.7em;">A Rank</span>
+        </div>
+        <ul style="list-style:none;padding:0;font-size:1.08em;text-align:left;max-width:320px;margin:0 auto 1.2em auto;">
+          <li><b>Damage:</b> High</li>
+          <li><b>Attack Speed:</b> Very Fast</li>
+          <li><b>Range:</b> Mid-Long</li>
+          <li><b>AOE:</b> A</li>
+          <li><b>Power:</b> S</li>
+        </ul>
+        <div style="background:rgba(10,20,40,0.82);border-radius:0.7em;padding:1em 1.2em;margin-bottom:1.2em;box-shadow:0 0 18px #00d4ff55;">
+          <span style="color:#00d4ff;font-weight:bold;">Description:</span><br>
+          Skill C has long range, nice damage but only at end of line. Good for fighting bosses. Skill R has mid range and some AOE, nice damage. All skills have very fast cooldown.
+        </div>
+        <div class="obtain-section">
+          <div class="obtain-title">How to Obtain</div>
+          <div class="obtain-methods">
+            <span class="obtain-way"><span class="obtain-icon">🏜️</span> Desert</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

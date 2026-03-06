@@ -1,17 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+      .builds-grid {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 3em;
+        margin-top: 2.5em;
+        margin-left: -2vw;
+        z-index: 2;
+        width: 100vw;
+        max-width: 100vw;
+        box-sizing: border-box;
+      }
+      }
+      .builds-grid > .build-card {
+        width: 850px !important;
+        min-width: 520px !important;
+        max-width: 54vw !important;
+        min-height: 440px;
+        border-radius: 22px;
+        background: linear-gradient(120deg, #0a0e1a 0%, #10182c 50%, #0a0e1a 100%);
+        background-size: 200% 200%;
+        animation: card-bg-move 8s ease-in-out infinite alternate;
+        box-shadow: 0 0 48px 0 #00d4ff33, 0 0 0 2.5px #00d4ff22;
+        position: relative;
+        margin: 2em 0;
+        padding: 2.8em 2.8em 2.8em 2.8em;
+        transition: box-shadow 0.3s, transform 0.3s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: visible;
+        box-sizing: border-box;
+      }
+      @keyframes card-bg-move {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 100% 50%; }
+      }
+        .build-header {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 0;
+          margin-bottom: 16px;
+          padding-bottom: 14px;
+          border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+        }
+        .build-header .build-name, .build-header .build-playstyle {
+          text-align: center;
+          width: 100%;
+        }
+      .build-card.physical-glow {
+        box-shadow: 0 0 48px 0 #ff2a2a99, 0 0 0 3px #ff2a2a88, 0 0 32px 8px #ff2a2a55;
+        border: 2.5px solid #ff2a2a;
+        animation: card-float 10s ease-in-out infinite alternate;
+      }
+      .build-card.magic-glow {
+        box-shadow: 0 0 48px 0 #a259ffcc, 0 0 0 3px #7b2fff99, 0 0 32px 8px #a259ff55;
+        border: 2.5px solid #a259ff;
+        animation: card-float 10s ease-in-out infinite alternate;
+      }
+      @keyframes card-float {
+        0% { transform: translateY(0) scale(1); }
+        8% { transform: translateY(-10px) scale(1.01); }
+        16% { transform: translateY(0) scale(1); }
+        100% { transform: translateY(0) scale(1); }
+      }
+      /* Solo Leveling animated background overlays */
+      .system-bg-stars, .system-bg-grid, .system-bg-orbs {
+        position: fixed;
+        left: 0; top: 0; width: 100vw; height: 100vh;
+        pointer-events: none;
+        z-index: 1;
+      }
+      .system-bg-stars { background: url('../images/bg-stars.png'); opacity: 0.45; animation: stars-move 18s linear infinite alternate; }
+      .system-bg-grid { background: url('../images/bg-grid.png'); opacity: 0.22; animation: grid-move 12s linear infinite alternate; }
+      .system-bg-orbs { background: url('../images/bg-orbs.png'); opacity: 0.22; animation: orbs-move 10s linear infinite alternate; }
+      @keyframes stars-move { 0% { background-position: 0 0; } 100% { background-position: 80px 40px; } }
+      @keyframes grid-move { 0% { background-position: 0 0; } 100% { background-position: -80px -40px; } }
+      @keyframes orbs-move { 0% { background-position: 0 0; } 100% { background-position: 40px 80px; } }
+    </style>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Solo Leveling Best Builds – Optimized hunter build guides for Tank, DPS, Shadow, and Boss Killer playstyles." />
   <title>Best Builds | Solo Leveling System DB</title>
   <link rel="stylesheet" href="../style.css" />
 </head>
+  <style>
+  .system-bg-glitches {
+    position: fixed;
+    left: 0; top: 0; width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 3;
+  }
+  .bg-glitch {
+    position: absolute;
+    border-radius: 2.5px;
+    opacity: 0.18;
+    filter: blur(0.5px);
+    background: linear-gradient(90deg, #00d4ff 0%, #7b2fff 100%);
+    animation: glitch-move 0.32s linear forwards;
+  }
+  @keyframes glitch-move {
+    0% { opacity: 0.18; transform: scaleX(1) skewX(0deg); }
+    40% { opacity: 0.32; transform: scaleX(1.08) skewX(8deg); }
+    80% { opacity: 0.22; transform: scaleX(0.96) skewX(-6deg); }
+    100% { opacity: 0; transform: scaleX(1.12) skewX(0deg); }
+  }
+  </style>
 <body>
+  <div class="system-bg-stars"></div>
+  <div class="system-bg-grid"></div>
+  <div class="system-bg-particles"></div>
+  <div class="system-bg-rays"></div>
+  <div class="system-bg-lines"></div>
+  <div class="system-bg-orbs"></div>
+  <div class="system-bg-lines"></div>
+  <div class="system-bg-orbs"></div>
+      .system-bg-dark-animated {
+        position: fixed;
+        left: 0; top: 0; width: 100vw; height: 100vh;
+        z-index: 0;
+        pointer-events: none;
+        background: radial-gradient(ellipse at 60% 40%, #10131e 60%, #070a13 100%) , linear-gradient(120deg, #0a0e1a 0%, #10182c 50%, #0a0e1a 100%);
+        background-blend-mode: multiply;
+        opacity: 0.98;
+        animation: bg-dark-move 18s ease-in-out infinite alternate;
+      }
+      @keyframes bg-dark-move {
+        0% { background-position: 0% 50%, 0% 50%; }
+        100% { background-position: 100% 50%, 100% 50%; }
+      }
+
+  <!-- Modal for Magic Info -->
+  <div id="magic-modal" class="system-modal" style="display:none;">
+    <div class="system-modal-content" id="magic-modal-content"></div>
+    <span class="system-modal-close" id="close-magic-modal">&times;</span>
+  </div>
 
   <!-- Navigation -->
   <nav class="navbar">
-    <a href="../index.html" class="nav-logo">⚔ SL System DB</a>
+    <a href="../index.html" class="nav-logo">⚔ SH System DB</a>
     <ul class="nav-links">
       <li><a href="../index.html" class="nav-back">⬅ Home</a></li>
       <li><a href="armor.html">Armor</a></li>
@@ -29,241 +164,248 @@
         <div class="system-tag">[ DATABASE — BUILDS MODULE ]</div>
         <h1 class="page-title">Best Builds</h1>
         <p class="page-subtitle">Optimized Hunter Configurations · Armor · Weapons · Strategy</p>
-      </header>
-
-      <!-- Builds Grid -->
       <div class="builds-grid">
-
-        <!-- Tank Build -->
-        <article class="build-card">
+        <!-- Physical Build -->
+        <article class="build-card physical-glow">
           <span class="panel-corner tl"></span>
           <span class="panel-corner tr"></span>
           <span class="panel-corner bl"></span>
           <span class="panel-corner br"></span>
-
           <div class="build-header">
-            <span class="build-icon">🛡</span>
-            <div>
-              <h2 class="build-name">Tank Build</h2>
-              <p class="build-playstyle">Playstyle: Front-line defender</p>
-            </div>
+            <h2 class="build-name">Physical Build</h2>
+            <p class="build-playstyle">Playstyle: Heavy-hitting tank</p>
           </div>
-
+          <div class="build-img-row center-build-row">
+            <a href="weapons/shadowscythe.html"><img src="../images/weapons/ShadowScythe.png" alt="Shadow Scythe" class="build-img" style="height:60px;"></a>
+            <a href="#" class="armor-popup-build" data-armor="Commander Set"><img src="../images/armor/CursedCommander.png" alt="CursedCommander" class="build-img" style="height:60px;cursor:pointer;"></a>
+            <a href="artifacts.html"><img src="../images/artifacts/ShadowFang.png" alt="Shadow Fang" class="build-img" style="height:60px;"></a>
+          </div>
+          <p class="build-section-label">Recommended Weapon</p>
+          <div class="build-items center-build-items">
+            <a href="weapons/shadowscythe.html" class="build-tag weapon clickable-link">Shadow Scythe</a>
+            <a href="weapons/dualdagger.html" class="build-tag weapon clickable-link">Dual Daggers</a>
+            <a href="weapons/thunderaxe.html" class="build-tag weapon clickable-link">Thunder Axe</a>
+          </div>
           <p class="build-section-label">Recommended Armor</p>
-          <div class="build-items">
-            <span class="build-tag">Iron Fortress</span>
-            <span class="build-tag">Hunter Plate</span>
-            <span class="build-tag">Iron Shield</span>
+          <div class="build-items center-build-items">
+            <a href="#" class="build-tag clickable-link armor-popup-build" data-armor="Commander Set">CursedCommander</a>
           </div>
-
-          <p class="build-section-label">Recommended Weapons</p>
-          <div class="build-items">
-            <span class="build-tag weapon">Iron War Hammer</span>
-            <span class="build-tag weapon">Fortified Shield</span>
+          <p class="build-section-label">Recommended Artifact</p>
+          <div class="build-items center-build-items">
+            <a href="artifacts.html" class="build-tag clickable-link">Shadow Fang</a>
           </div>
-
-          <div class="build-pros-cons">
-            <div class="build-pros">
-              <p class="build-pros-label">Strengths</p>
-              <ul>
-                <li>Highest HP pool</li>
-                <li>Taunt ability</li>
-                <li>Great for group raids</li>
-              </ul>
-            </div>
-            <div class="build-cons">
-              <p class="build-cons-label">Weaknesses</p>
-              <ul>
-                <li>Very slow movement</li>
-                <li>Low damage output</li>
-                <li>Mana heavy</li>
-              </ul>
-            </div>
+          <p class="build-section-label">Stats</p>
+          <div class="build-stats center-build-stats">
+            <span class="build-stat">Magic: <b>1</b></span>
+            <span class="build-stat">Strength: <b>1000</b></span>
+            <span class="build-stat">Defence: <b>700-800</b></span>
+            <span class="build-stat">Energy: <b>50-100</b></span>
+            <span class="build-stat">Agility: <b>1-100</b></span>
+          </div>
+          <p class="build-section-label">Best Class</p>
+          <div class="build-items center-build-items">
+            <span class="build-tag">Tank</span>
           </div>
         </article>
 
-        <!-- DPS Build -->
-        <article class="build-card">
+        <!-- Magic Build -->
+        <article class="build-card magic-glow">
           <span class="panel-corner tl"></span>
           <span class="panel-corner tr"></span>
           <span class="panel-corner bl"></span>
           <span class="panel-corner br"></span>
-
           <div class="build-header">
-            <span class="build-icon">⚔</span>
-            <div>
-              <h2 class="build-name">DPS Build</h2>
-              <p class="build-playstyle">Playstyle: Maximum damage dealer</p>
-            </div>
+            <h2 class="build-name">Magic Build</h2>
+            <p class="build-playstyle">Playstyle: High magic burst</p>
           </div>
-
+          <div class="build-img-row center-build-row">
+            <a href="#" class="magic-popup" data-magic="Werewolf" data-obtain="Acquired from Summoning"><img src="../images/magic/Werewolf.png" alt="Werewolf" class="build-img" style="height:60px;cursor:pointer;"></a>
+            <a href="#" class="armor-popup-build" data-armor="Astral Set"><img src="../images/armor/Astral.png" alt="Astral Armor" class="build-img" style="height:60px;cursor:pointer;"></a>
+            <a href="artifacts.html"><img src="../images/artifacts/DarkHeart.png" alt="Dark Heart Ring" class="build-img" style="height:60px;"></a>
+          </div>
+          <p class="build-section-label">Recommended Weapon</p>
+          <div class="build-items center-build-items">
+            <a href="#" class="build-tag weapon clickable-link magic-popup" data-magic="Werewolf" data-obtain="Acquired from Summoning">Werewolf</a>
+            <a href="#" class="build-tag weapon clickable-link magic-popup" data-magic="Divine Blade" data-obtain="Acquired from Summoning">Divine Blade</a>
+          </div>
           <p class="build-section-label">Recommended Armor</p>
-          <div class="build-items">
-            <span class="build-tag">Elf Ranger Vest</span>
-            <span class="build-tag">Combat Gauntlets</span>
-            <span class="build-tag">Speed Boots</span>
+          <div class="build-items center-build-items">
+            <a href="#" class="build-tag clickable-link armor-popup-build" data-armor="Astral Set">Astral</a>
           </div>
-
-          <p class="build-section-label">Recommended Weapons</p>
-          <div class="build-items">
-            <span class="build-tag weapon">Demon Slayer</span>
-            <span class="build-tag weapon">Inferno Axe</span>
+          <p class="build-section-label">Recommended Artifact</p>
+          <div class="build-items center-build-items">
+            <a href="#" class="build-tag clickable-link magic-popup" data-magic="Darkness" data-obtain="Acquired from Summoning">Dark Heart Ring</a>
           </div>
-
-          <div class="build-pros-cons">
-            <div class="build-pros">
-              <p class="build-pros-label">Strengths</p>
-              <ul>
-                <li>Highest damage</li>
-                <li>Fast kill speed</li>
-                <li>Good mobility</li>
-              </ul>
-            </div>
-            <div class="build-cons">
-              <p class="build-cons-label">Weaknesses</p>
-              <ul>
-                <li>Fragile defense</li>
-                <li>Risky solo play</li>
-                <li>Resource intensive</li>
-              </ul>
-            </div>
+          <p class="build-section-label">Stats</p>
+          <div class="build-stats center-build-stats">
+            <span class="build-stat">Magic: <b>1000</b></span>
+            <span class="build-stat">Strength: <b>1</b></span>
+            <span class="build-stat">Defence: <b>700-800</b></span>
+            <span class="build-stat">Energy: <b>100-150</b></span>
+            <span class="build-stat">Agility: <b>1-50</b></span>
+          </div>
+          <p class="build-section-label">Best Class</p>
+          <div class="build-items center-build-items">
+            <span class="build-tag">Mage</span>
           </div>
         </article>
-
-        <!-- Shadow Build -->
-        <article class="build-card">
-          <span class="panel-corner tl"></span>
-          <span class="panel-corner tr"></span>
-          <span class="panel-corner bl"></span>
-          <span class="panel-corner br"></span>
-
-          <div class="build-header">
-            <span class="build-icon">👁</span>
-            <div>
-              <h2 class="build-name">Shadow Build</h2>
-              <p class="build-playstyle">Playstyle: Stealth assassin</p>
-            </div>
-          </div>
-
-          <p class="build-section-label">Recommended Armor</p>
-          <div class="build-items">
-            <span class="build-tag">Shadow Monarch Armor</span>
-            <span class="build-tag">Dark Cloak</span>
-            <span class="build-tag">Void Mask</span>
-          </div>
-
-          <p class="build-section-label">Recommended Weapons</p>
-          <div class="build-items">
-            <span class="build-tag weapon">Shadow Blade</span>
-            <span class="build-tag weapon">Glacier Fang</span>
-          </div>
-
-          <div class="build-pros-cons">
-            <div class="build-pros">
-              <p class="build-pros-label">Strengths</p>
-              <ul>
-                <li>Shadow Army summon</li>
-                <li>Invisibility phases</li>
-                <li>Burst combo potential</li>
-              </ul>
-            </div>
-            <div class="build-cons">
-              <p class="build-cons-label">Weaknesses</p>
-              <ul>
-                <li>Requires Sung Jin-Woo class</li>
-                <li>Complex rotation</li>
-                <li>Mythic gear needed</li>
-              </ul>
-            </div>
-          </div>
-        </article>
-
-        <!-- Boss Killer Build -->
-        <article class="build-card">
-          <span class="panel-corner tl"></span>
-          <span class="panel-corner tr"></span>
-          <span class="panel-corner bl"></span>
-          <span class="panel-corner br"></span>
-
-          <div class="build-header">
-            <span class="build-icon">💀</span>
-            <div>
-              <h2 class="build-name">Boss Killer</h2>
-              <p class="build-playstyle">Playstyle: Elite boss slayer</p>
-            </div>
-          </div>
-
-          <p class="build-section-label">Recommended Armor</p>
-          <div class="build-items">
-            <span class="build-tag">Demon King Armor</span>
-            <span class="build-tag">Ancient Bracers</span>
-            <span class="build-tag">Mana Ward Ring</span>
-          </div>
-
-          <p class="build-section-label">Recommended Weapons</p>
-          <div class="build-items">
-            <span class="build-tag weapon">Demon Slayer</span>
-            <span class="build-tag weapon">Ancient Arcane Staff</span>
-          </div>
-
-          <div class="build-pros-cons">
-            <div class="build-pros">
-              <p class="build-pros-label">Strengths</p>
-              <ul>
-                <li>High burst damage</li>
-                <li>Boss-specific bonuses</li>
-                <li>Versatile attack types</li>
-              </ul>
-            </div>
-            <div class="build-cons">
-              <p class="build-cons-label">Weaknesses</p>
-              <ul>
-                <li>Weaker vs. trash mobs</li>
-                <li>Long cooldowns</li>
-                <li>Expensive equipment</li>
-              </ul>
-            </div>
-          </div>
-        </article>
-
-      </div><!-- /.builds-grid -->
-
-      <!-- Build Tips -->
-      <div class="section-title">Build Tips</div>
-
-      <div class="system-panel">
-        <span class="panel-corner tl"></span>
-        <span class="panel-corner tr"></span>
-        <span class="panel-corner bl"></span>
-        <span class="panel-corner br"></span>
-
-        <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px;">
-          <div>
-            <p style="color: var(--neon-blue); font-size: 11px; letter-spacing: 1px; margin-bottom: 6px;">⚡ GEAR SCALING</p>
-            <p style="font-size: 11px; color: var(--text-secondary); line-height: 1.7;">Always prioritize your main stat. Attack classes benefit most from critical rate + damage weapons. Defense classes need endurance + HP gear.</p>
-          </div>
-          <div>
-            <p style="color: var(--neon-blue); font-size: 11px; letter-spacing: 1px; margin-bottom: 6px;">⚡ GATE RANK MATCHING</p>
-            <p style="font-size: 11px; color: var(--text-secondary); line-height: 1.7;">Match your build to the gate rank. E/D rank — any build works. B/A rank — require specialized builds. S rank — mythic gear strongly recommended.</p>
-          </div>
-          <div>
-            <p style="color: var(--neon-blue); font-size: 11px; letter-spacing: 1px; margin-bottom: 6px;">⚡ SYNERGY</p>
-            <p style="font-size: 11px; color: var(--text-secondary); line-height: 1.7;">Full set bonuses unlock at 3 or 4 matching armor pieces. Mixing sets can break bonuses. Mixing works best only when higher rarity pieces compensate.</p>
-          </div>
-          <div>
-            <p style="color: var(--neon-blue); font-size: 11px; letter-spacing: 1px; margin-bottom: 6px;">⚡ UPGRADES</p>
-            <p style="font-size: 11px; color: var(--text-secondary); line-height: 1.7;">Upgrade weapons first, then armor. A +10 Rare weapon often outperforms an unupgraded Epic weapon at lower levels.</p>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /.container -->
-  </div><!-- /.page-wrapper -->
-
-  <footer class="site-footer">
-    <p>SOLO LEVELING SYSTEM DATABASE — <span>BUILDS MODULE</span></p>
-  </footer>
-
-  <script src="../script.js"></script>
 </body>
+<script>
+    // Glitch animation generator for background
+    function spawnGlitch() {
+      const glitch = document.createElement('div');
+      glitch.className = 'bg-glitch';
+      const w = Math.random() * 120 + 60;
+      const h = Math.random() * 8 + 2;
+      glitch.style.width = w + 'px';
+      glitch.style.height = h + 'px';
+      glitch.style.left = (Math.random() * 100) + 'vw';
+      glitch.style.top = (Math.random() * 100) + 'vh';
+      glitch.style.opacity = 0.12 + Math.random() * 0.18;
+      document.querySelector('.system-bg-glitches').appendChild(glitch);
+      setTimeout(() => {
+        glitch.remove();
+      }, 320);
+    }
+    setInterval(spawnGlitch, 120);
+  // Magic Power List Data (same as magic.html)
+  const magicPowerList = {
+    "Vines": {Range: "Mid", AOE: "B", IFrame: "No", Damage: "C", Notes: "Mediocre AoE and Single-Target Damage"},
+    "Lightning": {Range: "Mid", AOE: "B", IFrame: "No", Damage: "C", Notes: "Lightning Nova is the only good skill"},
+    "Darkness": {Range: "Long", AOE: "S", IFrame: "No", Damage: "A", Notes: "Amazing AoE but lacking damage"},
+    "Nature": {Range: "Mid", AOE: "B", IFrame: "Yes (1)", Damage: "A", Notes: ""},
+    "Crimson": {Range: "Mid", AOE: "A", IFrame: "Yes (1)", Damage: "A", Notes: ""},
+    "Goliath": {Range: "Short", AOE: "B", IFrame: "Yes (2)", Damage: "S", Notes: "Buff Weapon (skill also)"},
+    "Light": {Range: "Long", AOE: "B", IFrame: "No", Damage: "B", Notes: "Nice and fast. Lacks single-target damage."},
+    "Divine Blade": {Range: "Mid", AOE: "A", IFrame: "Yes (All)", Damage: "SS", Notes: "Have M1"},
+    "Werewolf": {Range: "Mid", AOE: "SS", IFrame: "Yes (3)", Damage: "S", Notes: "Have M1 (Only Transformation)"}
+  };
+  // Modal logic for magic items in builds
+  document.querySelectorAll('.magic-popup').forEach(card => {
+    card.addEventListener('click', function(e) {
+      e.preventDefault();
+      const name = card.getAttribute('data-magic');
+      const obtain = card.getAttribute('data-obtain') || '';
+      const info = magicPowerList[name];
+      if (!info) return;
+      let html = `<h2 style='color:#00d4ff;margin-bottom:0.7em;'>${name} — Power Info</h2>`;
+      html += `<table class='system-table' style='margin:0 auto 1em auto;'>`;
+      html += `<tr><th>Range</th><th>AOE</th><th>I-Frame</th><th>Damage</th><th>Notes</th></tr>`;
+      html += `<tr><td>${info.Range}</td><td>${info.AOE}</td><td>${info.IFrame}</td><td>${info.Damage}</td><td>${info.Notes || ''}</td></tr>`;
+      html += `</table>`;
+      if (obtain) {
+        html += `<div class='obtain-section'><div class='obtain-title'>How to Obtain</div><div class='obtain-methods'><div class='obtain-way'>${obtain}</div></div></div>`;
+      }
+      document.getElementById('magic-modal-content').innerHTML = html;
+      document.getElementById('magic-modal').style.display = 'flex';
+    });
+  });
+  document.getElementById('close-magic-modal').onclick = function() {
+    document.getElementById('magic-modal').style.display = 'none';
+  };
+  document.getElementById('magic-modal').onclick = function(e) {
+    if (e.target === this) this.style.display = 'none';
+  };
+</script>
+    <!-- Armor Modal for Builds -->
+    <div id="armor-modal" class="system-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9999;align-items:center;justify-content:center;overflow:auto;background:rgba(0,0,0,0.18);">
+      <div id="armor-modal-content"></div>
+      <span class="system-modal-close" id="close-armor-modal">&times;</span>
+    </div>
+    <script>
+    // Armor info data (copied from armor.html)
+    const armorInfo = {
+      "Iron Set": {
+        Location: "ALL Gate",
+        BaseHealth: "18% Health",
+        MaxHealth: "56.8% Health",
+        Bonus2: "20% Melee Damage",
+        Bonus3: "20% Melee Damage",
+        Rarity: "Epic"
+      },
+      "Sunforge Set": {
+        Location: "Spider Cave",
+        BaseHealth: "57% Health",
+        MaxHealth: "243% Health",
+        Bonus2: "15% Extra Health",
+        Bonus3: "20% Melee Damage",
+        Rarity: "Mythic"
+      },
+      "Bloodsteel Set": {
+        Location: "Jungle",
+        BaseHealth: "32% Health",
+        MaxHealth: "146.8% Health",
+        Bonus2: "8% Extra Health",
+        Bonus3: "20% Melee Damage",
+        Rarity: "Mythic"
+      },
+      "Oathkeeper Set": {
+        Location: "Desert",
+        BaseHealth: "78% Health",
+        MaxHealth: "347.1% Health",
+        Bonus2: "18% Extra Health",
+        Bonus3: "Burn Passive",
+        Rarity: "Mythic"
+      },
+      "Serpent Set": {
+        Location: "Subway",
+        BaseHealth: "48% Health",
+        MaxHealth: "220.2% Health",
+        Bonus2: "12% Extra Health",
+        Bonus3: "25% Melee Damage",
+        Rarity: "Mythic"
+      },
+      "Venomspike Set": {
+        Location: "Caves",
+        BaseHealth: "46% Health",
+        MaxHealth: "218.2% Health",
+        Bonus2: "10% Extra Health",
+        Bonus3: "25% Melee Damage",
+        Rarity: "Mythic"
+      },
+      "Astral Set": {
+        Location: "Snow Forest",
+        BaseHealth: "44% Health",
+        MaxHealth: "187.5% Health",
+        Bonus2: "14% Extra Health",
+        Bonus3: "20% Magic Damage",
+        Rarity: "Mythic"
+      },
+      "Commander Set": {
+        Location: "Cursed Commander",
+        BaseHealth: "63% Health",
+        MaxHealth: "362% Health",
+        Bonus2: "30% Melee Damage",
+        Bonus3: "Burn Passive",
+        Rarity: "Mythic"
+      }
+    };
+    // Armor modal popup logic for builds page
+    document.querySelectorAll('.armor-popup-build').forEach(card => {
+      card.addEventListener('click', function(e) {
+        e.preventDefault();
+        const name = card.getAttribute('data-armor');
+        const info = armorInfo[name];
+        if (!info) return;
+        let rarityClass = info.Rarity === 'Mythic' ? 'rarity-mythic' : 'rarity-epic';
+        let html = `<div style='background:rgba(10,18,40,0.60);border-radius:18px;padding:2.2em 2.2em 1.5em 2.2em;box-shadow:0 0 32px #00d4ff55,0 0 0 2.5px #00d4ff inset;width:1000px;max-width:1000px;display:flex;flex-direction:column;align-items:center;justify-content:center;word-break:break-word;'>`;
+        html += `<h2 style='color:#00d4ff;margin-bottom:0.5em;font-size:2em;text-shadow:0 0 8px #00d4ff88;'>${name}</h2>`;
+        html += `<span class='card-rarity ${rarityClass}' style='font-size:1.15em;margin-bottom:1.2em;display:inline-block;letter-spacing:0.08em;background:rgba(0,0,0,0.18);padding:0.3em 1.2em 0.3em 1.2em;border-radius:8px;border:1.5px solid #00d4ff;box-shadow:0 0 8px #00d4ff33;'>${info.Rarity}</span>`;
+        html += `<table class='system-table' style='margin:0 auto 1.2em auto;font-size:1.08em;width:100%;max-width:960px;word-break:break-word;table-layout:fixed;'><colgroup><col span='5' style='width:20%;'></colgroup>`;
+        html += `<tr><th>Location</th><th>Total Base Health</th><th>Total Max/Shiny Health</th><th>2-Piece Bonus</th><th>3-Piece Bonus</th></tr>`;
+        html += `<tr><td>${info.Location}</td><td>${info.BaseHealth}</td><td>${info.MaxHealth}</td><td>${info.Bonus2}</td><td>${info.Bonus3}</td></tr>`;
+        html += `</table>`;
+        html += `</div>`;
+        document.getElementById('armor-modal-content').innerHTML = html;
+        document.getElementById('armor-modal').style.display = 'flex';
+      });
+    });
+    document.getElementById('close-armor-modal').onclick = function() {
+      document.getElementById('armor-modal').style.display = 'none';
+    };
+    document.getElementById('armor-modal').onclick = function(e) {
+      if (e.target === this) this.style.display = 'none';
+    };
+  </script>
+  <script src="./armor-bg-animate.js"></script>
 </html>

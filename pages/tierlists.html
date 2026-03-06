@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="Solo Hunters - Tierlists Hub" />
+  <title>Tierlists | Solo Hunters</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+  <!-- Solo Leveling System UI Animated Background -->
+  <div class="system-bg-stars"></div>
+  <div class="system-bg-grid"></div>
+  <div class="system-bg-rays"></div>
+  <div class="system-bg-shimmer"></div>
+  <div class="system-bg-particles"></div>
+  <div class="system-bg-glitch"></div>
+  <div class="system-bg-circuit">
+    <svg viewBox="0 0 1920 1600" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <g opacity="0.18">
+        <rect x="80" y="120" width="1760" height="1200" rx="48" stroke="#00d4ff" stroke-width="3.5"/>
+        <rect x="260" y="320" width="1400" height="900" rx="32" stroke="#7b2fff" stroke-width="2.5"/>
+        <path d="M80 800 H0 V1600 H1920 V800 H1840" stroke="#00d4ff" stroke-width="2.2"/>
+        <path d="M960 120 V0" stroke="#00d4ff" stroke-width="2.2"/>
+        <circle cx="960" cy="120" r="14" fill="#00d4ff"/>
+        <circle cx="260" cy="320" r="12" fill="#7b2fff"/>
+        <circle cx="1660" cy="320" r="12" fill="#7b2fff"/>
+        <circle cx="260" cy="1220" r="12" fill="#7b2fff"/>
+        <circle cx="1660" cy="1220" r="12" fill="#7b2fff"/>
+      </g>
+    </svg>
+  </div>
+  <div class="system-bg-scanlines"></div>
+  <div class="system-bg-lines"></div>
+  <div class="system-bg-orbs"></div>
+  <script>
+    // Animated system stars
+    function spawnStars() {
+      const container = document.querySelector('.system-bg-stars');
+      if (!container) return;
+      for (let i = 0; i < 36; i++) {
+        const star = document.createElement('div');
+        star.className = 'system-star';
+        star.style.left = Math.random() * 100 + 'vw';
+        star.style.top = Math.random() * 100 + 'vh';
+        star.style.animationDelay = (Math.random() * 3) + 's';
+        star.style.opacity = 0.5 + Math.random() * 0.5;
+        container.appendChild(star);
+      }
+    }
+    // Animated system particles
+    function spawnParticles() {
+      const container = document.querySelector('.system-bg-particles');
+      if (!container) return;
+      for (let i = 0; i < 22; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + 'vw';
+        p.style.top = Math.random() * 100 + 'vh';
+        p.style.animationDuration = (7 + Math.random() * 7) + 's';
+        p.style.opacity = 0.18 + Math.random() * 0.22;
+        container.appendChild(p);
+      }
+    }
+    // Glitch overlay animation
+    function animateGlitch() {
+      const glitch = document.querySelector('.system-bg-glitch');
+      if (!glitch) return;
+      setInterval(() => {
+        glitch.style.opacity = 0.08 + Math.random() * 0.12;
+        glitch.style.transform = `translateY(${Math.random()*4-2}px)`;
+      }, 120);
+    }
+    // Animated system rays
+    function spawnRays() {
+      const container = document.querySelector('.system-bg-rays');
+      if (!container) return;
+      for (let i = 0; i < 7; i++) {
+        const ray = document.createElement('div');
+        ray.className = 'system-ray';
+        ray.style.top = (10 + i * 12) + '%';
+        ray.style.animationDelay = (i * 1.7) + 's';
+        container.appendChild(ray);
+      }
+    }
+    // Animated system lines
+    function spawnLines() {
+      const container = document.querySelector('.system-bg-lines');
+      if (!container) return;
+      for (let i = 0; i < 12; i++) {
+        const line = document.createElement('div');
+        line.className = 'system-bg-line';
+        line.style.top = Math.random() * 100 + 'vh';
+        line.style.left = Math.random() * 100 + 'vw';
+        line.style.width = (120 + Math.random() * 220) + 'px';
+        line.style.setProperty('--line-speed', (6 + Math.random() * 6) + 's');
+        line.style.setProperty('--angle', (Math.random() * 360) + 'deg');
+        container.appendChild(line);
+      }
+    }
+    // Animated system orbs
+    function spawnOrbs() {
+      const container = document.querySelector('.system-bg-orbs');
+      if (!container) return;
+      for (let i = 0; i < 7; i++) {
+        const orb = document.createElement('div');
+        orb.className = 'system-bg-orb';
+        orb.style.left = Math.random() * 100 + 'vw';
+        orb.style.top = Math.random() * 100 + 'vh';
+        orb.style.width = (60 + Math.random() * 80) + 'px';
+        orb.style.height = orb.style.width;
+        orb.style.setProperty('--orb-speed', (10 + Math.random() * 8) + 's');
+        container.appendChild(orb);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', function() {
+      spawnStars();
+      spawnParticles();
+      animateGlitch();
+      spawnRays();
+      spawnLines();
+      spawnOrbs();
+    });
+  </script>
+
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">Solo Hunters</a>
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-back">Home</a></li>
+      <li><a href="tierlists.html" class="active">Tierlists</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper tierlists-center-override">
+    <div class="container">
+      <header class="page-header">
+        <div class="system-tag">[ SYSTEM — TIERLISTS MODULE ]</div>
+        <h1 class="page-title">Tierlists</h1>
+        <p class="page-subtitle">Choose a category below</p>
+      </header>
+
+      <div class="menu-grid center-tierlist-menu" style="margin-top:40px;">
+        <a href="magic.html" class="menu-btn">
+          <span class="panel-corner tl"></span>
+          <span class="panel-corner tr"></span>
+          <span class="panel-corner bl"></span>
+          <span class="panel-corner br"></span>
+          <span class="menu-btn-icon"></span>
+          <span class="menu-btn-label">Magic Tier List</span>
+          <span class="menu-btn-desc">All magic abilities ranked</span>
+        </a>
+        <a href="weaponstier.html" class="menu-btn">
+          <span class="panel-corner tl"></span>
+          <span class="panel-corner tr"></span>
+          <span class="panel-corner bl"></span>
+          <span class="panel-corner br"></span>
+          <span class="menu-btn-icon"></span>
+          <span class="menu-btn-label">Weapon Tier List</span>
+          <span class="menu-btn-desc">All weapons ranked</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Solo Hunters - Tierlists Hub" />
+  <title>Tierlists | Solo Hunters</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">⚔ Solo Hunters</a>
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-back">⬅ Home</a></li>
+      <li><a href="tierlists.html" class="active">Tierlists</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="container">
+      <header class="page-header">
+        <div class="system-tag">[ SYSTEM — TIERLISTS MODULE ]</div>
+        <h1 class="page-title">Tierlists</h1>
+        <p class="page-subtitle">Choose a category below</p>
+      </header>
+
+      <div class="menu-grid" style="margin-top:40px;">
+        <a href="magic.html" class="menu-btn">
+          <span class="panel-corner tl"></span>
+          <span class="panel-corner tr"></span>
+          <span class="panel-corner bl"></span>
+          <span class="panel-corner br"></span>
+          <span class="menu-btn-icon">✨</span>
+          <span class="menu-btn-label">Magic Tier List</span>
+          <span class="menu-btn-desc">All magic abilities ranked</span>
+        </a>
+        <a href="weaponstier.html" class="menu-btn">
+          <span class="panel-corner tl"></span>
+          <span class="panel-corner tr"></span>
+          <span class="panel-corner bl"></span>
+          <span class="panel-corner br"></span>
+          <span class="menu-btn-icon">⚔</span>
+          <span class="menu-btn-label">Weapon Tier List</span>
+          <span class="menu-btn-desc">All weapons ranked</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+</html>
+
+

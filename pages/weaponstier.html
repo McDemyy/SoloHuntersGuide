@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Solo Hunters - Weapon Tier List" />
+	<title>Weapon Tier List | Solo Hunters</title>
+	<link rel="stylesheet" href="../style.css" />
+</head>
+	<style>
+		/* --- Directly applied Solo Leveling tier styles for weapons tier list --- */
+		.tier-label.s-tier {
+			color: #ff4e6b;
+			text-shadow: 0 0 14px #ff4e6b, 0 0 24px #ff4e6b;
+			animation: s-tier-label-glow-weapons 2.5s ease-in-out infinite alternate;
+		}
+		.tier-label.a-tier {
+			color: #6e7fff;
+			text-shadow: 0 0 12px #6e7fff, 0 0 24px #6e7fff;
+			animation: a-tier-label-glow 2.5s ease-in-out infinite alternate;
+		}
+		.tier-label.b-tier {
+			color: #ffd700 !important;
+			text-shadow: 0 0 12px #ffd700, 0 0 22px #ffd700 !important;
+			animation: b-tier-label-glow 2.5s ease-in-out infinite alternate !important;
+		}
+		.tier-label.f-tier {
+			color: #7fd8ff !important;
+			text-shadow: 0 0 12px #7fd8ff, 0 0 22px #7fd8ff !important;
+			animation: f-tier-label-glow-lightblue 2.5s ease-in-out infinite alternate !important;
+		}
+		.solo-slot.s-tier {
+			border-color: #ff4e6b;
+			box-shadow: 0 0 18px 5px #ff4e6bcc, 0 0 28px 10px #ff4e6baa;
+			animation: float-glow-s-tier 7s ease-in-out infinite alternate, s-tier-pulse-magic 2.8s ease-in-out infinite alternate;
+		}
+		.solo-slot.a-tier {
+			border-color: #6e7fff;
+			box-shadow: 0 0 18px 4px #6e7fffcc, 0 0 32px 8px #6e7fff88;
+			animation: float-glow-a-tier 7.5s ease-in-out infinite alternate;
+		}
+		.solo-slot.b-tier {
+			border-color: #ffd700 !important;
+			box-shadow: 0 0 16px 4px #ffd700cc, 0 0 28px 8px #ffd70088 !important;
+			animation: float-glow-b-tier 7.5s ease-in-out infinite alternate !important;
+		}
+		.solo-slot.f-tier {
+			border-color: #7fd8ff !important;
+			box-shadow: 0 0 14px 4px #7fd8ffcc, 0 0 24px 8px #7fd8ff88 !important;
+			animation: float-glow-f-tier 8.5s ease-in-out infinite alternate !important;
+		}
+		@keyframes float-glow-s-tier {
+			0% { transform: translateY(0px) scale(1); box-shadow: 0 0 18px 5px #ff4e6bcc, 0 0 28px 10px #ff4e6baa; }
+			50% { transform: translateY(-8px) scale(1.04); box-shadow: 0 0 28px 10px #ff4e6b, 0 0 40px 16px #ff4e6b; }
+			100% { transform: translateY(0px) scale(1); box-shadow: 0 0 18px 5px #ff4e6bcc, 0 0 28px 10px #ff4e6baa; }
+		}
+		@keyframes float-glow-a-tier {
+			0% { transform: translateY(0px) scale(1); box-shadow: 0 0 18px 4px #6e7fffcc, 0 0 32px 8px #6e7fff88; }
+			50% { transform: translateY(-6px) scale(1.03); box-shadow: 0 0 32px 12px #6e7fff, 0 0 40px 16px #6e7fff; }
+			100% { transform: translateY(0px) scale(1); box-shadow: 0 0 18px 4px #6e7fffcc, 0 0 32px 8px #6e7fff88; }
+		}
+		@keyframes float-glow-b-tier {
+			0% { transform: translateY(0px) scale(1); box-shadow: 0 0 16px 4px #ffd700cc, 0 0 28px 8px #ffd70088; }
+			50% { transform: translateY(-4px) scale(1.02); box-shadow: 0 0 28px 10px #ffd700, 0 0 36px 14px #ffd700; }
+			100% { transform: translateY(0px) scale(1); box-shadow: 0 0 16px 4px #ffd700cc, 0 0 28px 8px #ffd70088; }
+		}
+		@keyframes float-glow-f-tier {
+			0% { transform: translateY(0px) scale(1); box-shadow: 0 0 14px 4px #7fd8ffcc, 0 0 24px 8px #7fd8ff88; }
+			50% { transform: translateY(-3px) scale(1.01); box-shadow: 0 0 24px 10px #7fd8ff, 0 0 32px 14px #7fd8ff; }
+			100% { transform: translateY(0px) scale(1); box-shadow: 0 0 14px 4px #7fd8ffcc, 0 0 24px 8px #7fd8ff88; }
+		}
+		@keyframes s-tier-label-glow-weapons {
+			0% { text-shadow: 0 0 14px #ff4e6b, 0 0 24px #ff4e6b; }
+			50% { text-shadow: 0 0 24px #ff4e6b, 0 0 36px #ff4e6b; }
+			100% { text-shadow: 0 0 14px #ff4e6b, 0 0 24px #ff4e6b; }
+		}
+		@keyframes a-tier-label-glow {
+			0% { text-shadow: 0 0 12px #6e7fff, 0 0 24px #6e7fff; }
+			50% { text-shadow: 0 0 24px #6e7fff, 0 0 36px #6e7fff; }
+			100% { text-shadow: 0 0 12px #6e7fff, 0 0 24px #6e7fff; }
+		}
+		@keyframes b-tier-label-glow {
+			0% { text-shadow: 0 0 10px #ffd700, 0 0 18px #ffd700; }
+			50% { text-shadow: 0 0 18px #ffd700, 0 0 28px #ffd700; }
+			100% { text-shadow: 0 0 10px #ffd700, 0 0 18px #ffd700; }
+		}
+		@keyframes f-tier-label-glow-lightblue {
+			0% { text-shadow: 0 0 12px #7fd8ff, 0 0 22px #7fd8ff; }
+			50% { text-shadow: 0 0 22px #7fd8ff, 0 0 32px #7fd8ff; }
+			100% { text-shadow: 0 0 12px #7fd8ff, 0 0 22px #7fd8ff; }
+		}
+		@keyframes s-tier-pulse-magic {
+			0% { box-shadow: 0 0 32px 10px #ff4e6bcc, 0 0 60px 18px #ff4e6baa; }
+			50% { box-shadow: 0 0 48px 18px #ff4e6b, 0 0 80px 32px #ff4e6b; }
+			100% { box-shadow: 0 0 32px 10px #ff4e6bcc, 0 0 60px 18px #ff4e6baa; }
+		}
+	</style>
+<body>
+
+	<div class="system-bg-stars"></div>
+	<div class="system-bg-grid"></div>
+	<script>
+	  // Generate random stars for the system background
+	  const starCount = 36;
+	  const starsContainer = document.querySelector('.system-bg-stars');
+	  if (starsContainer) {
+	    for (let i = 0; i < starCount; i++) {
+	      const star = document.createElement('div');
+	      star.className = 'system-star';
+	      star.style.left = Math.random() * 100 + 'vw';
+	      star.style.top = Math.random() * 100 + 'vh';
+	      star.style.animationDelay = (Math.random() * 3) + 's';
+	      star.style.opacity = 0.5 + Math.random() * 0.5;
+	      starsContainer.appendChild(star);
+	    }
+	  }
+	</script>
+
+	<div class="system-bg-particles"></div>
+	<div class="system-bg-rays"></div>
+	<div class="system-bg-grid"></div>
+		<script>
+			// Animated background particles (already present)
+			const bg = document.querySelector('.system-bg-particles');
+			if (bg && !bg.hasChildNodes()) {
+				for (let i = 0; i < 24; i++) {
+					const p = document.createElement('div');
+					p.className = 'particle';
+					p.style.left = Math.random() * 100 + '%';
+					p.style.top = Math.random() * 100 + '%';
+					p.style.animationDuration = (6 + Math.random() * 8) + 's';
+					p.style.opacity = 0.15 + Math.random() * 0.25;
+					bg.appendChild(p);
+				}
+			}
+			// Animated light rays
+			const rays = document.querySelector('.system-bg-rays');
+			if (rays && !rays.hasChildNodes()) {
+				for (let i = 0; i < 7; i++) {
+					const r = document.createElement('div');
+					r.className = 'system-ray';
+					r.style.top = Math.random() * 100 + 'vh';
+					r.style.animationDelay = (Math.random() * 7) + 's';
+					rays.appendChild(r);
+				}
+			}
+		</script>
+	<nav class="navbar">
+		<a href="../index.html" class="nav-logo">Solo Hunters</a>
+		<ul class="nav-links">
+			<li><a href="../index.html" class="nav-back">Home</a></li>
+			<li><a href="tierlists.html">Tierlists</a></li>
+			<li><a href="weaponstier.html" class="active">Weapon Tier List</a></li>
+		</ul>
+	</nav>
+
+	<div class="page-wrapper">
+		<div class="container magic-tier">
+			<header class="page-header">
+				<div class="system-tag">[ TIER LIST — WEAPONS MODULE ]</div>
+				<h1 class="page-title">Weapon Tier List</h1>
+				<p class="page-subtitle">Swords · Axes · Daggers · Tridents</p>
+			</header>
+
+			<section class="tier-section">
+				<div class="tierlist-block">
+					<h2 class="tier-label s-tier">S Tier</h2>
+					<div class="tier-row">
+						<a href="weapons/knightsedge.html" class="solo-slot s-tier">
+							<img src="../images/weapons/knightsedge.png" alt="Knights Edge" class="tier-img solo-img">
+							<div class="tier-slot-label">Knights Edge</div>
+						</a>
+						<a href="weapons/shadowscythe.html" class="solo-slot s-tier">
+							<img src="../images/weapons/shadowscythe.png" alt="Shadow Scythe" class="tier-img solo-img">
+							<div class="tier-slot-label">Shadow Scythe</div>
+						</a>
+						<a href="weapons/thunderaxe.html" class="solo-slot s-tier">
+							<img src="../images/weapons/thunderaxe.png" alt="Thunder Axe" class="tier-img solo-img">
+							<div class="tier-slot-label">Thunder Axe</div>
+						</a>
+					</div>
+				</div>
+				<div class="tierlist-block">
+					<h2 class="tier-label a-tier">A Tier</h2>
+					<div class="tier-row">
+						<a href="weapons/carmseikatana.html" class="solo-slot a-tier">
+							<img src="../images/weapons/carmseikatana.png" alt="Katana" class="tier-img solo-img">
+							<div class="tier-slot-label">Katana</div>
+						</a>
+						<a href="weapons/venomfang.html" class="solo-slot a-tier">
+							<img src="../images/weapons/venomfang.png" alt="Venom Dagger" class="tier-img solo-img">
+							<div class="tier-slot-label">Venom Dagger</div>
+						</a>
+						<a href="weapons/dualdagger.html" class="solo-slot a-tier">
+							<img src="../images/weapons/dualdagger.png" alt="Dual Daggers" class="tier-img solo-img">
+							<div class="tier-slot-label">Dual Daggers</div>
+						</a>
+					</div>
+				</div>
+				<div class="tierlist-block">
+					<h2 class="tier-label b-tier">B Tier</h2>
+					<div class="tier-row">
+						<a href="weapons/kingstrident.html" class="solo-slot b-tier">
+							<img src="../images/weapons/kingstrident.png" alt="Trident" class="tier-img solo-img">
+							<div class="tier-slot-label">Trident</div>
+						</a>
+					</div>
+				</div>
+				<div class="tierlist-block">
+					<h2 class="tier-label f-tier">F Tier</h2>
+					<div class="tier-row">
+						<a href="weapons/linksword.html" class="solo-slot f-tier">
+							<img src="../images/weapons/linksword.png" alt="Link Sword" class="tier-img solo-img">
+							<div class="tier-slot-label">Link Sword</div>
+						</a>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<script src="../script.js"></script>
+	<script>
+		// Animated background particles for Solo Leveling system effect
+		const bg = document.querySelector('.system-bg-particles');
+		if (bg) {
+			for (let i = 0; i < 24; i++) {
+				const p = document.createElement('div');
+				p.className = 'particle';
+				p.style.left = Math.random() * 100 + '%';
+				p.style.top = Math.random() * 100 + '%';
+				p.style.animationDuration = (6 + Math.random() * 8) + 's';
+				p.style.opacity = 0.15 + Math.random() * 0.25;
+				bg.appendChild(p);
+			}
+		}
+	</script>
+</body>
+</html>
+
+

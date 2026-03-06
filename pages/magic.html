@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Solo Hunters - Magic Tier List" />
+	<title>Magic Tier List | Solo Hunters</title>
+	<link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+	<div class="system-bg-stars"></div>
+	<div class="system-bg-grid"></div>
+	<script>
+	  // Generate random stars for the system background
+	  const starCount = 36;
+	  const starsContainer = document.querySelector('.system-bg-stars');
+	  if (starsContainer) {
+	    for (let i = 0; i < starCount; i++) {
+	      const star = document.createElement('div');
+	      star.className = 'system-star';
+	      star.style.left = Math.random() * 100 + 'vw';
+	      star.style.top = Math.random() * 100 + 'vh';
+	      star.style.animationDelay = (Math.random() * 3) + 's';
+	      star.style.opacity = 0.5 + Math.random() * 0.5;
+	      starsContainer.appendChild(star);
+	    }
+	  }
+	</script>
+
+	<div class="system-bg-particles"></div>
+	<div class="system-bg-rays"></div>
+	<div class="system-bg-grid"></div>
+	<nav class="navbar">
+		<a href="../index.html" class="nav-logo">Solo Hunters</a>
+		<ul class="nav-links">
+			<li><a href="../index.html" class="nav-back">Home</a></li>
+			<li><a href="tierlists.html">Tierlists</a></li>
+			<li><a href="magic.html" class="active">Magic Tier List</a></li>
+		</ul>
+	</nav>
+	<div class="page-wrapper">
+		<div class="container">
+			<header class="page-header">
+				<div class="system-tag">[ DATABASE — MAGIC MODULE ]</div>
+				<h1 class="page-title">Magic Abilities</h1>
+				<p class="page-subtitle">All magic spells and abilities, sorted by rarity</p>
+			</header>
+									<div class="cards-grid magic-cards-grid">
+										<!-- Modal for Magic Info -->
+										<div id="magic-modal" class="system-modal" style="display:none;">
+											<div class="system-modal-content" id="magic-modal-content"></div>
+											<span class="system-modal-close" id="close-magic-modal">&times;</span>
+										</div>
+				<article class="item-card magic-popup" data-magic="Werewolf" data-type="magic" data-rarity="mythic">
+					<div class="card-image-wrap magic-glow-mythic">
+						<img class="card-image" src="../images/magic/Werewolf.png" alt="Werewolf" />
+					</div>
+					<div class="card-body">
+						<h2 class="card-name">Werewolf</h2>
+						<span class="card-rarity rarity-mythic">Mythic</span>
+						<div class="card-desc">Tier: S<br>Acquired from Summoning</div>
+					</div>
+				</article>
+				<article class="item-card magic-popup" data-magic="Divine Blade" data-type="magic" data-rarity="mythic">
+					<div class="card-image-wrap magic-glow-mythic">
+						<img class="card-image" src="../images/magic/DivineBlade.png" alt="Divine Blade" />
+					</div>
+					<div class="card-body">
+						<h2 class="card-name">Divine Blade</h2>
+						<span class="card-rarity rarity-mythic">Mythic</span>
+						<div class="card-desc">Tier: S<br>Acquired from Summoning</div>
+					</div>
+				</article>
+				<article class="item-card magic-popup" data-magic="Goliath" data-type="magic" data-rarity="mythic">
+					<div class="card-image-wrap magic-glow-mythic">
+						<img class="card-image" src="../images/magic/Goliath.png" alt="Goliath" />
+					</div>
+					<div class="card-body">
+						<h2 class="card-name">Goliath</h2>
+						<span class="card-rarity rarity-mythic">Mythic</span>
+						<div class="card-desc">Tier: S<br>Acquired from Summoning</div>
+					</div>
+				</article>
+				<article class="item-card magic-popup" data-magic="Light" data-type="magic" data-rarity="mythic">
+					<div class="card-image-wrap magic-glow-mythic">
+						<img class="card-image" src="../images/magic/Light.png" alt="Light" />
+					</div>
+					<div class="card-body">
+						<h2 class="card-name">Light</h2>
+						<span class="card-rarity rarity-mythic">Mythic</span>
+						<div class="card-desc">Tier: S<br>Acquired from Summoning</div>
+					</div>
+				</article>
+				<article class="item-card magic-popup" data-magic="Crimson" data-type="magic" data-rarity="epic">
+					<div class="card-image-wrap magic-glow-epic">
+						<img class="card-image" src="../images/magic/Crimson.png" alt="Crimson" />
+					</div>
+					<div class="card-body">
+						<h2 class="card-name">Crimson</h2>
+						<span class="card-rarity rarity-epic">Epic</span>
+						<div class="card-desc">Tier: A<br>Acquired from Summoning</div>
+					</div>
+				</article>
+				<article class="item-card magic-popup" data-magic="Darkness" data-type="magic" data-rarity="epic">
+					<div class="card-image-wrap magic-glow-epic">
+						<img class="card-image" src="../images/magic/Dark.png" alt="Dark" />
+					</div>
+					<div class="card-body">
+						<h2 class="card-name">Dark</h2>
+						<span class="card-rarity rarity-epic">Epic</span>
+						<div class="card-desc">Tier: A<br>Acquired from Summoning</div>
+					</div>
+				</article>
+				<article class="item-card magic-popup" data-magic="Nature" data-type="magic" data-rarity="rare">
+					<div class="card-image-wrap magic-glow-rare">
+						<img class="card-image" src="../images/magic/Nature.png" alt="Nature" />
+					</div>
+					<div class="card-body">
+						<h2 class="card-name">Nature</h2>
+						<span class="card-rarity rarity-rare">Rare</span>
+						<div class="card-desc">Tier: B<br>Acquired from Summoning</div>
+					</div>
+				</article>
+				<article class="item-card magic-popup" data-magic="Lightning" data-type="magic" data-rarity="uncommon">
+					<div class="card-image-wrap magic-glow-uncommon">
+						<img class="card-image" src="../images/magic/Lightning.png" alt="Lightning" />
+					</div>
+					<div class="card-body">
+						<h2 class="card-name">Lightning</h2>
+						<span class="card-rarity rarity-uncommon">Uncommon</span>
+						<div class="card-desc">Tier: C<br>Acquired from Summoning</div>
+					</div>
+				</article>
+				<article class="item-card magic-popup" data-magic="Vines" data-type="magic" data-rarity="uncommon">
+					<div class="card-image-wrap magic-glow-uncommon">
+						<img class="card-image" src="../images/magic/Vines.png" alt="Vines" />
+					</div>
+					<div class="card-body">
+						<h2 class="card-name">Vines</h2>
+						<span class="card-rarity rarity-uncommon">Uncommon</span>
+						<div class="card-desc">Tier: C<br>Acquired from Summoning</div>
+					</div>
+				</article>
+			</div>
+		</div>
+	</div>
+		<script src="../script.js"></script>
+		<script>
+			// Magic Power List Data
+			const magicPowerList = {
+				"Vines": {Range: "Mid", AOE: "B", IFrame: "No", Damage: "C", Notes: "Mediocre AoE and Single-Target Damage"},
+				"Lightning": {Range: "Mid", AOE: "B", IFrame: "No", Damage: "C", Notes: "Lightning Nova is the only good skill"},
+				"Darkness": {Range: "Long", AOE: "S", IFrame: "No", Damage: "A", Notes: "Amazing AoE but lacking damage"},
+				"Nature": {Range: "Mid", AOE: "B", IFrame: "Yes (1)", Damage: "A", Notes: ""},
+				"Crimson": {Range: "Mid", AOE: "A", IFrame: "Yes (1)", Damage: "A", Notes: ""},
+				"Goliath": {Range: "Short", AOE: "B", IFrame: "Yes (2)", Damage: "S", Notes: "Buff Weapon (skill also)"},
+				"Light": {Range: "Long", AOE: "B", IFrame: "No", Damage: "B", Notes: "Nice and fast. Lacks single-target damage."},
+				"Divine Blade": {Range: "Mid", AOE: "A", IFrame: "Yes (All)", Damage: "SS", Notes: "Have M1"},
+				"Werewolf": {Range: "Mid", AOE: "SS", IFrame: "Yes (3)", Damage: "S", Notes: "Have M1 (Only Transformation)"}
+			};
+			// Modal logic
+			document.querySelectorAll('.magic-popup').forEach(card => {
+				card.addEventListener('click', function() {
+					const name = card.getAttribute('data-magic');
+					const info = magicPowerList[name];
+					if (!info) return;
+					let html = `<h2 style='color:#00d4ff;margin-bottom:0.7em;'>${name} — Power Info</h2>`;
+					html += `<table class='system-table' style='margin:0 auto 1em auto;'>`;
+					html += `<tr><th>Range</th><th>AOE</th><th>I-Frame</th><th>Damage</th><th>Notes</th></tr>`;
+					html += `<tr><td>${info.Range}</td><td>${info.AOE}</td><td>${info.IFrame}</td><td>${info.Damage}</td><td>${info.Notes || ''}</td></tr>`;
+					html += `</table>`;
+					document.getElementById('magic-modal-content').innerHTML = html;
+					document.getElementById('magic-modal').style.display = 'flex';
+				});
+			});
+			document.getElementById('close-magic-modal').onclick = function() {
+				document.getElementById('magic-modal').style.display = 'none';
+			};
+			document.getElementById('magic-modal').onclick = function(e) {
+				if (e.target === this) this.style.display = 'none';
+			};
+		</script>
+	<script>
+		// Animated background particles (already present)
+		const bg = document.querySelector('.system-bg-particles');
+		if (bg && !bg.hasChildNodes()) {
+			for (let i = 0; i < 24; i++) {
+				const p = document.createElement('div');
+				p.className = 'particle';
+				p.style.left = Math.random() * 100 + '%';
+				p.style.top = Math.random() * 100 + '%';
+				p.style.animationDuration = (6 + Math.random() * 8) + 's';
+				p.style.opacity = 0.15 + Math.random() * 0.25;
+				bg.appendChild(p);
+			}
+		}
+		// Animated light rays
+		const rays = document.querySelector('.system-bg-rays');
+		if (rays && !rays.hasChildNodes()) {
+			for (let i = 0; i < 7; i++) {
+				const r = document.createElement('div');
+				r.className = 'system-ray';
+				r.style.top = Math.random() * 100 + 'vh';
+				r.style.animationDelay = (Math.random() * 7) + 's';
+				rays.appendChild(r);
+			}
+		}
+	</script>
+</body>
+</html>
+
+

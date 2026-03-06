@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="description" content="Solo Leveling Portal Guide – Dungeon maps, boss info, item drops, and materials for every gate rank." />
   <title>Portal Guide | Solo Leveling System DB</title>
   <link rel="stylesheet" href="../style.css" />
@@ -11,13 +11,14 @@
 
   <!-- Navigation -->
   <nav class="navbar">
-    <a href="../index.html" class="nav-logo">⚔ SL System DB</a>
+    <a href="../index.html" class="nav-logo">⚔ SH System DB</a>
+      <a href="../index.html" class="nav-logo">⚔ SH System DB</a>
     <ul class="nav-links">
       <li><a href="../index.html" class="nav-back">⬅ Home</a></li>
       <li><a href="armor.html">Armor</a></li>
       <li><a href="weapons.html">Weapons</a></li>
       <li><a href="builds.html">Builds</a></li>
-      <li><a href="portals.html" class="active">Portals</a></li>
+      <li><a href="levelguide.html" class="active">Level Guide</a></li>
     </ul>
   </nav>
 
@@ -26,439 +27,156 @@
 
       <!-- Page Header -->
       <header class="page-header">
-        <div class="system-tag">[ DATABASE — PORTAL MODULE ]</div>
-        <h1 class="page-title">Portal Guide</h1>
-        <p class="page-subtitle">Gates · Dungeons · Boss Info · Loot Tables</p>
+        <div class="system-tag">[ SYSTEM DATABASE — LEVELING MODULE ]</div>
+        <h1 class="page-title">Level Guide</h1>
+        <p class="page-subtitle">Dungeon Power Tables · EXP · Gold · Supercharged Gates · Raid Bosses</p>
       </header>
 
-      <p style="font-size: 11px; color: var(--text-secondary); margin-bottom: 16px; letter-spacing: 1px;">
-        ▶ Click any portal entry to expand drop information.
-      </p>
-
-      <!-- Portals List -->
-      <div class="portals-list">
-
-        <!-- ===================== PORTAL 1: E-Rank Blue Gate ===================== -->
-        <div class="portal-entry" id="portal-blue-e">
-          <div class="portal-header" role="button" tabindex="0" aria-expanded="false" aria-controls="content-blue-e">
-            <div class="portal-header-left">
-              <div class="portal-icon">
-                <img src="../images/portals/blue_gate.svg" alt="Blue Gate" />
-              </div>
-              <div class="portal-info">
-                <h2 class="portal-name">Blue Cavern Gate</h2>
-                <div class="portal-meta">
-                  <span class="portal-meta-item">Level: <span>Lv. 10–25</span></span>
-                  <span class="portal-meta-item">Enemies: <span>Goblins, Cave Slimes</span></span>
-                  <span class="portal-meta-item">Boss: <span>Goblin King</span></span>
+      <!-- Main Level Guide Content centered under the title -->
+      <div class="system-bg-stars"></div>
+      <div class="system-bg-grid"></div>
+      <div class="system-bg-particles"></div>
+      <div class="system-bg-rays"></div>
+      <div class="system-bg-lines"></div>
+      <div class="system-bg-orbs"></div>
+      <div class="centered-level-guide">
+        <div class="solo-bg">
+          <div class="system-container">
+            <main class="system-main" style="margin-top:0;">
+              <section class="dungeon-flex-row">
+                <div class="dungeon-col dungeon-col-left">
+                  <div class="dungeon-card subway-color clickable">
+                    <div class="dungeon-header">Subway <span class="dungeon-lv">Lv 0+</span></div>
+                    <div class="dungeon-table-wrap dropdown-content"> <!-- ...existing code... --> </div>
+                  </div>
+                  <div class="dungeon-card caves-color clickable">
+                    <div class="dungeon-header">Caves <span class="dungeon-lv">Lv 20+</span></div>
+                    <div class="dungeon-table-wrap dropdown-content"> <!-- ...existing code... --> </div>
+                  </div>
+                  <div class="dungeon-card jungle-color clickable">
+                    <div class="dungeon-header">Jungle <span class="dungeon-lv">Lv 80+</span></div>
+                    <div class="dungeon-table-wrap dropdown-content"> <!-- ...existing code... --> </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <span class="portal-rank rank-e">E-Rank</span>
-            <span class="portal-chevron">▾</span>
+                <div class="dungeon-center-panel">
+                  <section class="clean-recommend-panel">
+                    <form id="recommend-form" autocomplete="off" class="clean-recommend-form">
+                      <input type="number" id="player-power" min="0" max="9999999" placeholder="Power" required />
+                      <button type="submit" class="clean-recommend-btn">Recommend</button>
+                    </form>
+                    <div id="recommend-result" class="clean-recommend-result"></div>
+                  </section>
+                </div>
+                <div class="dungeon-col dungeon-col-right">
+                  <div class="dungeon-card desert-color clickable">
+                    <div class="dungeon-header">Desert <span class="dungeon-lv">Lv 200+</span></div>
+                    <div class="dungeon-table-wrap dropdown-content"> <!-- ...existing code... --> </div>
+                  </div>
+                  <div class="dungeon-card snow-color clickable">
+                    <div class="dungeon-header">Snow Forest <span class="dungeon-lv">Lv 300+</span></div>
+                    <div class="dungeon-table-wrap dropdown-content"> <!-- ...existing code... --> </div>
+                  </div>
+                  <div class="dungeon-card spider-color clickable">
+                    <div class="dungeon-header">Spider Cave <span class="dungeon-lv">Lv 380+</span></div>
+                    <div class="dungeon-table-wrap dropdown-content"> <!-- ...existing code... --> </div>
+                  </div>
+                </div>
+              </section>
+            </main>
           </div>
-
-          <div class="portal-content" id="content-blue-e">
-            <div class="portal-details-grid">
-              <div class="portal-detail-item">
-                <p class="portal-detail-label">Recommended Level</p>
-                <p class="portal-detail-value">Lv. 10 – 25</p>
-              </div>
-              <div class="portal-detail-item">
-                <p class="portal-detail-label">Enemy Types</p>
-                <p class="portal-detail-value">Goblins, Cave Slimes, Bat Swarms</p>
-              </div>
-              <div class="portal-detail-item">
-                <p class="portal-detail-label">Boss</p>
-                <p class="portal-detail-value boss">Goblin King</p>
-              </div>
-              <div class="portal-detail-item">
-                <p class="portal-detail-label">Floors</p>
-                <p class="portal-detail-value">3</p>
-              </div>
-              <div class="portal-detail-item">
-                <p class="portal-detail-label">Time Limit</p>
-                <p class="portal-detail-value">2 hours</p>
-              </div>
-              <div class="portal-detail-item">
-                <p class="portal-detail-label">Recommended Build</p>
-                <p class="portal-detail-value">Any / Tank</p>
-              </div>
+        </div>
+            </section>
+          </main>
+        </div>
+      </div>
+        <!-- Desert Lv 200+ -->
+        <div class="dropdown-table">
+          <button class="dropdown-toggle" aria-expanded="false">Desert Lv 200+</button>
+          <div class="dropdown-content">
+            <table class="system-table">
+              <thead><tr><th>Rank</th><th>Power</th><th>Exp</th><th>Gold</th></tr></thead>
+              <tbody>
+                <tr><td>F</td><td>32,000</td><td>125,240</td><td>22,500</td></tr>
+                <tr><td>F+</td><td>39,000</td><td>193,663</td><td>24,333</td></tr>
+                <tr><td>E</td><td>46,000</td><td>261,954</td><td>26,166</td></tr>
+                <tr><td>E+</td><td>53,000</td><td>330,390</td><td>27,500</td></tr>
+                <tr><td>D</td><td>59,000</td><td>390,756</td><td>29,000</td></tr>
+                <tr><td>D+</td><td>66,000</td><td>451,536</td><td>30,133</td></tr>
+                <tr><td>C</td><td>73,000</td><td>456,197</td><td>31,066</td></tr>
+                <tr><td>C+</td><td>80,000</td><td>460,986</td><td>32,000</td></tr>
+                <tr><td>B</td><td>110,000</td><td>581,116</td><td>35,500</td></tr>
+                <tr><td>B+</td><td>155,000</td><td>1,120,988</td><td>39,000</td></tr>
+                <tr><td>A</td><td>220,000</td><td>2,241,800</td><td>42,600</td></tr>
+                <tr><td>A+</td><td>310,000</td><td>3,042,058</td><td>46,500</td></tr>
+                <tr><td>S</td><td>420,000</td><td>5,201,672</td><td>50,000</td></tr>
+                <tr><td>S+</td><td>440,000</td><td>5,202,162</td><td>50,000</td></tr>
+                <tr><td>S++</td><td></td><td></td><td></td></tr>
+                <tr><td>S+++</td><td></td><td></td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Snow Forest Lv 300+ -->
+        <div class="dropdown-table">
+          <button class="dropdown-toggle" aria-expanded="false">Snow Forest Lv 300+</button>
+          <div class="dropdown-content">
+            <table class="system-table">
+              <thead><tr><th>Rank</th><th>Power</th><th>Exp</th><th>Gold</th></tr></thead>
+              <tbody>
+                <tr><td>F</td><td>80,000</td><td>460,020</td><td>32,000</td></tr>
+                <tr><td>F+</td><td>87,000</td><td>488,242</td><td>32,700</td></tr>
+                <tr><td>E</td><td>94,000</td><td>516,288</td><td>33,800</td></tr>
+                <tr><td>E+</td><td>101,000</td><td>544,000</td><td>34,600</td></tr>
+                <tr><td>D</td><td>108,000</td><td>572,588</td><td>35,300</td></tr>
+                <tr><td>D+</td><td>116,000</td><td>604,030</td><td>36,100</td></tr>
+                <tr><td>C</td><td>123,000</td><td>632,928</td><td>36,800</td></tr>
+                <tr><td>C+</td><td>130,000</td><td>661,020</td><td>37,500</td></tr>
+                <tr><td>B</td><td>170,000</td><td>1,301,044</td><td>40,000</td></tr>
+                <tr><td>B+</td><td>205,000</td><td>2,000,456</td><td>42,000</td></tr>
+                <tr><td>A</td><td>255,000</td><td>2,594,924</td><td>44,388</td></tr>
+                <tr><td>A+</td><td>320,000</td><td>3,306,441</td><td>46,547</td></tr>
+                <tr><td>S</td><td>395,000</td><td>3,629,650</td><td>48,791</td></tr>
+                <tr><td>S+</td><td></td><td></td><td></td></tr>
+                <tr><td>S++</td><td></td><td></td><td></td></tr>
+                <tr><td>S+++</td><td></td><td></td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Spider Cave Lv 380+ -->
+        <div class="dropdown-table">
+          <button class="dropdown-toggle" aria-expanded="false">Spider Cave Lv 380+</button>
+          <div class="dropdown-content">
+            <table class="system-table">
+              <thead><tr><th>Rank</th><th>Power</th><th>Exp</th><th>Gold</th></tr></thead>
+              <tbody>
+                <tr><td>F</td><td>145,000</td><td>1,000,240</td><td>38,500</td></tr>
+                <tr><td>F+</td><td>162,000</td><td>1,060,022</td><td>39,500</td></tr>
+                <tr><td>E</td><td>179,000</td><td>1,180,000</td><td>40,000</td></tr>
+                <tr><td>E+</td><td>196,000</td><td>1,300,026</td><td>41,300</td></tr>
+                <tr><td>D</td><td>218,000</td><td>1,420,000</td><td>42,500</td></tr>
+                <tr><td>D+</td><td>238,000</td><td>1,520,690</td><td>43,444</td></tr>
+                <tr><td>C</td><td>250,000</td><td>2,400,672</td><td>44,111</td></tr>
+                <tr><td>C+</td><td>265,000</td><td>2,540,748</td><td>44,500</td></tr>
+                <tr><td>B</td><td>300,000</td><td>2,680,036</td><td>45,888</td></tr>
+                <tr><td>B+</td><td>340,000</td><td>2,820,836</td><td>47,500</td></tr>
+                <tr><td>A</td><td>385,000</td><td>2,970,440</td><td>48,500</td></tr>
+                <tr><td>A+</td><td>440,000</td><td>3,040,000</td><td>50,000</td></tr>
+                <tr><td>S</td><td>490,000</td><td>3,400,000</td><td>50,000</td></tr>
+                <tr><td>S+</td><td>530,000</td><td>3,600,000</td><td>50,000</td></tr>
+                <tr><td>S++</td><td>565,000</td><td>3,651,768</td><td>50,000</td></tr>
+                <tr><td>S+++</td><td>600,000</td><td>5,001,792</td><td>50,000</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+              <!-- Weapons, armor, and materials dropped sections removed as requested -->
             </div>
 
-            <!-- Items Dropped -->
-            <p class="drops-section-title">Items Dropped</p>
-            <div class="drops-grid">
-              <div class="drop-card">
-                <img src="../images/armor/iron_fortress.svg" alt="Iron Chest Piece" />
-                <p class="drop-name">Iron Chest Piece</p>
-                <div class="stat-row" style="justify-content:center; margin-top:2px;">
-                  <span class="card-rarity rarity-common" style="margin:0;">Common</span>
-                </div>
-                <p class="drop-type">Armor</p>
-              </div>
-              <div class="drop-card">
-                <img src="../images/weapons/ice_dagger.svg" alt="Basic Dagger" />
-                <p class="drop-name">Basic Dagger</p>
-                <div class="stat-row" style="justify-content:center; margin-top:2px;">
-                  <span class="card-rarity rarity-common" style="margin:0;">Common</span>
-                </div>
-                <p class="drop-type">Weapon</p>
-              </div>
-              <div class="drop-card">
-                <img src="../images/armor/hunter_plate.svg" alt="Leather Vest" />
-                <p class="drop-name">Leather Vest</p>
-                <div class="stat-row" style="justify-content:center; margin-top:2px;">
-                  <span class="card-rarity rarity-common" style="margin:0;">Common</span>
-                </div>
-                <p class="drop-type">Armor</p>
-              </div>
-            </div>
-
-            <!-- Materials Dropped -->
-            <p class="drops-section-title">Materials Dropped</p>
-            <div class="drops-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
-              <div class="material-card">
-                <img src="../images/materials/mana_crystal.svg" alt="Low-Grade Mana Crystal" />
-                <div class="material-info">
-                  <p class="material-name">Low-Grade Mana Crystal</p>
-                  <p class="material-use">Used For: Crafting entry-level gear</p>
-                </div>
-              </div>
-              <div class="material-card">
-                <img src="../images/materials/gold_dust.svg" alt="Goblin Gold" />
-                <div class="material-info">
-                  <p class="material-name">Goblin Gold</p>
-                  <p class="material-use">Used For: Currency / Trading</p>
-                </div>
-              </div>
-            </div>
+            <!-- Materials dropped section removed as requested -->
           </div>
         </div>
 
-        <!-- ===================== PORTAL 2: C-Rank Ice Gate ===================== -->
-        <div class="portal-entry" id="portal-ice-c">
-          <div class="portal-header" role="button" tabindex="0" aria-expanded="false" aria-controls="content-ice-c">
-            <div class="portal-header-left">
-              <div class="portal-icon">
-                <img src="../images/portals/gold_gate.svg" alt="Ice Cavern Gate" />
-              </div>
-              <div class="portal-info">
-                <h2 class="portal-name">Ice Cavern Gate</h2>
-                <div class="portal-meta">
-                  <span class="portal-meta-item">Level: <span>Lv. 40–60</span></span>
-                  <span class="portal-meta-item">Enemies: <span>Ice Wolves, Frost Golems</span></span>
-                  <span class="portal-meta-item">Boss: <span>Frost Drake</span></span>
-                </div>
-              </div>
-            </div>
-            <span class="portal-rank rank-c">C-Rank</span>
-            <span class="portal-chevron">▾</span>
-          </div>
-
-          <div class="portal-content" id="content-ice-c">
-            <div class="portal-details-grid">
-              <div class="portal-detail-item">
-                <p class="portal-detail-label">Recommended Level</p>
-                <p class="portal-detail-value">Lv. 40 – 60</p>
-              </div>
-              <div class="portal-detail-item">
-                <p class="portal-detail-label">Enemy Types</p>
-                <p class="portal-detail-value">Ice Wolves, Frost Golems, Blizzard Wyrms</p>
-              </div>
-              <div class="portal-detail-item">
-                <p class="portal-detail-label">Boss</p>
-                <p class="portal-detail-value boss">Frost Drake</p>
-              </div>
-              <div class="portal-detail-item">
-                <p class="portal-detail-label">Floors</p>
-                <p class="portal-detail-value">5</p>
-              </div>
-              <div class="portal-detail-item">
-                <p class="portal-detail-label">Time Limit</p>
-                <p class="portal-detail-value">3 hours</p>
-              </div>
-              <div class="portal-detail-item">
-                <p class="portal-detail-label">Recommended Build</p>
-                <p class="portal-detail-value">DPS / Boss Killer</p>
-              </div>
-            </div>
-
-            <!-- Items Dropped -->
-            <p class="drops-section-title">Items Dropped</p>
-            <div class="drops-grid">
-              <div class="drop-card">
-                <img src="../images/weapons/ice_dagger.svg" alt="Glacier Fang" />
-                <p class="drop-name">Glacier Fang</p>
-                <div class="stat-row" style="justify-content:center; margin-top:2px;">
-                  <span class="card-rarity rarity-rare" style="margin:0;">Rare</span>
-                </div>
-                <p class="drop-type">Dagger</p>
-              </div>
-              <div class="drop-card">
-                <img src="../images/armor/elf_ranger.svg" alt="Frost Vest" />
-                <p class="drop-name">Frost Vest</p>
-                <div class="stat-row" style="justify-content:center; margin-top:2px;">
-                  <span class="card-rarity rarity-rare" style="margin:0;">Rare</span>
-                </div>
-                <p class="drop-type">Armor</p>
-              </div>
-              <div class="drop-card">
-                <img src="../images/armor/hunter_plate.svg" alt="Ice Plate Boots" />
-                <p class="drop-name">Ice Plate Boots</p>
-                <div class="stat-row" style="justify-content:center; margin-top:2px;">
-                  <span class="card-rarity rarity-uncommon" style="margin:0;">Uncommon</span>
-                </div>
-                <p class="drop-type">Armor</p>
-              </div>
-            </div>
-
-            <!-- Materials Dropped -->
-            <p class="drops-section-title">Materials Dropped</p>
-            <div class="drops-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
-              <div class="material-card">
-                <img src="../images/materials/ice_fragment.svg" alt="Ice Fragment" />
-                <div class="material-info">
-                  <p class="material-name">Ice Fragment</p>
-                  <p class="material-use">Used For: Crafting Glacier Fang, Ice Armor</p>
-                </div>
-              </div>
-              <div class="material-card">
-                <img src="../images/materials/mana_crystal.svg" alt="Mana Crystal" />
-                <div class="material-info">
-                  <p class="material-name">Mana Crystal</p>
-                  <p class="material-use">Used For: Weapon enchantment, potions</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ===================== PORTAL 3: A-Rank Demon Gate ===================== -->
-        <div class="portal-entry" id="portal-demon-a">
-          <div class="portal-header" role="button" tabindex="0" aria-expanded="false" aria-controls="content-demon-a">
-            <div class="portal-header-left">
-              <div class="portal-icon">
-                <img src="../images/portals/red_gate.svg" alt="Demon King Gate" />
-              </div>
-              <div class="portal-info">
-                <h2 class="portal-name">Demon King's Castle</h2>
-                <div class="portal-meta">
-                  <span class="portal-meta-item">Level: <span>Lv. 80–100</span></span>
-                  <span class="portal-meta-item">Enemies: <span>Demon Knights, Hellfire Mages</span></span>
-                  <span class="portal-meta-item">Boss: <span>Demon King Baran</span></span>
-                </div>
-              </div>
-            </div>
-            <span class="portal-rank rank-a">A-Rank</span>
-            <span class="portal-chevron">▾</span>
-          </div>
-
-          <div class="portal-content" id="content-demon-a">
-            <div class="portal-details-grid">
-              <div class="portal-detail-item">
-                <p class="portal-detail-label">Recommended Level</p>
-                <p class="portal-detail-value">Lv. 80 – 100</p>
-              </div>
-              <div class="portal-detail-item">
-                <p class="portal-detail-label">Enemy Types</p>
-                <p class="portal-detail-value">Demon Knights, Hellfire Mages, Bone Archers</p>
-              </div>
-              <div class="portal-detail-item">
-                <p class="portal-detail-label">Boss</p>
-                <p class="portal-detail-value boss">Demon King Baran</p>
-              </div>
-              <div class="portal-detail-item">
-                <p class="portal-detail-label">Floors</p>
-                <p class="portal-detail-value">8</p>
-              </div>
-              <div class="portal-detail-item">
-                <p class="portal-detail-label">Time Limit</p>
-                <p class="portal-detail-value">5 hours</p>
-              </div>
-              <div class="portal-detail-item">
-                <p class="portal-detail-label">Recommended Build</p>
-                <p class="portal-detail-value">Boss Killer / DPS</p>
-              </div>
-            </div>
-
-            <!-- Items Dropped -->
-            <p class="drops-section-title">Items Dropped</p>
-            <div class="drops-grid">
-              <div class="drop-card">
-                <img src="../images/armor/demon_king.svg" alt="Demon King Armor" />
-                <p class="drop-name">Demon King Armor</p>
-                <div class="stat-row" style="justify-content:center; margin-top:2px;">
-                  <span class="card-rarity rarity-legendary" style="margin:0;">Legendary</span>
-                </div>
-                <p class="drop-type">Armor</p>
-              </div>
-              <div class="drop-card">
-                <img src="../images/weapons/demon_slayer.svg" alt="Demon Slayer" />
-                <p class="drop-name">Demon Slayer</p>
-                <div class="stat-row" style="justify-content:center; margin-top:2px;">
-                  <span class="card-rarity rarity-legendary" style="margin:0;">Legendary</span>
-                </div>
-                <p class="drop-type">Sword</p>
-              </div>
-              <div class="drop-card">
-                <img src="../images/weapons/fire_axe.svg" alt="Inferno Axe" />
-                <p class="drop-name">Inferno Axe</p>
-                <div class="stat-row" style="justify-content:center; margin-top:2px;">
-                  <span class="card-rarity rarity-legendary" style="margin:0;">Legendary</span>
-                </div>
-                <p class="drop-type">Axe</p>
-              </div>
-              <div class="drop-card">
-                <img src="../images/armor/mage_robe.svg" alt="Hellfire Robe" />
-                <p class="drop-name">Hellfire Robe</p>
-                <div class="stat-row" style="justify-content:center; margin-top:2px;">
-                  <span class="card-rarity rarity-epic" style="margin:0;">Epic</span>
-                </div>
-                <p class="drop-type">Armor</p>
-              </div>
-            </div>
-
-            <!-- Materials Dropped -->
-            <p class="drops-section-title">Materials Dropped</p>
-            <div class="drops-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
-              <div class="material-card">
-                <img src="../images/materials/dragon_scale.svg" alt="Demon Scale" />
-                <div class="material-info">
-                  <p class="material-name">Demon Scale</p>
-                  <p class="material-use">Used For: Crafting Demon King Armor</p>
-                </div>
-              </div>
-              <div class="material-card">
-                <img src="../images/materials/void_ore.svg" alt="Hellfire Ore" />
-                <div class="material-info">
-                  <p class="material-name">Hellfire Ore</p>
-                  <p class="material-use">Used For: Inferno Axe upgrade, Fire gear</p>
-                </div>
-              </div>
-              <div class="material-card">
-                <img src="../images/materials/shadow_stone.svg" alt="Dark Crystal" />
-                <div class="material-info">
-                  <p class="material-name">Dark Crystal</p>
-                  <p class="material-use">Used For: Shadow-type enchantments</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ===================== PORTAL 4: S-Rank Shadow Monarch Gate ===================== -->
-        <div class="portal-entry" id="portal-shadow-s">
-          <div class="portal-header" role="button" tabindex="0" aria-expanded="false" aria-controls="content-shadow-s">
-            <div class="portal-header-left">
-              <div class="portal-icon">
-                <img src="../images/portals/void_gate.svg" alt="Shadow Void Gate" />
-              </div>
-              <div class="portal-info">
-                <h2 class="portal-name">Shadow Void Gate</h2>
-                <div class="portal-meta">
-                  <span class="portal-meta-item">Level: <span>Lv. 120+</span></span>
-                  <span class="portal-meta-item">Enemies: <span>Shadow Legions, Void Wraiths</span></span>
-                  <span class="portal-meta-item">Boss: <span>Shadow Monarch</span></span>
-                </div>
-              </div>
-            </div>
-            <span class="portal-rank rank-s">S-Rank</span>
-            <span class="portal-chevron">▾</span>
-          </div>
-
-          <div class="portal-content" id="content-shadow-s">
-            <div class="portal-details-grid">
-              <div class="portal-detail-item">
-                <p class="portal-detail-label">Recommended Level</p>
-                <p class="portal-detail-value">Lv. 120+</p>
-              </div>
-              <div class="portal-detail-item">
-                <p class="portal-detail-label">Enemy Types</p>
-                <p class="portal-detail-value">Shadow Soldiers, Void Wraiths, Monarch Guards</p>
-              </div>
-              <div class="portal-detail-item">
-                <p class="portal-detail-label">Boss</p>
-                <p class="portal-detail-value boss">★ Shadow Monarch Ashborn ★</p>
-              </div>
-              <div class="portal-detail-item">
-                <p class="portal-detail-label">Floors</p>
-                <p class="portal-detail-value">12</p>
-              </div>
-              <div class="portal-detail-item">
-                <p class="portal-detail-label">Time Limit</p>
-                <p class="portal-detail-value">8 hours</p>
-              </div>
-              <div class="portal-detail-item">
-                <p class="portal-detail-label">Recommended Build</p>
-                <p class="portal-detail-value">Shadow Build (Mythic required)</p>
-              </div>
-            </div>
-
-            <!-- Items Dropped -->
-            <p class="drops-section-title">Items Dropped</p>
-            <div class="drops-grid">
-              <div class="drop-card">
-                <img src="../images/armor/shadow_monarch.svg" alt="Shadow Monarch Armor" />
-                <p class="drop-name">Shadow Monarch Armor</p>
-                <div class="stat-row" style="justify-content:center; margin-top:2px;">
-                  <span class="card-rarity rarity-mythic" style="margin:0;">Mythic</span>
-                </div>
-                <p class="drop-type">Armor</p>
-              </div>
-              <div class="drop-card">
-                <img src="../images/weapons/shadow_blade.svg" alt="Shadow Blade" />
-                <p class="drop-name">Shadow Blade</p>
-                <div class="stat-row" style="justify-content:center; margin-top:2px;">
-                  <span class="card-rarity rarity-mythic" style="margin:0;">Mythic</span>
-                </div>
-                <p class="drop-type">Sword</p>
-              </div>
-              <div class="drop-card">
-                <img src="../images/weapons/ancient_staff.svg" alt="Void Staff" />
-                <p class="drop-name">Void Arcane Staff</p>
-                <div class="stat-row" style="justify-content:center; margin-top:2px;">
-                  <span class="card-rarity rarity-legendary" style="margin:0;">Legendary</span>
-                </div>
-                <p class="drop-type">Staff</p>
-              </div>
-              <div class="drop-card">
-                <img src="../images/armor/demon_king.svg" alt="Monarch Cloak" />
-                <p class="drop-name">Monarch's Cloak</p>
-                <div class="stat-row" style="justify-content:center; margin-top:2px;">
-                  <span class="card-rarity rarity-legendary" style="margin:0;">Legendary</span>
-                </div>
-                <p class="drop-type">Armor</p>
-              </div>
-            </div>
-
-            <!-- Materials Dropped -->
-            <p class="drops-section-title">Materials Dropped</p>
-            <div class="drops-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
-              <div class="material-card">
-                <img src="../images/materials/shadow_stone.svg" alt="Shadow Stone" />
-                <div class="material-info">
-                  <p class="material-name">Shadow Stone</p>
-                  <p class="material-use">Used For: Shadow Monarch gear crafting</p>
-                </div>
-              </div>
-              <div class="material-card">
-                <img src="../images/materials/void_ore.svg" alt="Void Ore" />
-                <div class="material-info">
-                  <p class="material-name">Void Ore</p>
-                  <p class="material-use">Used For: Void-type weapon forging</p>
-                </div>
-              </div>
-              <div class="material-card">
-                <img src="../images/materials/mana_crystal.svg" alt="High-Grade Mana Crystal" />
-                <div class="material-info">
-                  <p class="material-name">High-Grade Mana Crystal</p>
-                  <p class="material-use">Used For: All legendary+ enchantments</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
       </div><!-- /.portals-list -->
 
@@ -470,5 +188,63 @@
   </footer>
 
   <script src="../script.js"></script>
+  <script>
+    // --- Animated background: random lines (more, faster) ---
+    const linesContainer = document.querySelector('.system-bg-lines');
+    if (linesContainer && !linesContainer.hasChildNodes()) {
+      for (let i = 0; i < 28; i++) {
+        const line = document.createElement('div');
+        line.className = 'system-bg-line';
+        line.style.left = Math.random() * 100 + 'vw';
+        line.style.top = Math.random() * 100 + 'vh';
+        line.style.width = (100 + Math.random() * 220) + 'px';
+        line.style.transform = `rotate(${Math.random() * 180 - 90}deg)`;
+        line.style.opacity = 0.16 + Math.random() * 0.22;
+        line.style.animationDelay = (Math.random() * 3) + 's';
+        line.style.animationDuration = (6 + Math.random() * 5) + 's';
+        linesContainer.appendChild(line);
+      }
+    }
+    // --- Animated background: orbs (more, faster) ---
+    const orbsContainer = document.querySelector('.system-bg-orbs');
+    if (orbsContainer && !orbsContainer.hasChildNodes()) {
+      for (let i = 0; i < 16; i++) {
+        const orb = document.createElement('div');
+        orb.className = 'system-bg-orb';
+        orb.style.left = Math.random() * 100 + 'vw';
+        orb.style.top = Math.random() * 100 + 'vh';
+        orb.style.width = (40 + Math.random() * 120) + 'px';
+        orb.style.height = orb.style.width;
+        orb.style.opacity = 0.13 + Math.random() * 0.22;
+        orb.style.animationDelay = (Math.random() * 4) + 's';
+        orb.style.animationDuration = (8 + Math.random() * 7) + 's';
+        orbsContainer.appendChild(orb);
+      }
+    }
+    // --- Make rays and particles more active ---
+    const rays = document.querySelector('.system-bg-rays');
+    if (rays && !rays.hasChildNodes()) {
+      for (let i = 0; i < 14; i++) {
+        const r = document.createElement('div');
+        r.className = 'system-ray';
+        r.style.top = Math.random() * 100 + 'vh';
+        r.style.animationDelay = (Math.random() * 4) + 's';
+        r.style.animationDuration = (7 + Math.random() * 5) + 's';
+        rays.appendChild(r);
+      }
+    }
+    const bg = document.querySelector('.system-bg-particles');
+    if (bg && !bg.hasChildNodes()) {
+      for (let i = 0; i < 40; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.top = Math.random() * 100 + '%';
+        p.style.animationDuration = (3 + Math.random() * 7) + 's';
+        p.style.opacity = 0.18 + Math.random() * 0.32;
+        bg.appendChild(p);
+      }
+    }
+  </script>
 </body>
 </html>

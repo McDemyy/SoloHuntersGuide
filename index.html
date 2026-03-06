@@ -1,24 +1,145 @@
+</style>
+<style>
+.system-bg-glitches {
+  position: fixed;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 3;
+}
+.bg-glitch {
+  position: absolute;
+  border-radius: 2.5px;
+  opacity: 0.18;
+  filter: blur(0.5px);
+  background: linear-gradient(90deg, #00d4ff 0%, #7b2fff 100%);
+  animation: glitch-move 0.32s linear forwards;
+}
+@keyframes glitch-move {
+  0% { opacity: 0.18; transform: scaleX(1) skewX(0deg); }
+  40% { opacity: 0.32; transform: scaleX(1.08) skewX(8deg); }
+  80% { opacity: 0.22; transform: scaleX(0.96) skewX(-6deg); }
+  100% { opacity: 0; transform: scaleX(1.12) skewX(0deg); }
+}
+</style>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="description" content="Solo Leveling System Database – A complete game guide hub for hunters." />
-  <title>Solo Leveling System Database</title>
+  <title>Solo Hunters</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <audio id="bg-music" src="system-open.mp3" preload="auto" loop style="display:none;"></audio>
+  <button id="mute-music-btn" style="position:fixed;bottom:18px;left:18px;z-index:1200;padding:0.4em 1.1em;font-size:0.98em;background:#0a1a2c;color:#00d4ff;border:1.5px solid #00d4ff;border-radius:0.7em;box-shadow:0 0 8px #00d4ff55;opacity:0.85;cursor:pointer;transition:opacity 0.2s;">Mute</button>
+  <audio id="system-open-audio" src="system-open.mp3" preload="auto"></audio>
+
+  <!-- Solo Leveling System Opening Overlay -->
+  <div id="system-opening-overlay">
+    <div class="system-opening-bg"></div>
+    <div class="system-opening-glow"></div>
+    <div class="system-opening-title">
+      <span class="main">SOLO HUNTERS</span>
+      <span class="subtitle">[ SYSTEM INTERFACE INITIALIZING... ]</span>
+    </div>
+    <div class="system-opening-scanline"></div>
+  </div>
+
+  <div class="system-bg-grid"></div>
+  <div class="system-bg-rays"></div>
+  <div class="system-bg-shimmer"></div>
+  <div class="system-bg-particles"></div>
+  <div class="system-bg-glitch"></div>
+  <div class="system-bg-circuit">
+    <svg viewBox="0 0 1920 1600" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <g opacity="0.18">
+        <rect x="80" y="120" width="1760" height="1200" rx="48" stroke="#00d4ff" stroke-width="3.5"/>
+        <rect x="260" y="320" width="1400" height="900" rx="32" stroke="#7b2fff" stroke-width="2.5"/>
+        <path d="M80 800 H0 V1600 H1920 V800 H1840" stroke="#00d4ff" stroke-width="2.2"/>
+        <path d="M960 120 V0" stroke="#00d4ff" stroke-width="2.2"/>
+        <circle cx="960" cy="120" r="14" fill="#00d4ff"/>
+        <circle cx="260" cy="320" r="12" fill="#7b2fff"/>
+        <circle cx="1660" cy="320" r="12" fill="#7b2fff"/>
+        <circle cx="260" cy="1220" r="12" fill="#7b2fff"/>
+        <circle cx="1660" cy="1220" r="12" fill="#7b2fff"/>
+      </g>
+    </svg>
+  </div>
+  <div class="system-bg-scanlines"></div>
+  <script>
+    // Animated system particles
+    function spawnParticles() {
+      const container = document.querySelector('.system-bg-particles');
+      if (!container) return;
+      for (let i = 0; i < 22; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + 'vw';
+        p.style.top = Math.random() * 100 + 'vh';
+        p.style.animationDuration = (7 + Math.random() * 7) + 's';
+        p.style.opacity = 0.18 + Math.random() * 0.22;
+        container.appendChild(p);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', spawnParticles);
+    // Glitch overlay animation
+    function animateGlitch() {
+      const glitch = document.querySelector('.system-bg-glitch');
+      if (!glitch) return;
+      setInterval(() => {
+        glitch.style.opacity = 0.08 + Math.random() * 0.12;
+        glitch.style.transform = `translateY(${Math.random()*4-2}px)`;
+      }, 120);
+    }
+    window.addEventListener('DOMContentLoaded', animateGlitch);
+    // Animated system rays
+    function spawnRays() {
+      const container = document.querySelector('.system-bg-rays');
+      if (!container) return;
+      for (let i = 0; i < 7; i++) {
+        const ray = document.createElement('div');
+        ray.className = 'system-ray';
+        ray.style.top = (10 + i * 12) + '%';
+        ray.style.animationDelay = (i * 1.7) + 's';
+        container.appendChild(ray);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', spawnRays);
+  </script>
+
+
 
   <!-- Navigation -->
   <nav class="navbar">
-    <a href="index.html" class="nav-logo">⚔ SL System DB</a>
+    <a href="index.html" class="nav-logo">SH System DB</a>
     <ul class="nav-links">
-      <li><a href="pages/armor.html">Armor</a></li>
       <li><a href="pages/weapons.html">Weapons</a></li>
+      <li><a href="pages/magic.html">Magic</a></li>
+      <li><a href="pages/armor.html">Armor</a></li>
+      <li><a href="pages/artifacts.html">Artifacts</a></li>
       <li><a href="pages/builds.html">Builds</a></li>
-      <li><a href="pages/portals.html">Portals</a></li>
+      <li><a href="pages/levelguide.html">Level Guide</a></li>
+      <li><a href="#" id="open-map-modal">Map</a></li>
     </ul>
   </nav>
+
+  <!-- Map Modal Popup -->
+  <div id="map-modal" class="system-modal" style="display:none;position:fixed;z-index:1000;left:0;top:0;width:100vw;height:100vh;align-items:center;justify-content:center;background:rgba(10,18,40,0.88);backdrop-filter:blur(2px);">
+    <div class="system-modal-content" style="background:rgba(10,18,40,0.98);border-radius:1.2em;box-shadow:0 0 32px #00d4ff55;padding:2em 2em 1.5em 2em;max-width:90vw;max-height:90vh;display:flex;flex-direction:column;align-items:center;">
+      <div style="display:flex;gap:2em;justify-content:center;align-items:flex-start;width:100%;flex-wrap:wrap;">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <img src="images/MAP/map.png" alt="Dungeon Map" style="max-width:320px;width:100%;border-radius:1em;box-shadow:0 0 12px #00d4ff55;"/>
+          <div style="color:#00d4ff;font-size:1.08em;margin-top:0.5em;">Dungeon Map</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <img src="images/MAP/Igrislocation.png" alt="Cursed Commander Location" style="max-width:320px;width:100%;border-radius:1em;box-shadow:0 0 12px #00d4ff55;"/>
+          <div style="color:#00d4ff;font-size:1.08em;margin-top:0.5em;">Cursed Commander Location</div>
+        </div>
+      </div>
+      <button id="close-map-modal" style="margin-top:1.5em;padding:0.6em 2em;font-size:1.1em;background:#00d4ff;color:#fff;border:none;border-radius:0.7em;box-shadow:0 0 8px #00d4ff55;cursor:pointer;">Close</button>
+    </div>
+  </div>
 
   <!-- Hero Section -->
   <main>
@@ -32,11 +153,11 @@
         <div class="hero-ring"></div>
       </div>
 
-      <p class="hero-system-text">[ SYSTEM INTERFACE ONLINE ]</p>
+      <p class="hero-system-text">[ SYSTEM ONLINE ]</p>
 
       <h1 class="hero-title">
-        Solo Leveling
-        <span>System Database</span>
+        Solo Hunters
+        <span>System Guide</span>
       </h1>
 
       <p class="hero-subtitle">Game Guide Hub — Hunter's Reference Manual</p>
@@ -46,24 +167,14 @@
       <!-- Main Menu Buttons -->
       <nav class="menu-grid" aria-label="Main navigation">
 
-        <a href="pages/armor.html" class="menu-btn">
+        <a href="pages/tierlists.html" class="menu-btn">
           <span class="panel-corner tl"></span>
           <span class="panel-corner tr"></span>
           <span class="panel-corner bl"></span>
           <span class="panel-corner br"></span>
-          <span class="menu-btn-icon">🛡</span>
-          <span class="menu-btn-label">Armor Guide</span>
-          <span class="menu-btn-desc">Sets · Defense · Effects</span>
-        </a>
-
-        <a href="pages/weapons.html" class="menu-btn">
-          <span class="panel-corner tl"></span>
-          <span class="panel-corner tr"></span>
-          <span class="panel-corner bl"></span>
-          <span class="panel-corner br"></span>
-          <span class="menu-btn-icon">⚔</span>
-          <span class="menu-btn-label">Weapons Guide</span>
-          <span class="menu-btn-desc">Blades · Bows · Staves</span>
+          <span class="menu-btn-icon"></span>
+          <span class="menu-btn-label">Tierlists</span>
+          <span class="menu-btn-desc">Weapons · Magic</span>
         </a>
 
         <a href="pages/builds.html" class="menu-btn">
@@ -71,9 +182,49 @@
           <span class="panel-corner tr"></span>
           <span class="panel-corner bl"></span>
           <span class="panel-corner br"></span>
-          <span class="menu-btn-icon">📊</span>
+          <span class="menu-btn-icon"></span>
           <span class="menu-btn-label">Best Builds</span>
           <span class="menu-btn-desc">Tank · DPS · Shadow</span>
+        </a>
+
+        <a href="pages/weapons.html" class="menu-btn">
+          <span class="panel-corner tl"></span>
+          <span class="panel-corner tr"></span>
+          <span class="panel-corner bl"></span>
+          <span class="panel-corner br"></span>
+          <span class="menu-btn-icon"></span>
+          <span class="menu-btn-label">Weapons</span>
+          <span class="menu-btn-desc">Blades · Bows · Staves</span>
+        </a>
+
+        <a href="pages/magic.html" class="menu-btn">
+          <span class="panel-corner tl"></span>
+          <span class="panel-corner tr"></span>
+          <span class="panel-corner bl"></span>
+          <span class="panel-corner br"></span>
+          <span class="menu-btn-icon"></span>
+          <span class="menu-btn-label">Magic</span>
+          <span class="menu-btn-desc">Spells · Abilities · Ranks</span>
+        </a>
+
+        <a href="pages/artifacts.html" class="menu-btn">
+          <span class="panel-corner tl"></span>
+          <span class="panel-corner tr"></span>
+          <span class="panel-corner bl"></span>
+          <span class="panel-corner br"></span>
+          <span class="menu-btn-icon"></span>
+          <span class="menu-btn-label">Artifacts</span>
+          <span class="menu-btn-desc">Relics · Unique · Mythic</span>
+        </a>
+
+        <a href="pages/armor.html" class="menu-btn">
+          <span class="panel-corner tl"></span>
+          <span class="panel-corner tr"></span>
+          <span class="panel-corner bl"></span>
+          <span class="panel-corner br"></span>
+          <span class="menu-btn-icon"></span>
+          <span class="menu-btn-label">Armor</span>
+          <span class="menu-btn-desc">Sets · Defense · Effects</span>
         </a>
 
         <a href="pages/portals.html" class="menu-btn">
@@ -81,9 +232,20 @@
           <span class="panel-corner tr"></span>
           <span class="panel-corner bl"></span>
           <span class="panel-corner br"></span>
-          <span class="menu-btn-icon">🌀</span>
-          <span class="menu-btn-label">Portal Guide</span>
+          <span class="menu-btn-icon"></span>
+          <span class="menu-btn-label">Level Guide</span>
           <span class="menu-btn-desc">Dungeons · Bosses · Drops</span>
+        </a>
+
+        <!-- Map Button -->
+        <a href="#" class="menu-btn" id="main-menu-map-btn">
+          <span class="panel-corner tl"></span>
+          <span class="panel-corner tr"></span>
+          <span class="panel-corner bl"></span>
+          <span class="panel-corner br"></span>
+          <span class="menu-btn-icon"></span>
+          <span class="menu-btn-label">Map</span>
+          <span class="menu-btn-desc">Cursed Commander Location</span>
         </a>
 
       </nav>
@@ -92,19 +254,23 @@
       <div class="status-bar">
         <div class="status-item">
           <span class="status-label">Armor Entries</span>
-          <span class="status-value">06</span>
+          <span class="status-value">08</span>
         </div>
         <div class="status-item">
           <span class="status-label">Weapons Listed</span>
-          <span class="status-value">06</span>
+          <span class="status-value">09</span>
         </div>
         <div class="status-item">
           <span class="status-label">Build Guides</span>
-          <span class="status-value">04</span>
+          <span class="status-value">02</span>
         </div>
         <div class="status-item">
           <span class="status-label">Portals Mapped</span>
-          <span class="status-value">04</span>
+          <span class="status-value">06</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">Magic Abilities</span>
+          <span class="status-value">09</span>
         </div>
       </div>
 
@@ -113,9 +279,128 @@
 
   <!-- Footer -->
   <footer class="site-footer">
-    <p>SOLO LEVELING SYSTEM DATABASE — <span>HUNTER GUIDE HUB</span> — All data is game reference only.</p>
+    <p>SOLO HUNTERS — <span>HUNTER GUIDE HUB</span> — All data is game reference only.</p>
   </footer>
 
+  <!-- Credits Button -->
+  <button id="open-credits-modal" style="position:fixed;bottom:18px;right:18px;z-index:1200;padding:0.4em 1.1em;font-size:0.98em;background:#0a1a2c;color:#00d4ff;border:1.5px solid #00d4ff;border-radius:0.7em;box-shadow:0 0 8px #00d4ff55;opacity:0.85;cursor:pointer;transition:opacity 0.2s;">Credits</button>
+
+  <!-- Credits Modal -->
+  <div id="credits-modal" class="system-modal" style="display:none;position:fixed;z-index:2000;left:0;top:0;width:100vw;height:100vh;align-items:center;justify-content:center;background:rgba(10,18,40,0.88);backdrop-filter:blur(2px);">
+    <div class="system-modal-content" style="background:rgba(10,18,40,0.98);border-radius:1.2em;box-shadow:0 0 32px #00d4ff55;padding:2em 2.5em 1.5em 2.5em;max-width:90vw;max-height:90vh;display:flex;flex-direction:column;align-items:center;min-width:260px;">
+      <div style="color:#00d4ff;font-size:1.35em;font-weight:700;margin-bottom:0.7em;letter-spacing:0.04em;">Credits</div>
+      <div style="color:#fff;font-size:1.08em;text-align:center;line-height:1.7;">
+        <span style="color:#00d4ff;font-weight:600;">Atef</span> &amp; <span style="color:#00d4ff;font-weight:600;">Armyboy</span><br>
+        Thanks to the testers before us<br>
+        and <span style="color:#7b2fff;font-weight:600;">Syqo</span>
+      </div>
+      <button id="close-credits-modal" style="margin-top:1.5em;padding:0.5em 2em;font-size:1.05em;background:#00d4ff;color:#fff;border:none;border-radius:0.7em;box-shadow:0 0 8px #00d4ff55;cursor:pointer;">Close</button>
+    </div>
+  </div>
+
   <script src="script.js"></script>
+  <script src="pages/armor-bg-animate.js"></script>
+      <script>
+        // Background music logic with mute button and persistent state
+        document.addEventListener('DOMContentLoaded', function() {
+          const music = document.getElementById('bg-music');
+          const muteBtn = document.getElementById('mute-music-btn');
+          let isMuted = localStorage.getItem('bgMusicMuted') === 'true';
+          function updateMuteUI() {
+            music.muted = isMuted;
+            muteBtn.textContent = isMuted ? 'Unmute' : 'Mute';
+          }
+          updateMuteUI();
+          // Try to play music if not muted
+          if (!isMuted) {
+            music.volume = 0.5;
+            music.play().catch(()=>{});
+          }
+          muteBtn.addEventListener('click', function() {
+            isMuted = !isMuted;
+            localStorage.setItem('bgMusicMuted', isMuted);
+            updateMuteUI();
+            if (!isMuted) {
+              music.play().catch(()=>{});
+            } else {
+              music.pause();
+            }
+          });
+        });
+      </script>
+    <script>
+      // Credits Modal Logic
+      document.addEventListener('DOMContentLoaded', function() {
+        const openCredits = document.getElementById('open-credits-modal');
+        const creditsModal = document.getElementById('credits-modal');
+        const closeCredits = document.getElementById('close-credits-modal');
+        if (openCredits && creditsModal) {
+          openCredits.addEventListener('click', function() {
+            creditsModal.style.display = 'flex';
+          });
+        }
+        if (closeCredits && creditsModal) {
+          closeCredits.addEventListener('click', function() {
+            creditsModal.style.display = 'none';
+          });
+        }
+        if (creditsModal) {
+          creditsModal.addEventListener('click', function(e) {
+            if (e.target === creditsModal) creditsModal.style.display = 'none';
+          });
+        }
+      });
+    </script>
+  <script>
+    // Map Modal Logic (navbar and main menu)
+    document.addEventListener('DOMContentLoaded', function() {
+      const openMap = document.getElementById('open-map-modal');
+      const mainMenuMapBtn = document.getElementById('main-menu-map-btn');
+      const mapModal = document.getElementById('map-modal');
+      const closeMap = document.getElementById('close-map-modal');
+      if (openMap && mapModal) {
+        openMap.addEventListener('click', function(e) {
+          e.preventDefault();
+          mapModal.style.display = 'flex';
+        });
+      }
+      if (mainMenuMapBtn && mapModal) {
+        mainMenuMapBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          mapModal.style.display = 'flex';
+        });
+      }
+      if (closeMap && mapModal) {
+        closeMap.addEventListener('click', function() {
+          mapModal.style.display = 'none';
+        });
+      }
+      if (mapModal) {
+        mapModal.addEventListener('click', function(e) {
+          if (e.target === mapModal) mapModal.style.display = 'none';
+        });
+      }
+    });
+  </script>
+  <script>
+    // Solo Leveling System Opening Animation with Sound
+    window.addEventListener('DOMContentLoaded', function() {
+      const overlay = document.getElementById('system-opening-overlay');
+      const openAudio = document.getElementById('system-open-audio');
+      if (!overlay) return;
+      if (openAudio && openAudio.play) {
+        // Try to play the sound (may require user interaction in some browsers)
+        openAudio.currentTime = 0;
+        openAudio.volume = 0.7;
+        openAudio.play().catch(()=>{});
+      }
+      setTimeout(() => {
+        overlay.classList.add('fade-out');
+        setTimeout(() => overlay.style.display = 'none', 1200);
+      }, 2200);
+    });
+  </script>
 </body>
 </html>
+
+
