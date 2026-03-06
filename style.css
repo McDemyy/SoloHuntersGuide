@@ -1,3 +1,6 @@
+/* Remove all ...existing code... and unfinished/broken rules */
+/* Remove ...existing code... lines and any rules that are not valid CSS selectors or are incomplete. */
+
 /* Show Drops Button */
 .show-drops-btn {
   margin-left: 1em;
@@ -146,7 +149,7 @@
 }
 @keyframes float-glow-s-tier {
   0% { transform: translateY(0px) scale(1); box-shadow: 0 0 18px 5px #ff4e6bcc, 0 0 28px 10px #ff4e6baa; }
-  50% { transform: translateY(-8px) scale(1.04); box-shadow: 0 0 28px 10px #ff4e6b, 0 0 40px 16px #ff4e6b; }
+  50% { transform: translateY(-8px) scale(1.04); box-shadow: 0 0 28px 10px #ff4e6b, 0 0 40px 14px #ff4e6b; }
   100% { transform: translateY(0px) scale(1); box-shadow: 0 0 18px 5px #ff4e6bcc, 0 0 28px 10px #ff4e6baa; }
 }
 @keyframes float-glow-a-tier {
@@ -156,12 +159,12 @@
 }
 @keyframes s-tier-label-glow-weapons {
   0% { text-shadow: 0 0 14px #ff4e6b, 0 0 24px #ff4e6b; }
-  50% { text-shadow: 0 0 24px #ff4e6b, 0 0 40px #ff4e6b; }
+  50% { text-shadow: 0 0 24px #ff4e6b, 0 0 36px #ff4e6b; }
   100% { text-shadow: 0 0 14px #ff4e6b, 0 0 24px #ff4e6b; }
 }
 @keyframes a-tier-label-glow {
   0% { text-shadow: 0 0 12px #6e7fff, 0 0 24px #6e7fff; }
-  50% { text-shadow: 0 0 24px #6e7fff, 0 0 40px #6e7fff; }
+  50% { text-shadow: 0 0 24px #6e7fff, 0 0 36px #6e7fff; }
   100% { text-shadow: 0 0 12px #6e7fff, 0 0 24px #6e7fff; }
 }
 @keyframes b-tier-label-glow {
@@ -171,7 +174,7 @@
 }
 @keyframes f-tier-label-glow-lightblue {
   0% { text-shadow: 0 0 12px #7fd8ff, 0 0 22px #7fd8ff; }
-  50% { text-shadow: 0 0 22px #7fd8ff, 0 0 36px #7fd8ff; }
+  50% { text-shadow: 0 0 22px #7fd8ff, 0 0 32px #7fd8ff; }
   100% { text-shadow: 0 0 12px #7fd8ff, 0 0 22px #7fd8ff; }
 }
 @keyframes float-glow-b-tier {
@@ -239,9 +242,6 @@
 .commander-glow {
   box-shadow: 0 0 32px 8px #ff2a2a99, 0 0 12px 2px #ff2a2a55, 0 0 2px #fff2;
   border: 2.5px solid #ff2a2a;
-}
-.floaty-card {
-  /* animation removed for performance */
 }
 @keyframes card-float {
   0% {
@@ -332,27 +332,6 @@
   .container, .system-container, .page-wrapper {
     padding: 0.5em 0.5em !important;
     max-width: 100vw !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    margin: 0 auto !important;
-  }
-  .cards-grid, .armor-cards-grid, .magic-cards-grid {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100vw !important;
-    margin: 0 auto !important;
-  }
-  .redgates-container {
-    margin-left: auto !important;
-    margin-right: auto !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
   }
   .menu-grid, .center-grid {
     flex-direction: column !important;
@@ -373,8 +352,11 @@
   .system-modal-content {
     min-width: 0 !important;
     max-width: 98vw !important;
+    width: 98vw !important;
     padding: 1.1em 0.5em 1em 0.5em !important;
     font-size: 1.18em !important;
+    box-sizing: border-box !important;
+    overflow-x: auto !important;
   }
   .system-modal {
     align-items: flex-end !important;
@@ -669,12 +651,7 @@ input[type=number] {
   max-width: 1200px;
   margin: 0 auto;
 }
-.dungeon-col {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5em;
-  flex: 1 1 0;
-  align-items: center;
+/* .dungeon-card styles already defined above, remove invalid ...existing code... */
 }
 .dungeon-col-left {
   align-items: flex-end;
@@ -854,7 +831,6 @@ input[type=number] {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 2.5em;
   margin-top: -11em;
 }
@@ -879,7 +855,6 @@ input[type=number] {
   max-width: 1200px;
 }
 .dungeon-card {
-  ...existing code...
   cursor: pointer;
   transition: box-shadow 0.2s, transform 0.2s;
   margin: 0 auto;
@@ -944,7 +919,7 @@ input[type=number] {
   font-family: 'Orbitron', 'Segoe UI', monospace;
   color: var(--neon-blue);
   letter-spacing: 0.09em;
-  text-shadow: 0 0 24px #00d4ff, 0 0 2px #fff;
+  text-shadow: 0 0 24px #00d4ff, 0 0 48px #7b2fff, 0 0 8px #00d4ff;
   margin-bottom: 0.2em;
   font-weight: 900;
 }
@@ -1027,201 +1002,6 @@ input[type=number] {
   margin-top: 1em;
   color: #fff;
   font-size: 1.1em;
-  background: rgba(20,30,50,0.7);
-  border-radius: 0.5em;
-  padding: 0.7em 1em;
-  box-shadow: 0 0 8px #00d4ff33;
-  min-height: 2.2em;
-}
-
-.system-dungeon-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2.5em;
-  align-items: stretch;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-}
-.dungeon-card {
-  background: rgba(20,30,50,0.97);
-  border-radius: 1.2em;
-  box-shadow: 0 0 24px #00d4ff33, 0 0 2px #fff2;
-  padding: 1.5em 1.2em 1.2em 1.2em;
-  min-width: 320px;
-  max-width: 340px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1.5px solid #00d4ff33;
-  position: relative;
-  z-index: 2;
-  /* animation removed for performance */
-}
-
-@keyframes dungeon-float {
-  0% { transform: translateY(0) scale(1); box-shadow: 0 0 24px #00d4ff33, 0 0 2px #fff2; }
-  50% { transform: translateY(-10px) scale(1.03); box-shadow: 0 0 36px #00d4ff55, 0 0 8px #fff2; }
-  100% { transform: translateY(0) scale(1); box-shadow: 0 0 24px #00d4ff33, 0 0 2px #fff2; }
-}
-
-.dungeon-card.recommended-glow {
-  box-shadow: 0 0 48px 12px #00fff7cc, 0 0 24px 8px #6e7fff99, 0 0 2px #fff2;
-  border: 2.5px solid #00fff7;
-  animation: dungeon-glow-float 2.2s ease-in-out infinite alternate, dungeon-float 4.5s ease-in-out infinite alternate;
-  z-index: 10;
-}
-
-@keyframes dungeon-glow-float {
-  0% { box-shadow: 0 0 48px 12px #00fff7cc, 0 0 24px 8px #6e7fff99, 0 0 2px #fff2; }
-  50% { box-shadow: 0 0 72px 24px #00fff7, 0 0 48px 16px #6e7fff, 0 0 8px #fff2; }
-  100% { box-shadow: 0 0 48px 12px #00fff7cc, 0 0 24px 8px #6e7fff99, 0 0 2px #fff2; }
-}
-.dungeon-header {
-  width: 100%;
-  color: #fff;
-  font-size: 1.35em;
-  font-family: 'Orbitron', 'Segoe UI', monospace;
-  font-weight: bold;
-  letter-spacing: 0.04em;
-  margin-bottom: 0.7em;
-  text-shadow: 0 0 8px #00d4ff, 0 0 2px #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.dungeon-lv {
-  color: var(--neon-blue);
-  font-size: 0.95em;
-  font-weight: 600;
-  margin-left: 0.5em;
-  text-shadow: 0 0 8px #00d4ff, 0 0 2px #fff;
-}
-.dungeon-table-wrap {
-  width: 100%;
-  overflow-x: auto;
-}
-.system-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 0.5em;
-  font-family: 'Segoe UI', monospace;
-}
-.system-table th, .system-table td {
-  border: 1px solid #00d4ff33;
-  padding: 0.4em 0.7em;
-  text-align: center;
-  font-size: 1.15em;
-}
-.system-table th {
-  background: #0e1a2a;
-  color: var(--neon-blue);
-  font-weight: bold;
-}
-.system-table td {
-  color: #fff;
-  background: rgba(20,30,50,0.7);
-}
-
-/* Progression Arrows */
-.progress-arrow {
-  width: 100%;
-  height: 32px;
-  background: url('data:image/svg+xml;utf8,<svg width="100%" height="32" viewBox="0 0 120 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 16h100M110 16l-8-8M110 16l-8 8" stroke="%2300d4ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>') center/contain no-repeat;
-  margin: 0.5em 0 1.5em 0;
-  opacity: 0.7;
-}
-
-/* Dungeon Color Classes */
-.subway-color .dungeon-header { color: #00d4ff; text-shadow: 0 0 8px #00d4ff, 0 0 2px #fff; }
-.caves-color .dungeon-header { color: #ffb300; text-shadow: 0 0 8px #ffb300, 0 0 2px #fff; }
-.jungle-color .dungeon-header { color: #00ff7b; text-shadow: 0 0 8px #00ff7b, 0 0 2px #fff; }
-.desert-color .dungeon-header { color: #ff5e00; text-shadow: 0 0 8px #ff5e00, 0 0 2px #fff; }
-.snow-color .dungeon-header { color: #b3e0ff; text-shadow: 0 0 8px #b3e0ff, 0 0 2px #fff; }
-.spider-color .dungeon-header { color: #ff00c8; text-shadow: 0 0 8px #ff00c8, 0 0 2px #fff; }
-
-/* Remove old section styles */
-.levelguide-section-header, .levelguide-flex, .levelguide-sides, .levelguide-center, .section-title, .dropdown-table, .dropdown-table .dropdown-toggle, .dropdown-table .dropdown-content {
-  display: none !important;
-}
-/* Level Guide Section Styling */
-.levelguide-section-header {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 2.5em;
-  padding-top: 1.5em;
-}
-.system-title {
-  font-size: 2.5em;
-  font-family: 'Orbitron', 'Segoe UI', monospace;
-  color: var(--neon-blue);
-  letter-spacing: 0.08em;
-  text-shadow: 0 0 16px #00d4ff, 0 0 2px #fff;
-  margin-bottom: 0.2em;
-}
-.system-desc {
-  color: #b3eaff;
-  font-size: 1.15em;
-  font-family: 'Segoe UI', monospace;
-  margin-bottom: 0.5em;
-  opacity: 0.85;
-}
-
-.levelguide-flex {
-  ...existing code...
-  background: linear-gradient(120deg, #0e1a2a 80%, #1a2e4a 100%);
-  border-radius: 1.5em;
-  box-shadow: 0 0 32px #00d4ff22, 0 0 2px #fff2;
-  padding: 2.5em 1.5em 2.5em 1.5em;
-  margin-bottom: 2em;
-}
-
-.levelguide-sides {
-  ...existing code...
-  background: rgba(20,30,50,0.85);
-  border-radius: 1em;
-  box-shadow: 0 0 12px #00d4ff22, 0 0 2px #fff2;
-  padding: 1.5em 1em 1.5em 1em;
-  min-height: 100%;
-}
-.levelguide-sides.left {
-  ...existing code...
-  border-right: 2px solid #00d4ff33;
-}
-.levelguide-sides.right {
-  ...existing code...
-  border-left: 2px solid #00d4ff33;
-}
-.levelguide-center {
-  ...existing code...
-  background: rgba(14,26,42,0.97);
-  border-radius: 1em;
-  box-shadow: 0 0 16px #00d4ff33, 0 0 2px #fff2;
-  padding: 2em 2.5em 1.5em 2.5em;
-  margin: 0 1.5em;
-}
-.section-title {
-  font-size: 1.3em;
-  color: var(--neon-blue);
-  font-family: 'Orbitron', 'Segoe UI', monospace;
-  letter-spacing: 0.06em;
-  margin-bottom: 1.2em;
-  text-align: center;
-  text-shadow: 0 0 8px #00d4ff, 0 0 2px #fff;
-}
-.dropdown-table {
-  ...existing code...
-  margin-bottom: 1.5em;
-}
-.centered-form {
-  ...existing code...
-  margin-bottom: 1.5em;
-  border: 1.5px solid #00d4ff55;
-}
-.recommend-result {
-  ...existing code...
   background: rgba(20,30,50,0.7);
   border-radius: 0.5em;
   padding: 0.7em 1em;
@@ -1368,7 +1148,7 @@ input[type=number] {
     border: 1px solid #00d4ff33;
     padding: 0.4em 0.7em;
     text-align: center;
-    font-size: 1em;
+    font-size: 1.15em;
   }
   .system-table th {
     background: #0e1a2a;
@@ -1726,20 +1506,6 @@ input[type=number] {
   0% { background-position-y: 0; }
   100% { background-position-y: 16px; }
 }
-.system-bg-scanlines {
-  position: fixed;
-  left: 0; top: 0; width: 100vw; height: 100vh;
-  pointer-events: none;
-  z-index: 2;
-  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 212, 255, 0.04) 2px, rgba(0, 212, 255, 0.04) 4px);
-  mix-blend-mode: lighten;
-  animation: scanline-move 2.2s linear infinite;
-  opacity: 0.22;
-}
-@keyframes scanline-move {
-  0% { background-position-y: 0; }
-  100% { background-position-y: 16px; }
-}
 /* === SOLO LEVELING SYSTEM UI BACKGROUND PANEL === */
 .system-ui-panel {
   position: fixed;
@@ -1986,7 +1752,7 @@ input[type=number] {
   }
   50% {
     transform: translateY(-8px) scale(1.04);
-    box-shadow: 0 0 28px 10px #ff4e6b, 0 0 40px 16px #ff4e6b;
+    box-shadow: 0 0 28px 10px #ff4e6b, 0 0 40px 14px #ff4e6b;
   }
   100% {
     transform: translateY(0px) scale(1);
@@ -2147,7 +1913,7 @@ input[type=number] {
   }
   50% {
     transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 0 28px 10px #ffd700, 0 0 36px 14px #ffd700;
+    box-shadow: 0 0 28px 12px #ffd700, 0 0 36px 16px #ffd700;
   }
   100% {
     transform: translateY(0px) scale(1);
@@ -3298,10 +3064,6 @@ body::before {
   filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.3));
   transition: filter var(--transition);
   margin-bottom: 6px;
-}
-
-.drop-card:hover img {
-  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.6));
 }
 
 .drop-name {

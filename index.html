@@ -135,9 +135,6 @@
   <!-- Navigation -->
   <nav class="navbar">
     <a href="index.html" class="nav-logo">SH System DB</a>
-    <button class="nav-mobile-btn" id="nav-mobile-btn" aria-label="Open navigation menu" style="display:none;">
-      <span style="font-size:1.5em;color:#00d4ff;">☰</span>
-    </button>
     <ul class="nav-links">
       <li><a href="pages/weapons.html">Weapons</a></li>
       <li><a href="pages/magic.html">Magic</a></li>
@@ -153,21 +150,6 @@
         </a>
       </li>
     </ul>
-    <div class="nav-sidepanel" id="nav-sidepanel" style="display:none;">
-      <button class="nav-sidepanel-close" id="nav-sidepanel-close" aria-label="Close navigation menu">×</button>
-      <ul class="nav-sidepanel-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="pages/weapons.html">Weapons</a></li>
-        <li><a href="pages/magic.html">Magic</a></li>
-        <li><a href="pages/armor.html">Armor</a></li>
-        <li><a href="pages/artifacts.html">Artifacts</a></li>
-        <li><a href="pages/builds.html">Builds</a></li>
-        <li><a href="pages/levelguide.html">Gate Info</a></li>
-        <li><a href="pages/portals.html">Level Guide</a></li>
-        <li><a href="#" id="open-map-modal">Map</a></li>
-        <li><a href="pages/redgates.html">RedGates</a></li>
-      </ul>
-    </div>
   </nav>
 
 *** End Patch
@@ -336,44 +318,6 @@
   </div>
 
   <script src="script.js"></script>
-      <script>
-        // Mobile navbar side panel logic
-        document.addEventListener('DOMContentLoaded', function() {
-          const mobileBtn = document.getElementById('nav-mobile-btn');
-          const sidepanel = document.getElementById('nav-sidepanel');
-          const closeBtn = document.getElementById('nav-sidepanel-close');
-          function showPanel() {
-            sidepanel.style.display = 'block';
-            setTimeout(() => sidepanel.classList.add('open'), 10);
-          }
-          function hidePanel() {
-            sidepanel.classList.remove('open');
-            setTimeout(() => sidepanel.style.display = 'none', 220);
-          }
-          if (mobileBtn && sidepanel) {
-            mobileBtn.addEventListener('click', showPanel);
-          }
-          if (closeBtn && sidepanel) {
-            closeBtn.addEventListener('click', hidePanel);
-          }
-          if (sidepanel) {
-            sidepanel.addEventListener('click', function(e) {
-              if (e.target === sidepanel) hidePanel();
-            });
-          }
-          // Show mobile button only on small screens
-          function updateMobileBtn() {
-            if (window.innerWidth <= 900) {
-              mobileBtn.style.display = 'block';
-            } else {
-              mobileBtn.style.display = 'none';
-              hidePanel();
-            }
-          }
-          window.addEventListener('resize', updateMobileBtn);
-          updateMobileBtn();
-        });
-      </script>
     <script>
       // Credits Modal Logic
       document.addEventListener('DOMContentLoaded', function() {
