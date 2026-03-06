@@ -330,7 +330,7 @@ body {
     overflow-x: hidden !important;
     overflow-y: auto !important;
     overscroll-behavior: auto !important;
-    touch-action: pan-y !important;
+    /* Removed touch-action: pan-y to allow normal one-finger scrolling */
   }
 }
 body::before {
