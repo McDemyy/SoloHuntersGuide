@@ -1,3 +1,26 @@
+/* Unified navbar button style (matches credits/mute) */
+.nav-btn {
+  padding: 0.4em 1.1em;
+  font-size: 0.98em;
+  background: #0a1a2c;
+  color: #00d4ff;
+  border: 1.5px solid #00d4ff;
+  border-radius: 0.7em;
+  box-shadow: 0 0 8px #00d4ff55;
+  opacity: 0.85;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.18s, color 0.18s, opacity 0.18s, box-shadow 0.18s;
+  letter-spacing: 0.03em;
+  margin: 0 0.2em;
+}
+.nav-btn:hover, .nav-btn:focus {
+  background: #00d4ff;
+  color: #0a1a2c;
+  opacity: 1;
+  box-shadow: 0 0 12px #00d4ff99;
+}
 html, body {
   overscroll-behavior: contain;
   overscroll-behavior-y: contain;
