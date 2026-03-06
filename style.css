@@ -1,3 +1,17 @@
+/* Center Best Builds grid on builds.html */
+/* Move Best Builds grid slightly left */
+.builds-grid {
+  /* Positioning removed for builds-grid. Now uses default flow. */
+}
+}
+@media (max-width: 900px) {
+  .builds-grid {
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+  }
+}
 html, body {
   overscroll-behavior-y: contain;
   max-width: 100vw;
@@ -629,11 +643,98 @@ body::before {
   max-width: 98vw;
   width: 98vw;
   box-sizing: border-box;
-  color: #eaf6ff;
-  font-family: 'Orbitron', 'Segoe UI', monospace;
-  position: relative;
-  text-align: center;
-  overflow-x: auto;
+    body, html {
+      font-size: 15px !important;
+      line-height: 1.7 !important;
+      overscroll-behavior-y: contain;
+    }
+    .navbar {
+      height: 60px !important;
+      padding: 0 10px !important;
+    }
+    .nav-logo {
+      font-size: 1.1em !important;
+      max-width: 120px !important;
+    }
+    .nav-links a {
+      font-size: 0.9em !important;
+      padding: 6px 10px !important;
+      min-width: 44px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .menu-btn {
+      font-size: 1em !important;
+      padding: 0.8em 0.5em !important;
+      min-width: 44px;
+      min-height: 44px;
+    }
+    .system-modal-content, .credits-modal-content {
+      font-size: 1em !important;
+      padding: 0.8em 0.5em 0.8em 0.5em !important;
+    }
+    .dungeon-card, .item-card, .solo-slot {
+      font-size: 0.98em !important;
+      min-width: 0 !important;
+      max-width: 98vw !important;
+      width: 100% !important;
+      min-height: 44px;
+      min-width: 44px;
+    }
+    .build-card, .center-build-row, .center-build-items {
+      font-size: 0.98em !important;
+      padding: 0.5em !important;
+      margin: 0.5em 0 !important;
+    }
+    .page-title, .hero-title {
+      font-size: 1.5em !important;
+      text-align: center !important;
+    }
+    .site-footer {
+      font-size: 0.95em !important;
+      padding: 0.5em 0.2em !important;
+    }
+    .dropdown-table, .system-table {
+      font-size: 0.95em !important;
+      padding: 0.5em !important;
+    }
+    .show-drops-btn, .clean-recommend-btn, .weapon-info-btn {
+      font-size: 1em !important;
+      padding: 0.7em 1.2em !important;
+      min-width: 44px;
+      min-height: 44px;
+    }
+    input, select, textarea, button {
+      font-size: 1em !important;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0.5em !important;
+    }
+    .centered-level-guide, .system-container, .page-wrapper {
+      padding: 0.5em !important;
+      max-width: 100vw !important;
+    }
+    .dungeon-flex-row, .center-build-row, .center-grid {
+      flex-direction: column !important;
+      gap: 1.2em !important;
+      align-items: stretch !important;
+    }
+    .dungeon-col, .dungeon-center-panel {
+      min-width: 0 !important;
+      max-width: 100vw !important;
+      width: 100% !important;
+      align-items: stretch !important;
+    }
+    .dropdown-table, .dropdown-content, .system-table {
+      max-width: 100vw !important;
+      overflow-x: auto !important;
+    }
+    .system-bg-circuit svg {
+      width: 100vw !important;
+      height: auto !important;
+    }
 }
 .system-modal-close {
   position: absolute;
@@ -2770,20 +2871,22 @@ body::before {
   align-items: flex-start;
   gap: 3em;
   margin-top: 2.5em;
-  margin-left: -2vw;
-  width: 100vw;
-  max-width: 100vw;
+  width: fit-content;
   box-sizing: border-box;
 }
 
 .build-card {
-  /* Overridden by builds.html for builds page width and padding */
+  width: 700px;
+  min-width: 400px;
+  max-width: 98vw;
+  margin: 2em auto;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
   position: relative;
   transition: all var(--transition);
   box-shadow: var(--glow-panel);
+  z-index: 1;
 }
 
 .build-card:hover {
@@ -2794,11 +2897,15 @@ body::before {
 
 .build-header {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 14px;
+  justify-content: center;
+  gap: 0;
   margin-bottom: 16px;
   padding-bottom: 14px;
   border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+  width: 100%;
+  text-align: center;
 }
 
 .build-icon {
@@ -2813,6 +2920,8 @@ body::before {
   font-weight: bold;
   color: #fff;
   letter-spacing: 1px;
+  width: 100%;
+  text-align: center;
 }
 
 .build-playstyle {
@@ -2821,6 +2930,8 @@ body::before {
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-top: 2px;
+  width: 100%;
+  text-align: center;
 }
 
 .build-section-label {
@@ -3340,27 +3451,8 @@ body::before {
     max-width: 100vw !important;
   }
   .builds-grid > .build-card {
-    width: 98vw !important;
-    min-width: 0 !important;
-    max-width: 99vw !important;
-    margin: 1em 0 !important;
-    padding: 1.2em 0.7em 1.2em 0.7em !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .menu-grid {
-    grid-template-columns: 1fr;
-    max-width: 280px;
-  }
-
-  .cards-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .portal-meta {
-    flex-direction: column;
-    gap: 4px;
+    position: relative;
+    left: -350px;
   }
 }
 
