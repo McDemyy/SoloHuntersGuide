@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Red Gates - Solo Hunters</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    body {
+      background: linear-gradient(135deg,#1a1a2c 80%,#ff3c3c22 100%);
+      color: #fff;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .redgates-container {
+      margin-top: 4.5em;
+      background: rgba(10,18,40,0.98);
+      border-radius: 1.2em;
+      box-shadow: 0 0 32px #ff3c3c88;
+      padding: 1.2em 1.2em 1em 1.2em;
+      max-width: 750px;
+      width: 97vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .redgates-title {
+      color: #ff3c3c;
+      font-size: 2em;
+      font-weight: 700;
+      margin-bottom: 1.2em;
+      letter-spacing: 0.04em;
+      text-shadow: 0 0 8px #ff3c3c99;
+    }
+    .redgates-info {
+      color: #fff;
+      text-align: left;
+      width: 100%;
+      font-size: 1.08em;
+      line-height: 1.6;
+    }
+    .redgates-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2em;
+      width: 100%;
+    }
+    .redgates-area {
+      margin-bottom: 1.5em;
+    }
+    .redgates-area-title {
+      color: #ff3c3c;
+      font-weight: 600;
+      font-size: 1.13em;
+      margin-bottom: 0.3em;
+    }
+    .redgates-area-title span {
+      color: #00d4ff;
+      font-size: 0.95em;
+      font-weight: 400;
+    }
+    ul {
+      margin: 0 0 1em 1em;
+      padding: 0;
+      list-style: none;
+    }
+    @media (max-width: 700px) {
+      .redgates-grid { grid-template-columns: 1fr; }
+      .redgates-container { padding: 1em 0.5em; }
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar">
+      <a href="../index.html" class="nav-logo">⚔ SL System DB</a>
+      <ul class="nav-links">
+        <li><a href="../index.html" class="nav-back">⬅ Home</a></li>
+        <li><a href="armor.html">Armor</a></li>
+        <li><a href="weapons.html">Weapons</a></li>
+        <li><a href="builds.html">Builds</a></li>
+        <li><a href="redgates.html" class="active">Red Gates</a></li>
+        <li><a href="levelguide.html">Gate Info</a></li>
+      </ul>
+    </nav>
+  <div class="redgates-container">
+    <div class="redgates-title">Red Gates</div>
+    <div class="redgates-info">
+      <div class="redgates-grid">
+        <div>
+          <div class="redgates-area">
+            <div class="redgates-area-title">Subway <span>(Lv 0+)</span></div>
+            <ul>
+              <li>D: 2,100</li><li>D+: 2,850</li><li>C: 3,450</li><li>C+: 3,900</li><li>B: 24,000</li><li>B+: 33,000</li><li>A: 45,000</li><li>A+: 60,000</li><li>S: 82,500</li><li>S+: 172,500</li><li>S++: 262,500</li><li>S+++: 607,500</li>
+            </ul>
+          </div>
+          <div class="redgates-area">
+            <div class="redgates-area-title">Caves <span>(Lv 20+)</span></div>
+            <ul>
+              <li>D: 11,100</li><li>D+: 12,900</li><li>C: 14,700</li><li>C+: 16,500</li><li>B: 37,500</li><li>B+: 75,000</li><li>A: 135,000</li><li>A+: 240,000</li><li>S: 412,500</li><li>S+: 570,000</li><li>S++: 720,000</li><li>S+++: 800,000</li>
+            </ul>
+          </div>
+          <div class="redgates-area">
+            <div class="redgates-area-title">Jungle <span>(Lv 80+)</span></div>
+            <ul>
+              <li>D: 34,500</li><li>D+: 39,000</li><li>C: 43,500</li><li>C+: 48,000</li><li>B: 78,000</li><li>B+: 127,500</li><li>A: 210,000</li><li>A+: 345,000</li><li>S: 532,500</li><li>S+: 652,500</li><li>S++: 780,000</li><li>S+++: 900,000</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="redgates-area">
+            <div class="redgates-area-title">Desert <span>(Lv 200+)</span></div>
+            <ul>
+              <li>D: 88,500</li><li>D+: 99,000</li><li>C: 109,500</li><li>C+: 120,000</li><li>B: 165,000</li><li>B+: 232,500</li><li>A: 330,000</li><li>A+: 465,000</li><li>S: 630,000</li><li>S+: 660,000</li><li>S++: 750,000</li><li>S+++: 825,000</li>
+            </ul>
+          </div>
+          <div class="redgates-area">
+            <div class="redgates-area-title">Snow Forest <span>(Lv 300+)</span></div>
+            <ul>
+              <li>D: 162,000</li><li>D+: 174,000</li><li>C: 184,500</li><li>C+: 195,000</li><li>B: 255,000</li><li>B+: 307,500</li><li>A: 382,500</li><li>A+: 480,000</li><li>S: 592,500</li><li>S+: 675,000</li><li>S++: 775,000</li><li>S+++: 875,000</li>
+            </ul>
+          </div>
+          <div class="redgates-area">
+            <div class="redgates-area-title">Spider Cave <span>(Lv 380+)</span></div>
+            <ul>
+              <li>D: 327,000</li><li>D+: 357,000</li><li>C: 375,000</li><li>C+: 397,500</li><li>B: 450,000</li><li>B+: 510,000</li><li>A: 577,500</li><li>A+: 660,000</li><li>S: 735,000</li><li>S+: 795,000</li><li>S++: 847,500</li><li>S+++: 900,000</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+  <a href="levelguide.html" id="normalgate-fab" style="position:fixed;bottom:28px;right:28px;z-index:2000;display:flex;align-items:center;gap:0.7em;padding:1em 1.5em;background:linear-gradient(90deg,#00ffd0 60%,#00d4ff 100%);color:#fff;font-size:1.18em;font-weight:700;border-radius:2em;box-shadow:0 0 24px 6px #00ffd099,0 0 0 2px #fff2 inset;transition:box-shadow 0.2s;animation:normalgate-glow 1.2s infinite alternate;letter-spacing:0.04em;text-decoration:none;">
+    <img src="../images/Backgrounds/RedGateIcon.png" alt="Normal Gate" style="height:1.5em;width:1.5em;filter:drop-shadow(0 0 8px #00ffd0) hue-rotate(120deg);"/>
+    NormalGate
+  </a>
+  <style>
+    @keyframes normalgate-glow {
+      0% { box-shadow:0 0 24px 6px #00ffd099,0 0 0 2px #fff2 inset; }
+      100% { box-shadow:0 0 48px 12px #00ffd0cc,0 0 0 2px #fff2 inset; }
+    }
+    #normalgate-fab:hover {
+      box-shadow:0 0 64px 16px #00ffd0,0 0 0 2px #fff2 inset;
+      background:linear-gradient(90deg,#00ffd0 80%,#00d4ff 100%);
+      color:#fff;
+    }
+  </style>
+</html>
