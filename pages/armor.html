@@ -1,6 +1,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </style>
 <style>
+body {
+  background: radial-gradient(ellipse at 60% 40%, #10131e 60%, #070a13 100%), linear-gradient(120deg, #0a0e1a 0%, #10182c 50%, #0a0e1a 100%);
+  background-blend-mode: multiply;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+.armor-bg-animated {
+  position: fixed;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.98;
+  animation: bg-dark-move 18s ease-in-out infinite alternate;
+}
+@keyframes bg-dark-move {
+  0% { background-position: 0% 50%, 0% 50%; }
+  100% { background-position: 100% 50%, 100% 50%; }
+}
+.armor-bg-particles, .armor-bg-rays, .armor-bg-lines, .armor-bg-orbs {
+  position: fixed;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+}
+.armor-bg-particles {
+  background: repeating-radial-gradient(circle at 70% 30%, #00d4ff33 0, #00d4ff33 2px, transparent 3px, transparent 100px);
+  opacity: 0.18;
+  animation: particles-move 7s linear infinite alternate;
+}
+@keyframes particles-move {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 60px; }
+}
+.armor-bg-rays {
+  background: repeating-linear-gradient(120deg, #7b2fff22 0 2px, transparent 2px 40px);
+  opacity: 0.12;
+  animation: rays-move 6s linear infinite alternate;
+}
+@keyframes rays-move {
+  0% { background-position: 0 0; }
+  100% { background-position: 60px 100px; }
+}
+.armor-bg-lines {
+  background: repeating-linear-gradient(0deg, #00d4ff11 0 1px, transparent 1px 32px);
+  opacity: 0.10;
+  animation: lines-move 8s linear infinite alternate;
+}
+@keyframes lines-move {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 32px; }
+}
+.armor-bg-orbs {
+  background: radial-gradient(circle at 80% 80%, #7b2fff33 0, transparent 60%), radial-gradient(circle at 20% 20%, #00d4ff22 0, transparent 50%);
+  opacity: 0.13;
+  animation: orbs-move 10s linear infinite alternate;
+}
+@keyframes orbs-move {
+  0% { background-position: 0 0, 100vw 100vh; }
+  100% { background-position: 100vw 100vh, 0 0; }
+}
+</style>
+  <div class="armor-bg-animated"></div>
+  <div class="armor-bg-particles"></div>
+  <div class="armor-bg-rays"></div>
+  <div class="armor-bg-lines"></div>
+  <div class="armor-bg-orbs"></div>
+<style>
 .system-modal-content {
   background: none !important;
   border: none !important;
@@ -8,131 +75,6 @@
 }
 .system-bg-glitches {
   position: fixed;
-  left: 0; top: 0; width: 100vw; height: 100vh;
-  pointer-events: none;
-  z-index: 3;
-}
-.bg-glitch {
-  position: absolute;
-  border-radius: 2.5px;
-  opacity: 0.18;
-  filter: blur(0.5px);
-  background: linear-gradient(90deg, #00d4ff 0%, #7b2fff 100%);
-  animation: glitch-move 0.32s linear forwards;
-}
-@keyframes glitch-move {
-  0% { opacity: 0.18; transform: scaleX(1) skewX(0deg); }
-  40% { opacity: 0.32; transform: scaleX(1.08) skewX(8deg); }
-  80% { opacity: 0.22; transform: scaleX(0.96) skewX(-6deg); }
-  100% { opacity: 0; transform: scaleX(1.12) skewX(0deg); }
-}
-</style>
-</style>
-<style>
-.bg-star {
-  position: absolute;
-  background: #fff;
-  border-radius: 50%;
-  pointer-events: none;
-  animation: star-twinkle 3.2s infinite alternate;
-}
-      card.addEventListener('click', function() {
-        const name = card.getAttribute('data-armor');
-        const info = armorInfo[name];
-        if (!info) return;
-        let rarityClass = info.Rarity === 'Mythic' ? 'rarity-mythic' : 'rarity-epic';
-        let html = `
-<div class="armor-modal-system-ui" style="position:relative;width:1500px;max-width:1500px;margin:0 auto;">
-  <div class="armor-modal-glow"></div>
-  <div class="armor-modal-header">
-    <span class="armor-modal-title">${name}</span>
-    <span class="armor-modal-rarity ${rarityClass}">${info.Rarity}</span>
-  </div>
-  <table class="system-table armor-modal-table" style="width:100%;table-layout:fixed;box-sizing:border-box;">
-    <tr><th>Location</th><th>Total Base Health</th><th>Total Max/Shiny Health</th><th>2-Piece Bonus</th><th>3-Piece Bonus</th></tr>
-    <tr><td>${info.Location}</td><td>${info.BaseHealth}</td><td>${info.MaxHealth}</td><td>${info.Bonus2}</td><td>${info.Bonus3}</td></tr>
-  </table>
-</div>
-<style>
-.armor-modal-system-ui {
-}
-.bg-orb {
-  position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(circle, #00fff7 0%, #6e7fff 60%, transparent 100%);
-  filter: blur(8px) brightness(1.1);
-  opacity: 0.18;
-  animation: orb-float 7s linear infinite alternate;
-}
-.armor-modal-glow {
-@keyframes orb-float {
-  0% { transform: translateY(0) scale(1); }
-  100% { transform: translateY(-40px) scale(1.08); }
-}
-.bg-particle {
-  position: absolute;
-  width: 6px; height: 6px;
-.armor-modal-panel {
-  background: #00d4ff;
-  border-radius: 50%;
-  opacity: 0.18;
-  filter: blur(1.5px);
-  animation: particle-move 3.2s linear infinite alternate;
-}
-@keyframes particle-move {
-  0% { transform: translateY(0) scale(1); opacity: 0.18; }
-  50% { transform: translateY(-18px) scale(1.2); opacity: 0.32; }
-  100% { transform: translateY(0) scale(1); opacity: 0.18; }
-}
-</style>
-<!DOCTYPE html>
-/* .armor-modal-panel background and blur removed to eliminate unwanted square */
-.armor-modal-title {
-  <link rel="stylesheet" href="../style.css" />
-</head>
-<body style="overflow: hidden;">
-
-  <div class="system-bg-stars" style="opacity:0.45; animation: stars-move 18s linear infinite alternate;"></div>
-  <div class="system-bg-grid" style="opacity:0.22; animation: grid-move 12s linear infinite alternate;"></div>
-  <div class="system-bg-orbs" style="opacity:0.22; animation: orbs-move 10s linear infinite alternate;"></div>
-.armor-modal-rarity {
-  <div class="system-bg-lines" style="opacity:0.18; animation: lines-move 8s linear infinite alternate;"></div>
-  <div class="system-bg-particles" style="opacity:0.22; animation: particles-move 7s linear infinite alternate;"></div>
-  <div class="system-bg-rays" style="opacity:0.22; animation: rays-move 6s linear infinite alternate;"></div>
-  <div class="system-bg-circuit">
-    </style>
-    <style>
-    @keyframes stars-move {
-      0% { filter: brightness(1) blur(0px); }
-      50% { filter: brightness(1.2) blur(1.5px); }
-      100% { filter: brightness(1) blur(0px); }
-    }
-    @keyframes grid-move {
-      0% { filter: brightness(1) blur(0px); }
-      50% { filter: brightness(1.1) blur(1px); }
-.armor-modal-rarity.rarity-epic { color: #a259ff; border-color: #a259ff; }
-.armor-modal-table {
-      100% { filter: brightness(1) blur(0px); }
-    }
-    @keyframes orbs-move {
-      0% { filter: brightness(1) blur(0px); }
-          let html = `<div style='background:rgba(10,18,40,0.60);border-radius:18px;padding:2.2em 2.2em 1.5em 2.2em;box-shadow:0 0 32px #00d4ff55,0 0 0 2.5px #00d4ff inset;width:1000px;max-width:1000px;margin:0 auto;word-break:break-word;'>`;
-      100% { filter: brightness(1) blur(0px); }
-    }
-          html += `<table class='system-table' style='margin:0 auto 1.2em auto;font-size:1.22em;min-width:1200px;max-width:2000px;width:100%;box-sizing:border-box;word-break:break-word;table-layout:auto;'><colgroup><col span='5' style='width:20%;'></colgroup>`;
-.armor-modal-table th, .armor-modal-table td {
-          html += `<style>.system-table td, .system-table th {overflow-wrap:anywhere;word-break:break-word;}</style>`;
-      0% { filter: brightness(1) blur(0px); }
-      50% { filter: brightness(1.1) blur(1.5px); }
-      100% { filter: brightness(1) blur(0px); }
-    }
-.armor-modal-table th {
-    @keyframes particles-move {
-    /* Removed stray blur(2px), rays-move, and .armor-modal-table td text */
-    </style>
-    <svg viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <g opacity="0.18">
-        <rect x="200" y="200" width="1520" height="680" rx="32" stroke="#00d4ff" stroke-width="2.5"/>
         <rect x="320" y="320" width="1280" height="440" rx="22" stroke="#7b2fff" stroke-width="1.5"/>
         <path d="M200 540 H80 V1040 H1840 V540 H1720" stroke="#00d4ff" stroke-width="1.2"/>
         <path d="M960 200 V80" stroke="#00d4ff" stroke-width="1.2"/>
@@ -294,9 +236,107 @@ body .item-card.epic-glow.floaty-card {
     </div><!-- /.container -->
   </div><!-- /.page-wrapper -->
 
-  <footer class="site-footer">
-    <p>SOLO LEVELING SYSTEM DATABASE — <span>ARMOR MODULE</span></p>
-  </footer>
+  <!-- Armor Modal -->
+  <div id="armor-modal" class="system-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9999;align-items:center;justify-content:center;overflow:auto;background:rgba(0,0,0,0.18);">
+    <div class="system-modal-content" id="armor-modal-content" style="display:flex;flex-direction:column;align-items:center;justify-content:center;"></div>
+    <span class="system-modal-close" id="close-armor-modal">&times;</span>
+  </div>
+  <script>
+    // Armor info data with rarity
+    const armorInfo = {
+      "Iron Set": {
+        Location: "ALL Gate",
+        BaseHealth: "18% Health",
+        MaxHealth: "56.8% Health",
+        Bonus2: "20% Melee Damage",
+        Bonus3: "20% Melee Damage",
+        Rarity: "Epic"
+      },
+      "Sunforge Set": {
+        Location: "Spider Cave",
+        BaseHealth: "57% Health",
+        MaxHealth: "243% Health",
+        Bonus2: "15% Extra Health",
+        Bonus3: "20% Melee Damage",
+        Rarity: "Mythic"
+      },
+      "Bloodsteel Set": {
+        Location: "Jungle",
+        BaseHealth: "32% Health",
+        MaxHealth: "146.8% Health",
+        Bonus2: "8% Extra Health",
+        Bonus3: "20% Melee Damage",
+        Rarity: "Mythic"
+      },
+      "Oathkeeper Set": {
+        Location: "Desert",
+        BaseHealth: "78% Health",
+        MaxHealth: "347.1% Health",
+        Bonus2: "18% Extra Health",
+        Bonus3: "Burn Passive",
+        Rarity: "Mythic"
+      },
+      "Serpent Set": {
+        Location: "Subway",
+        BaseHealth: "48% Health",
+        MaxHealth: "220.2% Health",
+        Bonus2: "12% Extra Health",
+        Bonus3: "25% Melee Damage",
+        Rarity: "Mythic"
+      },
+      "Venomspike Set": {
+        Location: "Caves",
+        BaseHealth: "46% Health",
+        MaxHealth: "218.2% Health",
+        Bonus2: "10% Extra Health",
+        Bonus3: "25% Melee Damage",
+        Rarity: "Mythic"
+      },
+      "Astral Set": {
+        Location: "Snow Forest",
+        BaseHealth: "44% Health",
+        MaxHealth: "187.5% Health",
+        Bonus2: "14% Extra Health",
+        Bonus3: "20% Magic Damage",
+        Rarity: "Mythic"
+      },
+      "Commander Set": {
+        Location: "Cursed Commander",
+        BaseHealth: "63% Health",
+        MaxHealth: "362% Health",
+        Bonus2: "30% Melee Damage",
+        Bonus3: "Burn Passive",
+        Rarity: "Mythic"
+      }
+    };
+    document.querySelectorAll('.armor-popup').forEach(card => {
+      card.addEventListener('click', function() {
+        const name = card.getAttribute('data-armor');
+        const info = armorInfo[name];
+        if (!info) return;
+        let rarityClass = info.Rarity === 'Mythic' ? 'rarity-mythic' : 'rarity-epic';
+        let html = `<div style='background:rgba(10,18,40,0.60);border-radius:18px;padding:2.2em 2.2em 1.5em 2.2em;box-shadow:0 0 32px #00d4ff55,0 0 0 2.5px #00d4ff inset;width:1000px;max-width:1000px;display:flex;flex-direction:column;align-items:center;justify-content:center;word-break:break-word;'>`;
+        html += `<h2 style='color:#00d4ff;margin-bottom:0.5em;font-size:2em;text-shadow:0 0 8px #00d4ff88;'>${name}</h2>`;
+        html += `<span class='card-rarity ${rarityClass}' style='font-size:1.15em;margin-bottom:1.2em;display:inline-block;letter-spacing:0.08em;background:rgba(0,0,0,0.18);padding:0.3em 1.2em 0.3em 1.2em;border-radius:8px;border:1.5px solid #00d4ff;box-shadow:0 0 8px #00d4ff33;'>${info.Rarity}</span>`;
+        html += `<table class='system-table' style='margin:0 auto 1.2em auto;font-size:1.08em;width:100%;max-width:960px;word-break:break-word;table-layout:fixed;'><colgroup><col span='5' style='width:20%;'></colgroup>`;
+        html += `<tr><th>Location</th><th>Total Base Health</th><th>Total Max/Shiny Health</th><th>2-Piece Bonus</th><th>3-Piece Bonus</th></tr>`;
+        html += `<tr><td>${info.Location}</td><td>${info.BaseHealth}</td><td>${info.MaxHealth}</td><td>${info.Bonus2}</td><td>${info.Bonus3}</td></tr>`;
+        html += `</table>`;
+        if (name === "Commander Set") {
+          html += `<div style='margin:1.5em 0 0 0;text-align:center;'><img src='../images/MAP/Igrislocation.png' alt='Cursed Commander Location' style='max-width:420px;width:100%;border-radius:1em;box-shadow:0 0 18px #00d4ff55;'/><div style='color:#00d4ff;font-size:1.08em;margin-top:0.5em;'>Cursed Commander Location</div></div>`;
+        }
+        html += `</div>`;
+        document.getElementById('armor-modal-content').innerHTML = html;
+        document.getElementById('armor-modal').style.display = 'flex';
+      });
+    });
+    document.getElementById('close-armor-modal').onclick = function() {
+      document.getElementById('armor-modal').style.display = 'none';
+    };
+    document.getElementById('armor-modal').onclick = function(e) {
+      if (e.target === this) this.style.display = 'none';
+    };
+  </script>
 
   <!-- Armor Modal -->
   <div id="armor-modal" class="system-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9999;align-items:center;justify-content:center;overflow:auto;background:rgba(0,0,0,0.18);">
@@ -420,284 +460,6 @@ body .item-card.epic-glow.floaty-card {
     </ul>
   </nav>
 
-  <div class="page-wrapper">
-    <div class="container">
-
-      <!-- Page Header -->
-      <header class="page-header">
-        <div class="system-tag">[ DATABASE — ARMOR MODULE ]</div>
-        <h1 class="page-title">Armor Guide</h1>
-        <p class="page-subtitle">Defense Sets · Passive Bonuses · Rarity Tiers</p>
-      </header>
-
-      <div class="cards-grid armor-cards-grid">
-        <!-- Armor Cards -->
-        <article class="item-card armor-popup" data-armor="Commander Set">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/CursedCommander.png" alt="Commander Set" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Commander Set</h2>
-          </div>
-        </article>
-        <article class="item-card armor-popup" data-armor="Oathkeeper Set">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/OathKeeper.png" alt="Oathkeeper Set" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Oathkeeper Set</h2>
-          </div>
-        </article>
-        <article class="item-card armor-popup" data-armor="Sunforge Set">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/SunForge.png" alt="Sunforge Set" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Sunforge Set</h2>
-          </div>
-        </article>
-        <article class="item-card armor-popup" data-armor="Serpent Set">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/Serpant.png" alt="Serpent Set" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Serpent Set</h2>
-          </div>
-        </article>
-        <article class="item-card armor-popup" data-armor="Venomspike Set">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/VenomSpike.png" alt="Venomspike Set" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Venomspike Set</h2>
-          </div>
-        </article>
-        <article class="item-card armor-popup" data-armor="Astral Set">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/Astral.png" alt="Astral Set" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Astral Set</h2>
-          </div>
-        </article>
-        <article class="item-card armor-popup" data-armor="Bloodsteel Set">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/BloodSteel.png" alt="Bloodsteel Set" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Bloodsteel Set</h2>
-          </div>
-        </article>
-        <article class="item-card armor-popup" data-armor="Iron Set">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/Ironset.png" alt="Iron Set" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Iron Set</h2>
-          </div>
-        </article>
-
-        <!-- Hunter Plate -->
-        <article class="item-card" data-type="armor" data-filter="rare">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/HunterPlate.png" alt="Hunter Plate" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Hunter Plate</h2>
-            <span class="card-rarity rarity-rare">Rare</span>
-            <div class="card-stats">
-              <div class="stat-row">
-                <span class="stat-label">Defense</span>
-                <span class="stat-value">2,400</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Endurance</span>
-                <span class="stat-value">+30%</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Movement</span>
-                <span class="stat-value">Normal</span>
-              </div>
-            </div>
-            <p class="card-effect">⚡ Standard-issue mana-reinforced plating. Reduces physical damage by 15%.</p>
-            <p class="card-obtain">📍 Obtain: <span>Hunter's Guild Shop / C-Rank Gate Drop</span></p>
-          </div>
-        </article>
-
-        <!-- Demon King Armor -->
-        <article class="item-card" data-type="armor" data-filter="legendary">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/demon_king.svg" alt="Demon King Armor" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Demon King Armor</h2>
-            <span class="card-rarity rarity-legendary">Legendary</span>
-            <div class="card-stats">
-              <div class="stat-row">
-                <span class="stat-label">Defense</span>
-                <span class="stat-value">5,500</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Dark Resist</span>
-                <span class="stat-value">+60%</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Intimidation</span>
-                <span class="stat-value">+40%</span>
-              </div>
-            </div>
-            <p class="card-effect">⚡ Demon's Wrath: Deals 500 dark damage to attackers on block. Reduces incoming mana attacks by 25%.</p>
-            <p class="card-obtain">📍 Obtain: <span>Demon King Boss Drop (A-Rank Gate)</span></p>
-          </div>
-        </article>
-
-        <!-- Iron Fortress Armor -->
-        <article class="item-card" data-type="armor" data-filter="common">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/iron_fortress.svg" alt="Iron Fortress Armor" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Iron Fortress</h2>
-            <span class="card-rarity rarity-common">Common</span>
-            <div class="card-stats">
-              <div class="stat-row">
-                <span class="stat-label">Defense</span>
-                <span class="stat-value">800</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Endurance</span>
-                <span class="stat-value">+10%</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Weight</span>
-                <span class="stat-value">Heavy</span>
-              </div>
-            </div>
-            <p class="card-effect">⚡ Sturdy construction. Slight movement penalty but excellent base protection for new hunters.</p>
-            <p class="card-obtain">📍 Obtain: <span>Blacksmith (Crafted) / E-D Rank Gate Drop</span></p>
-          </div>
-        </article>
-
-        <!-- Elf Ranger Armor -->
-        <article class="item-card" data-type="armor" data-filter="epic">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/elf_ranger.svg" alt="Elf Ranger Armor" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Elf Ranger Vest</h2>
-            <span class="card-rarity rarity-epic">Epic</span>
-            <div class="card-stats">
-              <div class="stat-row">
-                <span class="stat-label">Defense</span>
-                <span class="stat-value">3,100</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Agility</span>
-                <span class="stat-value">+45%</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Critical Rate</span>
-                <span class="stat-value">+20%</span>
-              </div>
-            </div>
-            <p class="card-effect">⚡ Wind Step passive: Movement speed +25%. Chance to evade attacks (10% dodge rate).</p>
-            <p class="card-obtain">📍 Obtain: <span>Dungeon Boss Drop (B-Rank Gate) / Auction House</span></p>
-          </div>
-        </article>
-
-        <!-- Mage Robe -->
-        <article class="item-card" data-type="armor" data-filter="epic">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/mage_robe.svg" alt="Arcane Mage Robe" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Arcane Mage Robe</h2>
-            <span class="card-rarity rarity-epic">Epic</span>
-            <div class="card-stats">
-              <div class="stat-row">
-                <span class="stat-label">Defense</span>
-                <span class="stat-value">1,200</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Magic Attack</span>
-                <span class="stat-value">+55%</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Mana Pool</span>
-                <span class="stat-value">+40%</span>
-              </div>
-            </div>
-            <p class="card-effect">⚡ Arcane Amplifier: Spell cooldowns reduced by 20%. Mana regen +30% outside combat.</p>
-            <p class="card-obtain">📍 Obtain: <span>Mage Tower Exchange / B-Rank Gate Chest</span></p>
-          </div>
-        </article>
-
-      </div><!-- /.cards-grid -->
-
-    </div><!-- /.container -->
-  </div><!-- /.page-wrapper -->
-
-  <footer class="site-footer">
-    <p>SOLO LEVELING SYSTEM DATABASE — <span>ARMOR MODULE</span></p>
-  </footer>
-
-  <!-- Armor Modal -->
-  <div id="armor-modal" class="system-modal" style="display:none;"></div>
-      0% { filter: brightness(1) blur(0px); }
-      50% { filter: brightness(1.2) blur(1.5px); }
-      100% { filter: brightness(1) blur(0px); }
-    }
-    @keyframes grid-move {
-      0% { filter: brightness(1) blur(0px); }
-      50% { filter: brightness(1.1) blur(1px); }
-.armor-modal-rarity.rarity-epic { color: #a259ff; border-color: #a259ff; }
-.armor-modal-table {
-      100% { filter: brightness(1) blur(0px); }
-    }
-    @keyframes orbs-move {
-      0% { filter: brightness(1) blur(0px); }
-          let html = `<div style='background:rgba(10,18,40,0.60);border-radius:18px;padding:2.2em 2.2em 1.5em 2.2em;box-shadow:0 0 32px #00d4ff55,0 0 0 2.5px #00d4ff inset;width:1000px;max-width:1000px;margin:0 auto;word-break:break-word;'>`;
-      100% { filter: brightness(1) blur(0px); }
-    }
-          html += `<table class='system-table' style='margin:0 auto 1.2em auto;font-size:1.22em;min-width:1200px;max-width:2000px;width:100%;box-sizing:border-box;word-break:break-word;table-layout:auto;'><colgroup><col span='5' style='width:20%;'></colgroup>`;
-.armor-modal-table th, .armor-modal-table td {
-          html += `<style>.system-table td, .system-table th {overflow-wrap:anywhere;word-break:break-word;}</style>`;
-      0% { filter: brightness(1) blur(0px); }
-      50% { filter: brightness(1.1) blur(1.5px); }
-      100% { filter: brightness(1) blur(0px); }
-    }
-.armor-modal-table th {
-    @keyframes particles-move {
-      0% { filter: brightness(1) blur(0px); }
-      50% { filter: brightness(1.2) blur(2px); }
-      100% { filter: brightness(1) blur(0px); }
-    }
-    @keyframes rays-move {
-      0% { filter: brightness(1) blur(0px); }
-      50% { filter: brightness(1.18) blur(2.5px); }
-.armor-modal-table td {
-      100% { filter: brightness(1) blur(0px); }
-    }
-    </style>
-    <svg viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <g opacity="0.18">
-        <rect x="200" y="200" width="1520" height="680" rx="32" stroke="#00d4ff" stroke-width="2.5"/>
-        <rect x="320" y="320" width="1280" height="440" rx="22" stroke="#7b2fff" stroke-width="1.5"/>
-        <path d="M200 540 H80 V1040 H1840 V540 H1720" stroke="#00d4ff" stroke-width="1.2"/>
-        <path d="M960 200 V80" stroke="#00d4ff" stroke-width="1.2"/>
-        <circle cx="960" cy="200" r="8" fill="#00d4ff"/>
-        document.getElementById('armor-modal-content').innerHTML = html;
-        document.getElementById('armor-modal').style.display = 'flex';
-      });
-        <circle cx="320" cy="320" r="6" fill="#7b2fff"/>
-        <circle cx="1600" cy="320" r="6" fill="#7b2fff"/>
-        <circle cx="320" cy="760" r="6" fill="#7b2fff"/>
-        <circle cx="1600" cy="760" r="6" fill="#7b2fff"/>
-      </g>
-    </svg>
-  </div>
-  <div class="system-bg-scanlines"></div>
-</style>
 <!-- FINAL OVERRIDE: Force all armor cards to animate and glow by rarity -->
 <style>
 body .item-card.mythic-glow.floaty-card {
@@ -739,251 +501,6 @@ body .item-card.epic-glow.floaty-card {
     </ul>
   </nav>
 
-  <div class="page-wrapper">
-    <div class="container">
-
-      <!-- Page Header -->
-      <header class="page-header">
-        <div class="system-tag">[ DATABASE — ARMOR MODULE ]</div>
-        <h1 class="page-title">Armor</h1>
-        <p class="page-subtitle">Mythic & Epic Sets · Glowing Rarities</p>
-      </header>
-
-      <div class="cards-grid armor-cards-grid">
-        <!-- Armor Cards: Weapons.html system style -->
-        <article class="item-card mythic-glow floaty-card armor-popup" data-type="armor" data-rarity="mythic" data-armor="Commander Set">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/CursedCommander.png" alt="Commander Set" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Commander Set</h2>
-            <span class="card-rarity rarity-mythic">Mythic</span>
-            <!-- No description on card front -->
-            <!-- SET INFO button removed -->
-          </div>
-        </article>
-        <article class="item-card mythic-glow floaty-card armor-popup" data-type="armor" data-rarity="mythic" data-armor="Oathkeeper Set">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/OathKeeper.png" alt="Oathkeeper Set" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Oathkeeper Set</h2>
-            <span class="card-rarity rarity-mythic">Mythic</span>
-            <!-- No description on card front -->
-            <!-- SET INFO button removed -->
-          </div>
-        </article>
-        <article class="item-card mythic-glow floaty-card armor-popup" data-type="armor" data-rarity="mythic" data-armor="Sunforge Set">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/SunForge.png" alt="Sunforge Set" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Sunforge Set</h2>
-            <span class="card-rarity rarity-mythic">Mythic</span>
-            <!-- No description on card front -->
-            <!-- SET INFO button removed -->
-          </div>
-        </article>
-        <article class="item-card mythic-glow floaty-card armor-popup" data-type="armor" data-rarity="mythic" data-armor="Serpent Set">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/Serpant.png" alt="Serpent Set" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Serpent Set</h2>
-            <span class="card-rarity rarity-mythic">Mythic</span>
-            <!-- No description on card front -->
-            <!-- SET INFO button removed -->
-          </div>
-        </article>
-        <article class="item-card mythic-glow floaty-card armor-popup" data-type="armor" data-rarity="mythic" data-armor="Venomspike Set">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/VenomSpike.png" alt="Venomspike Set" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Venomspike Set</h2>
-            <span class="card-rarity rarity-mythic">Mythic</span>
-            <!-- No description on card front -->
-            <!-- SET INFO button removed -->
-          </div>
-        </article>
-        <article class="item-card mythic-glow floaty-card armor-popup" data-type="armor" data-rarity="mythic" data-armor="Astral Set">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/Astral.png" alt="Astral Set" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Astral Set</h2>
-            <span class="card-rarity rarity-mythic">Mythic</span>
-            <!-- No description on card front -->
-            <!-- SET INFO button removed -->
-          </div>
-        </article>
-        <article class="item-card mythic-glow floaty-card armor-popup" data-type="armor" data-rarity="mythic" data-armor="Bloodsteel Set">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/Bloodsteel.png" alt="Bloodsteel Set" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Bloodsteel Set</h2>
-            <span class="card-rarity rarity-mythic">Mythic</span>
-            <!-- No description on card front -->
-            <!-- SET INFO button removed -->
-          </div>
-        </article>
-        <article class="item-card epic-glow floaty-card armor-popup" data-type="armor" data-rarity="epic" data-armor="Iron Set">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/Ironset.png" alt="Iron Set" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Iron Set</h2>
-            <span class="card-rarity rarity-epic">Epic</span>
-            <!-- No description on card front -->
-            <!-- SET INFO button removed -->
-          </div>
-        </article>
-
-        <!-- Hunter Plate -->
-        <article class="item-card" data-type="armor" data-filter="rare">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/HunterPlate.png" alt="Hunter Plate" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Hunter Plate</h2>
-            <span class="card-rarity rarity-rare">Rare</span>
-            <div class="card-stats">
-              <div class="stat-row">
-                <span class="stat-label">Defense</span>
-                <span class="stat-value">2,400</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Endurance</span>
-                <span class="stat-value">+30%</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Movement</span>
-                <span class="stat-value">Normal</span>
-              </div>
-            </div>
-            <p class="card-effect">⚡ Standard-issue mana-reinforced plating. Reduces physical damage by 15%.</p>
-            <p class="card-obtain">📍 Obtain: <span>Hunter's Guild Shop / C-Rank Gate Drop</span></p>
-          </div>
-        </article>
-
-        <!-- Demon King Armor -->
-        <article class="item-card" data-type="armor" data-filter="legendary">
-
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/demon_king.svg" alt="Demon King Armor" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Demon King Armor</h2>
-            <span class="card-rarity rarity-legendary">Legendary</span>
-            <div class="card-stats">
-              <div class="stat-row">
-                <span class="stat-label">Defense</span>
-                <span class="stat-value">5,500</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Dark Resist</span>
-                <span class="stat-value">+60%</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Intimidation</span>
-                <span class="stat-value">+40%</span>
-              </div>
-            </div>
-            <p class="card-effect">⚡ Demon's Wrath: Deals 500 dark damage to attackers on block. Reduces incoming mana attacks by 25%.</p>
-            <p class="card-obtain">📍 Obtain: <span>Demon King Boss Drop (A-Rank Gate)</span></p>
-          </div>
-        </article>
-
-        <!-- Iron Fortress Armor -->
-        <article class="item-card" data-type="armor" data-filter="common">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/iron_fortress.svg" alt="Iron Fortress Armor" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Iron Fortress</h2>
-            <span class="card-rarity rarity-common">Common</span>
-            <div class="card-stats">
-              <div class="stat-row">
-                <span class="stat-label">Defense</span>
-                <span class="stat-value">800</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Endurance</span>
-                <span class="stat-value">+10%</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Weight</span>
-                <span class="stat-value">Heavy</span>
-              </div>
-            </div>
-            <p class="card-effect">⚡ Sturdy construction. Slight movement penalty but excellent base protection for new hunters.</p>
-            <p class="card-obtain">📍 Obtain: <span>Blacksmith (Crafted) / E-D Rank Gate Drop</span></p>
-          </div>
-        </article>
-
-        <!-- Elf Ranger Armor -->
-        <article class="item-card" data-type="armor" data-filter="epic">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/elf_ranger.svg" alt="Elf Ranger Armor" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Elf Ranger Vest</h2>
-            <span class="card-rarity rarity-epic">Epic</span>
-            <div class="card-stats">
-              <div class="stat-row">
-                <span class="stat-label">Defense</span>
-                <span class="stat-value">3,100</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Agility</span>
-                <span class="stat-value">+45%</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Critical Rate</span>
-                <span class="stat-value">+20%</span>
-              </div>
-            </div>
-            <p class="card-effect">⚡ Wind Step passive: Movement speed +25%. Chance to evade attacks (10% dodge rate).</p>
-            <p class="card-obtain">📍 Obtain: <span>Dungeon Boss Drop (B-Rank Gate) / Auction House</span></p>
-          </div>
-        </article>
-
-        <!-- Mage Robe -->
-        <article class="item-card" data-type="armor" data-filter="epic">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/mage_robe.svg" alt="Arcane Mage Robe" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Arcane Mage Robe</h2>
-            <span class="card-rarity rarity-epic">Epic</span>
-            <div class="card-stats">
-              <div class="stat-row">
-                <span class="stat-label">Defense</span>
-                <span class="stat-value">1,200</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Magic Attack</span>
-                <span class="stat-value">+55%</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Mana Pool</span>
-                <span class="stat-value">+40%</span>
-              </div>
-            </div>
-            <p class="card-effect">⚡ Arcane Amplifier: Spell cooldowns reduced by 20%. Mana regen +30% outside combat.</p>
-            <p class="card-obtain">📍 Obtain: <span>Mage Tower Exchange / B-Rank Gate Chest</span></p>
-          </div>
-        </article>
-
-      </div><!-- /.cards-grid -->
-
-    </div><!-- /.container -->
-  </div><!-- /.page-wrapper -->
-  0% { filter: brightness(1) drop-shadow(0 0 0 #a259ff77); }
-  50% { filter: brightness(1.06) drop-shadow(0 0 8px #a259ff44); }
-  100% { filter: brightness(1) drop-shadow(0 0 0 #a259ff77); }
-}
 </style>
 
   <!-- Navigation -->
@@ -997,172 +514,6 @@ body .item-card.epic-glow.floaty-card {
       <li><a href="portals.html">Portals</a></li>
     </ul>
   </nav>
-
-  <!-- Duplicate Armor Guide section removed -->
-        <article class="item-card armor-popup" data-armor="Astral Set">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/Astral.png" alt="Astral Set" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Astral Set</h2>
-          </div>
-        </article>
-        <article class="item-card armor-popup" data-armor="Bloodsteel Set">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/Bloodsteel.png" alt="Bloodsteel Set" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Bloodsteel Set</h2>
-          </div>
-        </article>
-        <article class="item-card armor-popup" data-armor="Iron Set">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/Ironset.png" alt="Iron Set" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Iron Set</h2>
-          </div>
-        </article>
-
-        <!-- Hunter Plate -->
-        <article class="item-card" data-type="armor" data-filter="rare">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/HunterPlate.png" alt="Hunter Plate" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Hunter Plate</h2>
-            <span class="card-rarity rarity-rare">Rare</span>
-            <div class="card-stats">
-              <div class="stat-row">
-                <span class="stat-label">Defense</span>
-                <span class="stat-value">2,400</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Endurance</span>
-                <span class="stat-value">+30%</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Movement</span>
-                <span class="stat-value">Normal</span>
-              </div>
-            </div>
-            <p class="card-effect">⚡ Standard-issue mana-reinforced plating. Reduces physical damage by 15%.</p>
-            <p class="card-obtain">📍 Obtain: <span>Hunter's Guild Shop / C-Rank Gate Drop</span></p>
-          </div>
-        </article>
-
-        <!-- Demon King Armor -->
-        <article class="item-card" data-type="armor" data-filter="legendary">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/demon_king.svg" alt="Demon King Armor" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Demon King Armor</h2>
-            <span class="card-rarity rarity-legendary">Legendary</span>
-            <div class="card-stats">
-              <div class="stat-row">
-                <span class="stat-label">Defense</span>
-                <span class="stat-value">5,500</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Dark Resist</span>
-                <span class="stat-value">+60%</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Intimidation</span>
-                <span class="stat-value">+40%</span>
-              </div>
-            </div>
-            <p class="card-effect">⚡ Demon's Wrath: Deals 500 dark damage to attackers on block. Reduces incoming mana attacks by 25%.</p>
-            <p class="card-obtain">📍 Obtain: <span>Demon King Boss Drop (A-Rank Gate)</span></p>
-          </div>
-        </article>
-
-        <!-- Iron Fortress Armor -->
-        <article class="item-card" data-type="armor" data-filter="common">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/iron_fortress.svg" alt="Iron Fortress Armor" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Iron Fortress</h2>
-            <span class="card-rarity rarity-common">Common</span>
-            <div class="card-stats">
-              <div class="stat-row">
-                <span class="stat-label">Defense</span>
-                <span class="stat-value">800</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Endurance</span>
-                <span class="stat-value">+10%</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Weight</span>
-                <span class="stat-value">Heavy</span>
-              </div>
-            </div>
-            <p class="card-effect">⚡ Sturdy construction. Slight movement penalty but excellent base protection for new hunters.</p>
-            <p class="card-obtain">📍 Obtain: <span>Blacksmith (Crafted) / E-D Rank Gate Drop</span></p>
-          </div>
-        </article>
-
-        <!-- Elf Ranger Armor -->
-        <article class="item-card" data-type="armor" data-filter="epic">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/elf_ranger.svg" alt="Elf Ranger Armor" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Elf Ranger Vest</h2>
-            <span class="card-rarity rarity-epic">Epic</span>
-            <div class="card-stats">
-              <div class="stat-row">
-                <span class="stat-label">Defense</span>
-                <span class="stat-value">3,100</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Agility</span>
-                <span class="stat-value">+45%</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Critical Rate</span>
-                <span class="stat-value">+20%</span>
-              </div>
-            </div>
-            <p class="card-effect">⚡ Wind Step passive: Movement speed +25%. Chance to evade attacks (10% dodge rate).</p>
-            <p class="card-obtain">📍 Obtain: <span>Dungeon Boss Drop (B-Rank Gate) / Auction House</span></p>
-          </div>
-        </article>
-
-        <!-- Mage Robe -->
-        <article class="item-card" data-type="armor" data-filter="epic">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/armor/mage_robe.svg" alt="Arcane Mage Robe" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Arcane Mage Robe</h2>
-            <span class="card-rarity rarity-epic">Epic</span>
-            <div class="card-stats">
-              <div class="stat-row">
-                <span class="stat-label">Defense</span>
-                <span class="stat-value">1,200</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Magic Attack</span>
-                <span class="stat-value">+55%</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">Mana Pool</span>
-                <span class="stat-value">+40%</span>
-              </div>
-            </div>
-            <p class="card-effect">⚡ Arcane Amplifier: Spell cooldowns reduced by 20%. Mana regen +30% outside combat.</p>
-            <p class="card-obtain">📍 Obtain: <span>Mage Tower Exchange / B-Rank Gate Chest</span></p>
-          </div>
-        </article>
-
-      </div><!-- /.cards-grid -->
-
-    </div><!-- /.container -->
-  </div><!-- /.page-wrapper -->
 
   <footer class="site-footer">
     <p>SOLO LEVELING SYSTEM DATABASE — <span>ARMOR MODULE</span></p>

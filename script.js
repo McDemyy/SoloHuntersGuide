@@ -240,26 +240,24 @@ function initRecommendForm() {
 
 /* ---- Filter buttons ---- */
 function initFilters() {
-  const filterBars = document.querySelectorAll('.filter-bar');
-  filterBars.forEach(bar => {
-    const buttons = bar.querySelectorAll('.filter-btn');
-    const target = bar.dataset.target;
-    const cards = document.querySelectorAll(target);
+  // Only run on weapons.html
+  if (!window.location.pathname.includes('weapons.html')) return;
+  const filterBar = document.querySelector('.filter-bar');
+  if (!filterBar) return;
+  const buttons = filterBar.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.item-card[data-type]');
 
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        buttons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const filter = btn.dataset.filter;
-        cards.forEach(card => {
-          if (filter === 'all') {
-            card.style.display = '';
-          } else {
-            const cardFilter = card.dataset.filter || '';
-            card.style.display = cardFilter === filter ? '' : 'none';
-          }
-        });
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const type = btn.dataset.type;
+      cards.forEach(card => {
+        if (type === 'all') {
+          card.style.display = '';
+        } else {
+          card.style.display = (card.dataset.type === type) ? '' : 'none';
+        }
       });
     });
   });

@@ -1,3 +1,11 @@
+/* Make the magic modal popup a bit smaller */
+#magic-modal .system-modal-content {
+  max-width: none !important;
+  min-width: 0 !important;
+  width: auto !important;
+  padding: 1.2em 1em 1em 1em !important;
+  display: inline-block !important;
+}
 /* --- Solo Leveling tier glow effects for weapons and tier lists --- */
 .tier-label.s-tier {
   color: #ff4e6b;
@@ -141,15 +149,12 @@
 @keyframes card-float {
   0% {
     transform: translateY(0) scale(1);
-    box-shadow: inherit;
   }
   50% {
     transform: translateY(-12px) scale(1.04);
-    box-shadow: inherit;
   }
   100% {
     transform: translateY(0) scale(1);
-    box-shadow: inherit;
   }
 }
 .rarity-float {
@@ -290,18 +295,22 @@
   }
 }
 /* Armor card glows by rarity, floating handled by .floaty-card */
-.mythic-glow {
-  box-shadow: 0 0 32px 8px #00d4ffcc, 0 0 12px 2px #7b2fff99, 0 0 2px #fff2;
-  border: 2.5px solid #00d4ff;
+/* Animated rarity glow for cards */
+/* Red mythic glow for all weapon cards */
+.item-card.mythic-glow {
+  box-shadow: 0 0 32px 8px #ff2a2acc, 0 0 18px 4px #ff4e6b99, 0 0 2px #fff2 !important;
+  border: 2.5px solid #ff2a2a !important;
+  animation: mythic-glow-red-float 2.8s ease-in-out infinite alternate !important;
 }
-.epic-glow {
-  box-shadow: 0 0 32px 8px #a259ffcc, 0 0 12px 2px #7b2fff99, 0 0 2px #fff2;
-  border: 2.5px solid #a259ff;
+.item-card.epic-glow {
+  box-shadow: 0 0 32px 8px #a259ffcc, 0 0 12px 2px #7b2fff99, 0 0 2px #fff2 !important;
+  border: 2.5px solid #a259ff !important;
+  animation: epic-glow-float 2.8s ease-in-out infinite alternate !important;
 }
-@keyframes mythic-glow-float {
-  0% { box-shadow: 0 0 32px 8px #00d4ffcc, 0 0 12px 2px #7b2fff99, 0 0 2px #fff2; }
-  50% { box-shadow: 0 0 48px 16px #00fff7, 0 0 24px 8px #7b2fff, 0 0 8px #fff2; }
-  100% { box-shadow: 0 0 32px 8px #00d4ffcc, 0 0 12px 2px #7b2fff99, 0 0 2px #fff2; }
+@keyframes mythic-glow-red-float {
+  0% { box-shadow: 0 0 32px 8px #ff2a2acc, 0 0 18px 4px #ff4e6b99, 0 0 2px #fff2; }
+  50% { box-shadow: 0 0 56px 20px #ff4e6b, 0 0 32px 12px #ff2a2a, 0 0 12px #fff2; }
+  100% { box-shadow: 0 0 32px 8px #ff2a2acc, 0 0 18px 4px #ff4e6b99, 0 0 2px #fff2; }
 }
 @keyframes epic-glow-float {
   0% { box-shadow: 0 0 32px 8px #a259ffcc, 0 0 12px 2px #7b2fff99, 0 0 2px #fff2; }
@@ -435,12 +444,15 @@ body::before {
   border-radius: 1.2em;
   box-shadow: 0 0 32px #00d4ff55, 0 0 2px #fff2;
   padding: 2.2em 2.5em 1.5em 2.5em;
-  min-width: 320px;
-  max-width: 420px;
+  min-width: 0;
+  max-width: 98vw;
+  width: 98vw;
+  box-sizing: border-box;
   color: #eaf6ff;
   font-family: 'Orbitron', 'Segoe UI', monospace;
   position: relative;
   text-align: center;
+  overflow-x: auto;
 }
 .system-modal-close {
   position: absolute;
@@ -1112,42 +1124,49 @@ input[type=number] {
     align-items: center;
     justify-content: center;
     min-width: 320px;
-    max-width: 400px;
-    flex: 0 1 400px;
-  }
-  .centered-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.2em;
-    background: rgba(20,30,50,0.92);
-    border-radius: 1em;
-    box-shadow: 0 0 16px #00d4ff33, 0 0 2px #fff2;
-    padding: 2em 2.5em 1.5em 2.5em;
-    margin-bottom: 1.5em;
-  }
-  .centered-form label {
-    color: var(--neon-blue);
-    font-size: 1.2em;
-    font-weight: bold;
-  }
-  .centered-form input[type="number"] {
-    background: none;
-    border: 1.5px solid var(--neon-blue);
-    color: #fff;
-    border-radius: 0.5em;
-    padding: 0.4em 0.8em;
-    font-size: 1.1em;
-    width: 120px;
-    outline: none;
-    margin-bottom: 0.5em;
-  }
-  .centered-form .recommend-btn {
-    background: var(--neon-blue);
-    color: #0e1a2a;
-    border: none;
-    border-radius: 0.5em;
-    font-size: 1.1em;
+    @media (max-width: 900px) {
+      html {
+        font-size: 15px;
+      }
+      .container, .system-container, .page-wrapper {
+        padding: 0.5em 0.5em !important;
+        max-width: 100vw !important;
+      }
+      .menu-grid, .center-grid {
+        flex-direction: column !important;
+        gap: 1.2em !important;
+        align-items: stretch !important;
+      }
+      .menu-btn {
+        min-width: 0 !important;
+        width: 100% !important;
+        font-size: 1.08em !important;
+        padding: 1.1em 0.5em !important;
+      }
+      .status-bar {
+        flex-direction: column !important;
+        gap: 0.5em !important;
+        font-size: 1em !important;
+      }
+      .system-modal-content {
+        min-width: 0 !important;
+        max-width: 98vw !important;
+        width: 98vw !important;
+        padding: 1.1em 0.5em 1em 0.5em !important;
+        font-size: 1em !important;
+        box-sizing: border-box !important;
+        overflow-x: auto !important;
+      }
+      .system-modal {
+        align-items: flex-end !important;
+        padding-bottom: 2em !important;
+      }
+      .credits-modal-content {
+        min-width: 0 !important;
+        max-width: 95vw !important;
+        font-size: 1em !important;
+      }
+    }
     font-weight: bold;
     padding: 0.5em 1.5em;
     box-shadow: 0 0 12px #00d4ff55;
