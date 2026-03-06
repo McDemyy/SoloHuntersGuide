@@ -37,14 +37,23 @@ If you see this error when trying to commit:
 fatal: no email was given and auto-detection is disabled
 ```
 
-It means Git doesn't have your name and email yet. Fix it by running these two commands in any terminal (replace the values with your own details — use the email address linked to your GitHub account):
+It means Git doesn't have your name and email yet. The easiest fix is to run one of the included setup scripts:
+
+| Your OS | What to do |
+|---------|-----------|
+| **Windows** | Double-click **`setup.bat`** in the project folder |
+| **Mac / Linux** | Open a terminal in the project folder and run `bash setup.sh` |
+
+The script will ask for your name and email, then configure Git for you automatically.
+
+**Or** run the two commands yourself in any terminal (use the email address linked to your GitHub account):
 
 ```bash
 git config --global user.name "Your Name"
 git config --global user.email "you@example.com"
 ```
 
-> **Tip:** Use the same email address you signed up to GitHub with. You only need to do this **once** on each computer you work on.
+> **Tip:** You only need to do this **once** on each computer you work on.
 
 You can double-check it worked with:
 
