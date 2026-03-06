@@ -28,6 +28,35 @@ SoloHuntersGuide/
 
 ---
 
+## First-time Git setup (do this once)
+
+Before you can commit anything, Git needs to know who you are.  
+If you see this error when trying to commit:
+
+```
+fatal: no email was given and auto-detection is disabled
+```
+
+It means Git doesn't have your name and email yet. Fix it by running these two commands in any terminal (replace the values with your own details — use the email address linked to your GitHub account):
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+```
+
+> **Tip:** Use the same email address you signed up to GitHub with. You only need to do this **once** on each computer you work on.
+
+You can double-check it worked with:
+
+```bash
+git config --global user.name   # should print your name
+git config --global user.email  # should print your email
+```
+
+Once that's set, carry on with the steps below.
+
+---
+
 ## How to push your VS Code changes to GitHub
 
 ### Option A — VS Code Source Control panel (no terminal needed)
