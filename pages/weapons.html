@@ -52,6 +52,88 @@
     80% { opacity: 0.22; transform: scaleX(0.96) skewX(-6deg); }
     100% { opacity: 0; transform: scaleX(1.12) skewX(0deg); }
   }
+
+  /* --- Solo Leveling tier glow effects for weapons --- */
+  .tier-label.s-tier {
+    color: #ff4e6b;
+    text-shadow: 0 0 14px #ff4e6b, 0 0 24px #ff4e6b;
+    animation: s-tier-label-glow-weapons 2.5s ease-in-out infinite alternate;
+  }
+  .tier-label.a-tier {
+    color: #6e7fff;
+    text-shadow: 0 0 12px #6e7fff, 0 0 24px #6e7fff;
+    animation: a-tier-label-glow 2.5s ease-in-out infinite alternate;
+  }
+  .tier-label.b-tier {
+    color: #ffd700 !important;
+    text-shadow: 0 0 12px #ffd700, 0 0 22px #ffd700 !important;
+    animation: b-tier-label-glow 2.5s ease-in-out infinite alternate !important;
+  }
+  .tier-label.f-tier {
+    color: #7fd8ff !important;
+    text-shadow: 0 0 12px #7fd8ff, 0 0 22px #7fd8ff !important;
+    animation: f-tier-label-glow-lightblue 2.5s ease-in-out infinite alternate !important;
+  }
+  .solo-slot.s-tier {
+    border-color: #ff4e6b;
+    box-shadow: 0 0 18px 5px #ff4e6bcc, 0 0 28px 10px #ff4e6baa;
+    animation: float-glow-s-tier 7s ease-in-out infinite alternate, s-tier-pulse-magic 2.8s ease-in-out infinite alternate;
+  }
+  .solo-slot.a-tier {
+    border-color: #6e7fff;
+    box-shadow: 0 0 18px 4px #6e7fffcc, 0 0 32px 8px #6e7fff88;
+    animation: float-glow-a-tier 7.5s ease-in-out infinite alternate;
+  }
+  .solo-slot.b-tier {
+    border-color: #ffd700 !important;
+    box-shadow: 0 0 16px 4px #ffd700cc, 0 0 28px 8px #ffd70088 !important;
+    animation: float-glow-b-tier 7.5s ease-in-out infinite alternate !important;
+  }
+  .solo-slot.f-tier {
+    border-color: #7fd8ff !important;
+    box-shadow: 0 0 14px 4px #7fd8ffcc, 0 0 24px 8px #7fd8ff88 !important;
+    animation: float-glow-f-tier 8.5s ease-in-out infinite alternate !important;
+  }
+  @keyframes float-glow-s-tier {
+    0% { transform: translateY(0px) scale(1); box-shadow: 0 0 18px 5px #ff4e6bcc, 0 0 28px 10px #ff4e6baa; }
+    50% { transform: translateY(-8px) scale(1.04); box-shadow: 0 0 28px 10px #ff4e6b, 0 0 40px 16px #ff4e6b; }
+    100% { transform: translateY(0px) scale(1); box-shadow: 0 0 18px 5px #ff4e6bcc, 0 0 28px 10px #ff4e6baa; }
+  }
+  @keyframes float-glow-a-tier {
+    0% { transform: translateY(0px) scale(1); box-shadow: 0 0 18px 4px #6e7fffcc, 0 0 32px 8px #6e7fff88; }
+    50% { transform: translateY(-6px) scale(1.03); box-shadow: 0 0 32px 12px #6e7fff, 0 0 40px 16px #6e7fff; }
+    100% { transform: translateY(0px) scale(1); box-shadow: 0 0 18px 4px #6e7fffcc, 0 0 32px 8px #6e7fff88; }
+  }
+  @keyframes s-tier-label-glow-weapons {
+    0% { text-shadow: 0 0 14px #ff4e6b, 0 0 24px #ff4e6b; }
+    50% { text-shadow: 0 0 24px #ff4e6b, 0 0 40px #ff4e6b; }
+    100% { text-shadow: 0 0 14px #ff4e6b, 0 0 24px #ff4e6b; }
+  }
+  @keyframes a-tier-label-glow {
+    0% { text-shadow: 0 0 12px #6e7fff, 0 0 24px #6e7fff; }
+    50% { text-shadow: 0 0 24px #6e7fff, 0 0 40px #6e7fff; }
+    100% { text-shadow: 0 0 12px #6e7fff, 0 0 24px #6e7fff; }
+  }
+  @keyframes b-tier-label-glow {
+    0% { text-shadow: 0 0 12px #ffd700, 0 0 22px #ffd700; }
+    50% { text-shadow: 0 0 22px #ffd700, 0 0 36px #ffd700; }
+    100% { text-shadow: 0 0 12px #ffd700, 0 0 22px #ffd700; }
+  }
+  @keyframes f-tier-label-glow-lightblue {
+    0% { text-shadow: 0 0 12px #7fd8ff, 0 0 22px #7fd8ff; }
+    50% { text-shadow: 0 0 22px #7fd8ff, 0 0 36px #7fd8ff; }
+    100% { text-shadow: 0 0 12px #7fd8ff, 0 0 22px #7fd8ff; }
+  }
+  @keyframes float-glow-b-tier {
+    0% { transform: translateY(0px) scale(1); box-shadow: 0 0 16px 4px #ffd700cc, 0 0 28px 8px #ffd70088; }
+    50% { transform: translateY(-4px) scale(1.02); box-shadow: 0 0 28px 12px #ffd700, 0 0 36px 16px #ffd700; }
+    100% { transform: translateY(0px) scale(1); box-shadow: 0 0 16px 4px #ffd700cc, 0 0 28px 8px #ffd70088; }
+  }
+  @keyframes float-glow-f-tier {
+    0% { transform: translateY(0px) scale(1); box-shadow: 0 0 14px 4px #7fd8ffcc, 0 0 24px 8px #7fd8ff88; }
+    50% { transform: translateY(-2px) scale(1.01); box-shadow: 0 0 24px 12px #7fd8ff, 0 0 32px 16px #7fd8ff; }
+    100% { transform: translateY(0px) scale(1); box-shadow: 0 0 14px 4px #7fd8ffcc, 0 0 24px 8px #7fd8ff88; }
+  }
   </style>
 <body>
   <div class="system-bg-scanlines"></div>
@@ -121,7 +203,7 @@
               <b>Damage:</b> SS<br>
               <span class="desc-short">See weapon info for details.</span>
             </div>
-            <a class="system-btn-more system-btn-glow" href="weapons/knightsedge.html"><span class="system-btn-icon">&#128712;</span> <span class="system-btn-label">WEAPON INFO</span></a>
+            <a class="weapon-info-btn" href="weapons/knightsedge.html"><span class="system-btn-icon">&#128712;</span> <span class="system-btn-label">WEAPON INFO</span></a>
         </article>
         <article class="item-card" data-type="weapon" data-filter="scythe" data-rarity="mythic">
           <div class="card-image-wrap">
@@ -136,7 +218,7 @@
               <b>Damage:</b> SS<br>
               <span class="desc-short">See weapon info for details.</span>
             </div>
-            <a class="system-btn-more system-btn-glow" href="weapons/shadowscythe.html"><span class="system-btn-icon">&#128712;</span> <span class="system-btn-label">WEAPON INFO</span></a>
+            <a class="weapon-info-btn" href="weapons/shadowscythe.html"><span class="system-btn-icon">&#128712;</span> <span class="system-btn-label">WEAPON INFO</span></a>
           </div>
         </article>
         <article class="item-card" data-type="weapon" data-filter="axe" data-rarity="mythic">
@@ -152,7 +234,7 @@
               <b>Damage:</b> S+<br>
               <span class="desc-short">See weapon info for details.</span>
             </div>
-            <a class="system-btn-more system-btn-glow" href="weapons/thunderaxe.html"><span class="system-btn-icon">&#128712;</span> <span class="system-btn-label">WEAPON INFO</span></a>
+            <a class="weapon-info-btn" href="weapons/thunderaxe.html"><span class="system-btn-icon">&#128712;</span> <span class="system-btn-label">WEAPON INFO</span></a>
           </div>
         </article>
         <article class="item-card" data-type="weapon" data-filter="katana" data-rarity="mythic">
@@ -168,7 +250,7 @@
               <b>Damage:</b> S<br>
               <span class="desc-short">See weapon info for details.</span>
             </div>
-            <a class="system-btn-more system-btn-glow" href="weapons/carmseikatana.html"><span class="system-btn-icon">&#128712;</span> <span class="system-btn-label">WEAPON INFO</span></a>
+            <a class="weapon-info-btn" href="weapons/carmseikatana.html"><span class="system-btn-icon">&#128712;</span> <span class="system-btn-label">WEAPON INFO</span></a>
           </div>
         </article>
         <article class="item-card" data-type="weapon" data-filter="dagger" data-rarity="mythic">
@@ -184,7 +266,7 @@
               <b>Damage:</b> SS+<br>
               <span class="desc-short">See weapon info for details.</span>
             </div>
-            <a class="system-btn-more system-btn-glow" href="weapons/venomfang.html"><span class="system-btn-icon">&#128712;</span> <span class="system-btn-label">WEAPON INFO</span></a>
+            <a class="weapon-info-btn" href="weapons/venomfang.html"><span class="system-btn-icon">&#128712;</span> <span class="system-btn-label">WEAPON INFO</span></a>
           </div>
         </article>
         <article class="item-card" data-type="weapon" data-filter="dagger" data-rarity="mythic">
@@ -200,7 +282,7 @@
               <b>Damage:</b> SS<br>
               <span class="desc-short">See weapon info for details.</span>
             </div>
-            <a class="system-btn-more system-btn-glow" href="weapons/dualdagger.html"><span class="system-btn-icon">&#128712;</span> <span class="system-btn-label">WEAPON INFO</span></a>
+            <a class="weapon-info-btn" href="weapons/dualdagger.html"><span class="system-btn-icon">&#128712;</span> <span class="system-btn-label">WEAPON INFO</span></a>
           </div>
         </article>
         <article class="item-card" data-type="weapon" data-filter="trident" data-rarity="mythic">
@@ -216,7 +298,7 @@
               <b>Damage:</b> S++<br>
               <span class="desc-short">See weapon info for details.</span>
             </div>
-            <a class="system-btn-more system-btn-glow" href="weapons/kingstrident.html"><span class="system-btn-icon">&#128712;</span> <span class="system-btn-label">WEAPON INFO</span></a>
+            <a class="weapon-info-btn" href="weapons/kingstrident.html"><span class="system-btn-icon">&#128712;</span> <span class="system-btn-label">WEAPON INFO</span></a>
           </div>
         </article>
         <article class="item-card" data-type="weapon" data-filter="sword" data-rarity="mythic">
@@ -232,7 +314,7 @@
               <b>Damage:</b> C<br>
               <span class="desc-short">See weapon info for details.</span>
             </div>
-            <a class="system-btn-more system-btn-glow" href="weapons/linksword.html"><span class="system-btn-icon">&#128712;</span> <span class="system-btn-label">WEAPON INFO</span></a>
+            <a class="weapon-info-btn" href="weapons/linksword.html"><span class="system-btn-icon">&#128712;</span> <span class="system-btn-label">WEAPON INFO</span></a>
           </div>
         </article>
 
@@ -248,344 +330,5 @@
     </div><!-- /.container -->
   </div><!-- /.page-wrapper -->
 
-  <footer class="site site">
-    <p>SOLO LEVELING SYSTEM DATABASE — <span>WEAPONS MODULE</span></p>
-  </footer>
-
-  <script src="../script.js"></script>
-  <script src="./armor-bg-animate.js"></script>
-  <style>
-        .system-btn-glow {
-          background: none;
-          border: none;
-          border-bottom: 2.5px solid #00d4ff;
-          color: #00d4ff;
-          font-family: 'Courier New', 'Lucida Console', monospace;
-          font-size: 1.08em;
-          font-weight: bold;
-          letter-spacing: 0.11em;
-          padding: 0.2em 0.5em 0.1em 0.5em;
-          margin: 0 auto;
-          display: flex;
-          align-items: center;
-          gap: 0.5em;
-          box-shadow: 0 0 18px #00d4ff55, 0 0 0 #7b2fff00;
-          text-shadow: 0 0 8px #00d4ff88, 0 0 2px #7b2fff;
-          background-clip: text;
-          cursor: pointer;
-          transition: color 0.18s, border-color 0.18s, box-shadow 0.18s;
-          outline: none;
-          border-radius: 0;
-        }
-        .system-btn-glow:hover, .system-btn-glow:focus {
-          color: #fff;
-          border-bottom: 2.5px solid #7b2fff;
-          box-shadow: 0 0 32px #7b2fff88, 0 0 48px #00d4ff44;
-          text-shadow: 0 0 16px #7b2fff, 0 0 8px #00d4ff;
-        }
-        .system-btn-icon {
-          font-size: 1.2em;
-          filter: drop-shadow(0 0 4px #00d4ff);
-          margin-right: 0.2em;
-        }
-        .system-btn-label {
-          font-family: inherit;
-          font-size: 1em;
-          font-weight: bold;
-          letter-spacing: 0.13em;
-          text-transform: uppercase;
-        }
-    .item-card {
-      background: rgba(10,20,40,0.92);
-      border: 2.5px solid #00d4ff44;
-      border-radius: 18px;
-      box-shadow: 0 0 18px 2px #00d4ff44, 0 0 0 2px #7b2fff22 inset, 0 0 18px 2px #ff4e6b55;
-      /* Mythic = red glow, structure for future */
-      padding: 22px 18px 18px 18px;
-      min-width: 220px;
-      max-width: 240px;
-      transition: box-shadow 0.2s, border 0.2s, transform 0.18s;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-    .item-card:hover {
-      box-shadow: 0 0 36px 10px #00d4ff88, 0 0 0 2px #7b2fff44 inset, 0 0 33px 10px #ff4e6b88;
-      border-color: #00d4ff;
-      transform: translateY(-4px) scale(1.03);
-    }
-    body {
-      background: linear-gradient(120deg, #0a0a1a 0%, #181a2a 100%) fixed;
-      color: #d6f6ff;
-      font-family: 'Courier New', 'Lucida Console', monospace;
-      overflow-x: hidden;
-    }
-    /* Solo Leveling themed animated background */
-    body::before  {
-      content: '';
-      position: fixed;
-      left: 0; top: 0; width: 100vw; height: 100vh;
-      z-index: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(ellipse at 60% 20%, rgba(0,212,255,0.13) 0%, transparent 70%),
-        radial-gradient(ellipse at 20% 80%, rgba(123,47,255,0.13) 0%, transparent 70%),
-        linear-gradient(120deg, #0a0a1a 0%, #181a2a 100%);
-      opacity: 0.32;
-      animation: bg-move 18s linear infinite alternate;
-    }
-    @keyframes bg-move {
-      0% { background-position: 0 0, 0 0, 0 0; }
-      100% { background-position: 60px 80px, -60px -80px, 0 0; }
-    }
-    /* Subtle scanline effect */
-    .system-bg-scanlines {
-      position: fixed;
-      left: 0; top: 0; width: 100vw; height: 100vh;
-      z-index: 1;
-      pointer-events: none;
-      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 212, 255, 0.04) 2px, rgba(0, 212, 255, 0.04) 4px);
-      blend-mode: lighten;
-      animation: scanline-move 2.2s linear infinite;
-      opacity: 0.18;
-    }
-    @keyframes scanline-move {
-      0% { background-position-y: 0; }
-      100% { background-position-y: 16px; }
-    }
-    /* Optional: animated blue/purple rays */
-    .system-bg-rays {
-      position: fixed;
-      left: 0; top: 0; width: 100vw; height: 100vh;
-      z-index: 2;
-      pointer-events: none;
-    }
-    .system-ray {
-      position: absolute;
-      left: 0; width: 100vw; height: 2px;
-      background: linear-gradient(90deg, rgba(0,212,255,0.18) 0%, rgba(123,47,255,0.18) 100%);
-      opacity: 0.18;
-      filter: blur(1.5px);
-      animation: ray-move 8s linear infinite;
-    }
-    @keyframes ray-move {
-      0% { left: -100vw; }
-      100% { left: 100vw; }
-    }
-  </style>
-
-  <!-- FINAL OVERRIDE: Force all weapon cards to glow red (mythic) -->
-  <style>
-    body .item-card[data-rarity="mythic"],
-    body .item-card {
-      border-color: #ff4e6b !important;
-      box-shadow: 0 0 18px 5px #ff4e6bcc, 0 0 28px 10px #ff4e6baa !important;
-      animation: float-glow-s-tier 7s ease-in-out infinite alternate, s-tier-pulse-magic 2.8s ease-in-out infinite alternate !important;
-    }
-  </style>
-  <div class="system-bg-stars"></div>
-  <div class="system-bg-grid"></div>
-  <div class="system-bg-particles"></div>
-  <div class="system-bg-rays"></div>
-  <div class="system-bg-circuit">
-    <svg viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <g opacity="0.18">
-        <rect x="200" y="200" width="1520" height="680" rx="32" stroke="#00d4ff" stroke-width="2.5"/>
-        <rect x="320" y="320" width="1280" height="440" rx="22" stroke="#7b2fff" stroke-width="1.5"/>
-        <path d="M200 540 H80 V1040 H1840 V540 H1720" stroke="#00d4ff" stroke-width="1.2"/>
-        <path d="M960 200 V80" stroke="#00d4ff" stroke-width="1.2"/>
-        <circle cx="960" cy="200" r="8" fill="#00d4ff"/>
-        <circle cx="320" cy="320" r="6" fill="#7b2fff"/>
-        <circle cx="1600" cy="320" r="6" fill="#7b2fff"/>
-        <circle cx="320" cy="760" r="6" fill="#7b2fff"/>
-        <circle cx="1600" cy="760" r="6" fill="#7b2fff"/>
-      </g>
-    </svg>
-  </div>
-  <div class="system-bg-scanlines"></div>
-  <script>
-    // Animated Solo Leveling rays
-    const rays = document.querySelector('.system-bg-rays');
-    if (rays && !rays.hasChildNodes()) {
-      for (let i = 0; i < 7; i++) {
-        const r = document.createElement('div');
-        r.className = 'system-ray';
-        r.style.top = Math.random() * 100 + 'vh';
-        r.style.animationDelay = (Math.random() * 7) + 's';
-        rays.appendChild(r);
-      }
-    }
-  </script>
-  // Remove old modal logic and use only the floating interface logic
-  document.querySelectorAll('.system-btn-more').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-      const card = btn.closest('.item-card');
-      if (card) {
-        const name = card.querySelector('.card-name')?.textContent || '';
-        document.getElementById('weapon-gui-content').innerHTML = `<h2 style='color:#00d4ff;text-align:center;'>${name}</h2><p style='text-align:center;'>Weapon info coming soon...</p>`;
-        const overlay = document.getElementById('weapon-gui-overlay');
-        overlay.classList.add('active');
-        overlay.style.display = 'flex';
-      }
-    });
-  });
-  document.querySelector('.weapon-gui-close').addEventListener('click', function() {
-    const overlay = document.getElementById('weapon-gui-overlay');
-    overlay.classList.remove('active');
-    setTimeout(() => { overlay.style.display = 'none'; }, 300);
-  });
-  window.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      const overlay = document.getElementById('weapon-gui-overlay');
-      overlay.classList.remove('active');
-      setTimeout(() => { overlay.style.display = 'none'; }, 300);
-    }
-  });
-  </script>
-  // Weapon descriptions for modal
-  const weaponDescriptions = {
-    'Knights Edge': 'A legendary sword said to cut through any defense. Gives the wielder immense speed and critical strike chance. [Mythic]',
-    'Shadow Scythe': 'Forged from the essence of shadows, this scythe drains the life of enemies and empowers the user with each kill. [Mythic]',
-    'Thunder Axe': 'An axe crackling with the power of storms. Each swing unleashes a thunderclap that stuns foes. [Mythic]',
-    'Katana': 'A razor-sharp katana with a mysterious aura. Increases agility and allows for rapid multi-strike attacks. [Mythic]',
-    'Venom Dagger': 'A blade coated in deadly poison. Each hit has a chance to inflict venom, dealing damage over time. [Mythic]',
-    'Dual Daggers': 'Twin daggers that strike in perfect harmony. Grants bonus attack speed and combo damage. [Mythic]',
-    'Trident': 'A regal trident that commands the tides. Can summon water barriers and launch piercing attacks. [Mythic]',
-    'Link Sword': 'A sword that links the user to their allies, sharing buffs and healing effects. [Mythic]'
-  };
-  </script>
-  <style>
-    .system-modal-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-    .modal-weapon-name {
-      font-size: 1.5rem;
-      color: #00d4ff;
-      font-weight: bold;
-      letter-spacing: 0.12em;
-      text-shadow: 0 0 12px #00d4ff88;
-      margin-bottom: 2px;
-    }
-    .modal-weapon-img {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .modal-weapon-img img {
-      width: 96px;
-      height: 96px;
-      filter: drop-shadow(0 0 18px #00d4ffcc);
-    }
-    .modal-weapon-desc {
-      font-size: 1.08rem;
-      color: #b6eaff;
-      text-align: center;
-      margin-bottom: 2px;
-    }
-  </style>
-  </script>
-  <!-- Lively Solo Leveling background effects -->
-  <script>
-    // Generate random stars on the system background
-    const starCount = 36;
-    const starsContainer = document.querySelector('.system-bg-stars');
-    if (starsContainer) {
-      for (let i = 0; i < starCount; i++) {
-        const star = document.createElement('div');
-        star.className = 'system-star';
-        star.style.left = Math.random() * 100 + 'vw';
-        star.style.top = Math.random() * 100 + 'vh';
-        star.style.animationDelay = (Math.random() * 3) + 's';
-        star.style.opacity = 0.5 + Math.random() * 0.5;
-        starsContainer.appendChild(star);
-      }
-    }
-    // Animated background particles
-    const bg = document.querySelector('.system-bg-particles');
-    if (bg && !bg.hasChildNodes()) {
-      for (let i = 0; i < 24; i++) {
-        const p = document.createElement('div');
-        p.className = 'particle';
-        p.style.left = Math.random() * 100 + '%';
-        p.style.top = Math.random() * 100 + '%';
-        p.style.animationDuration = (6 + Math.random() * 8) + 's';
-        p.style.opacity = 0.15 + Math.random() * 0.25;
-        bg.appendChild(p);
-      }
-    }
-    // Animated light rays
-    const rays = document.querySelector('.system-bg-rays');
-    if (rays && !rays.hasChildNodes()) {
-      for (let i = 0; i < 7; i++) {
-        const r = document.createElement('div');
-        r.className = 'system-ray';
-        r.style.top = Math.random() * 100 + 'vh';
-        r.style.animationDelay = (Math.random() * 7) + 's';
-        rays.appendChild(r);
-      }
-    }
-  </script>
-  <!-- Weapon GUI floating interface logic -->
-  <script>
-    const guiOverlay = document.getElementById('weapon-gui-overlay');
-    const guiContent = document.getElementById('weapon-gui-content');
-    document.querySelectorAll('.system-btn-more').forEach(btn => {
-      btn.addEventListener('click', function(e) {
-        const card = btn.closest('.item-card');
-        if (card) {
-          const name = card.querySelector('.card-name')?.textContent || '';
-          guiContent.innerHTML = `<h2 style='color:#00d4ff;text-align:center;'>${name}</h2><p style='text-align:center;'>Weapon info coming soon...</p>`;
-          guiOverlay.classList.add('active');
-          guiOverlay.classList.remove('inactive');
-        }
-      });
-    });
-    document.querySelector('.weapon-gui-close').addEventListener('click', function() {
-      guiOverlay.classList.remove('active');
-      guiOverlay.classList.add('inactive');
-      setTimeout(() => { guiOverlay.classList.remove('inactive'); guiOverlay.style.display = 'none'; }, 300);
-    });
-    window.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        guiOverlay.classList.remove('active');
-        guiOverlay.classList.add('inactive');
-        setTimeout(() => { guiOverlay.classList.remove('inactive'); guiOverlay.style.display = 'none'; }, 300);
-      }
-    });
-    // Show overlay as floating interface
-    const observer = new MutationObserver(() => {
-      if (guiOverlay.classList.contains('active')) {
-        guiOverlay.style.display = 'flex';
-      }
-    });
-    observer.observe(guiOverlay, { attributes: true, attributeFilter: ['class'] });
-  </script>
-  /* Weapon rarity glows */
-    .item-card[data-rarity="mythic"] {
-      border-color: #ff4e6b !important;
-      box-shadow: 0 0 18px 5px #ff4e6bcc, 0 0 28px 10px #ff4e6baa !important;
-      animation: float-glow-s-tier 7s ease-in-out infinite alternate, s-tier-pulse-magic 2.8s ease-in-out infinite alternate;
-    }
-    /* Force override for all other glows on weapons.html */
-    .item-card {
-      border-color: #ff4e6b !important;
-      box-shadow: 0 0 18px 5px #ff4e6bcc, 0 0 28px 10px #ff4e6baa !important;
-      animation: float-glow-s-tier 7s ease-in-out infinite alternate, s-tier-pulse-magic 2.8s ease-in-out infinite alternate !important;
-    }
-    @keyframes float-glow-s-tier {
-      0% { transform: translateY(0px) scale(1); box-shadow: 0 0 18px 5px #ff4e6bcc, 0 0 28px 10px #ff4e6baa; }
-      50% { transform: translateY(-8px) scale(1.04); box-shadow: 0 0 28px 10px #ff4e6b, 0 0 40px 16px #ff4e6b; }
-      100% { transform: translateY(0px) scale(1); box-shadow: 0 0 18px 5px #ff4e6bcc, 0 0 28px 10px #ff4e6baa; }
-    }
-    @keyframes s-tier-pulse-magic {
-      0% { box-shadow: 0 0 32px 10px #ff4e6bcc, 0 0 60px 18px #ff4e6baa; }
-      50% { box-shadow: 0 0 48px 18px #ff4e6b, 0 0 80px 32px #ff4e6b; }
-      100% { box-shadow: 0 0 32px 10px #ff4e6bcc, 0 0 60px 18px #ff4e6baa; }
-    }
-  </style>
-</body>
+  </body>
 </html>
