@@ -33,6 +33,9 @@
 <body>
   <audio id="bg-music" src="system-open.mp3" preload="auto" loop style="display:none;"></audio>
   <button id="mute-music-btn" style="position:fixed;bottom:18px;left:18px;z-index:1200;padding:0.4em 1.1em;font-size:0.98em;background:#0a1a2c;color:#00d4ff;border:1.5px solid #00d4ff;border-radius:0.7em;box-shadow:0 0 8px #00d4ff55;opacity:0.85;cursor:pointer;transition:opacity 0.2s;">Mute</button>
+  <div style="position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:1200;display:flex;align-items:center;">
+    <a href="pages/beginner-guide.html" id="beginner-guide-btn" style="padding:0.3em 0.9em;font-size:0.85em;background:linear-gradient(90deg,#00d4ff 60%,#7b2fff 100%);color:#fff;border-radius:0.7em;box-shadow:0 0 8px #00d4ff55;opacity:0.85;font-weight:600;letter-spacing:0.03em;text-decoration:none;border:1.5px solid #00d4ff;transition:box-shadow 0.2s;">🛈 Beginner</a>
+  </div>
   <audio id="system-open-audio" src="system-open.mp3" preload="auto"></audio>
 
 
@@ -180,12 +183,7 @@
         <div class="hero-ring"></div>
       </div>
 
-      <!-- Beginner Guide Button -->
-      <div style="position:fixed;left:50%;bottom:38px;transform:translateX(-50%);z-index:1200;display:flex;flex-direction:column;align-items:center;">
-        <a href="pages/beginner-guide.html" id="beginner-guide-btn" style="background:linear-gradient(90deg,#00d4ff 60%,#7b2fff 100%);color:#fff;font-size:1.22em;font-weight:700;padding:1em 2.2em;border-radius:2em;box-shadow:0 0 24px 6px #00d4ff99,0 0 0 2px #fff2 inset;transition:box-shadow 0.2s;letter-spacing:0.04em;text-decoration:none;">
-          🛈 Beginner Guide
-        </a>
-      </div>
+      <!-- Beginner Guide Button moved to bottom left next to mute -->
         <div class="hero-ring"></div>
         <div class="hero-ring"></div>
         <div class="hero-ring"></div>
