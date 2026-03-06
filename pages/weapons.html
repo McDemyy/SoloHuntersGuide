@@ -211,24 +211,78 @@
           <div class="card-image-wrap">
             <img class="card-image" src="../images/weapons/ShadowScythe.png" alt="Shadow Scythe" />
           </div>
-          <div class="card-body">
-            <h2 class="card-name">Shadow Scythe</h2>
-            <span class="card-rarity rarity-mythic">Mythic</span>
-            <div class="card-desc">
-              <b>Range:</b> Short-Long<br>
-              <b>AOE:</b> S<br>
-              <b>Damage:</b> SS<br>
-              <span class="desc-short">See weapon info for details.</span>
-            </div>
-            <a class="weapon-info-btn" href="weapons/shadowscythe.html"><span class="system-btn-icon">&#128712;</span> <span class="system-btn-label">WEAPON INFO</span></a>
-          </div>
-        </article>
-        <article class="item-card mythic-glow floaty-card" data-type="weapon" data-filter="axe" data-rarity="mythic">
-          <div class="card-image-wrap">
-            <img class="card-image" src="../images/weapons/ThunderAxe.png" alt="Thunder Axe" />
-          </div>
-          <div class="card-body">
-            <h2 class="card-name">Thunder Axe</h2>
+                <button class="nav-mobile-btn" id="nav-mobile-btn" aria-label="Open navigation menu" style="display:none;">
+                  <span style="font-size:1.5em;color:#00d4ff;">☰</span>
+                </button>
+                <ul class="nav-links">
+                  <li><a href="weapons.html">Weapons</a></li>
+                  <li><a href="magic.html">Magic</a></li>
+                  <li><a href="armor.html">Armor</a></li>
+                  <li><a href="artifacts.html">Artifacts</a></li>
+                  <li><a href="builds.html">Builds</a></li>
+                  <li><a href="levelguide.html">Gate Info</a></li>
+                  <li><a href="#" id="open-map-modal">Map</a></li>
+                  <li>
+                    <a href="redgates.html" id="open-redgates-page" style="display:flex;align-items:center;gap:0.5em;">
+                      <img src="../images/Backgrounds/RedGateIcon.png" alt="Red Gates" style="height:1.3em;width:1.3em;vertical-align:middle;"/>
+                      <span>RedGates</span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="nav-sidepanel" id="nav-sidepanel" style="display:none;">
+                  <button class="nav-sidepanel-close" id="nav-sidepanel-close" aria-label="Close navigation menu">×</button>
+                  <ul class="nav-sidepanel-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="weapons.html">Weapons</a></li>
+                    <li><a href="magic.html">Magic</a></li>
+                    <li><a href="armor.html">Armor</a></li>
+                    <li><a href="artifacts.html">Artifacts</a></li>
+                    <li><a href="builds.html">Builds</a></li>
+                    <li><a href="levelguide.html">Gate Info</a></li>
+                    <li><a href="portals.html">Level Guide</a></li>
+                    <li><a href="#" id="open-map-modal">Map</a></li>
+                    <li><a href="redgates.html">RedGates</a></li>
+                  </ul>
+                </div>
+              </nav>
+              <script>
+                // Mobile navbar side panel logic
+                document.addEventListener('DOMContentLoaded', function() {
+                  const mobileBtn = document.getElementById('nav-mobile-btn');
+                  const sidepanel = document.getElementById('nav-sidepanel');
+                  const closeBtn = document.getElementById('nav-sidepanel-close');
+                  function showPanel() {
+                    sidepanel.style.display = 'block';
+                    setTimeout(() => sidepanel.classList.add('open'), 10);
+                  }
+                  function hidePanel() {
+                    sidepanel.classList.remove('open');
+                    setTimeout(() => sidepanel.style.display = 'none', 220);
+                  }
+                  if (mobileBtn && sidepanel) {
+                    mobileBtn.addEventListener('click', showPanel);
+                  }
+                  if (closeBtn && sidepanel) {
+                    closeBtn.addEventListener('click', hidePanel);
+                  }
+                  if (sidepanel) {
+                    sidepanel.addEventListener('click', function(e) {
+                      if (e.target === sidepanel) hidePanel();
+                    });
+                  }
+                  // Show mobile button only on small screens
+                  function updateMobileBtn() {
+                    if (window.innerWidth <= 900) {
+                      mobileBtn.style.display = 'block';
+                    } else {
+                      mobileBtn.style.display = 'none';
+                      hidePanel();
+                    }
+                  }
+                  window.addEventListener('resize', updateMobileBtn);
+                  updateMobileBtn();
+                });
+              </script>
             <span class="card-rarity rarity-mythic">Mythic</span>
             <div class="card-desc">
               <b>Range:</b> Extreme Long<br>
