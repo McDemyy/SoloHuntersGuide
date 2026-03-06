@@ -18,7 +18,8 @@ SoloHuntersGuide/
 │   ├── armor.html      # Armor guide (filterable by rarity)
 │   ├── weapons.html    # Weapons guide (filterable by type)
 │   ├── builds.html     # Build guides (Tank / DPS / Shadow / Boss Killer)
-│   └── portals.html    # Portal guide (expandable gate entries)
+│   ├── portals.html    # Portal guide (expandable gate entries)
+│   └── materials.html  # Materials guide (crafting resources by rarity)
 └── images/
     ├── armor/          # SVG armor icons
     ├── weapons/        # SVG weapon icons
@@ -114,5 +115,6 @@ All pages are plain HTML — no build step required.
 - **New armor/weapon card:** Copy an existing `<article class="item-card">` block in the relevant page, paste it at the bottom of the grid, and update the text and `data-filter` attribute.
 - **New build:** Copy a `<article class="build-card">` block in `builds.html`.
 - **New portal:** Copy a `<div class="portal-entry">` block in `portals.html` (including the inner `portal-content` div).
+- **New material:** Copy an existing `<article class="item-card" data-type="material">` block in `materials.html` and update the text, `data-filter` (rarity), and image path.
 
 After editing, save the file, then follow the push steps above to publish your changes.
