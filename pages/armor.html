@@ -323,11 +323,34 @@ body .item-card.epic-glow.floaty-card {
         html += `<tr><td>${info.Location}</td><td>${info.BaseHealth}</td><td>${info.MaxHealth}</td><td>${info.Bonus2}</td><td>${info.Bonus3}</td></tr>`;
         html += `</table>`;
         if (name === "Commander Set") {
-          html += `<div style='margin:1.5em 0 0 0;text-align:center;'><img src='../images/MAP/Igrislocation.png' alt='Cursed Commander Location' style='max-width:420px;width:100%;border-radius:1em;box-shadow:0 0 18px #00d4ff55;'/><div style='color:#00d4ff;font-size:1.08em;margin-top:0.5em;'>Cursed Commander Location</div></div>`;
+          html += `<div id='commander-map-container' style='margin:1.5em 0 0 0;text-align:center;'>`;
+          html += `  <button id='show-commander-map-btn' style='display:none;margin-bottom:1em;padding:0.7em 1.5em;font-size:1.1em;background:linear-gradient(90deg,#00d4ff 60%,#7b2fff 100%);color:#101a2a;border:none;border-radius:0.7em;box-shadow:0 0 8px #00d4ff55;cursor:pointer;'>Show Location</button>`;
+          html += `  <div id='commander-map-img' style='display:block;'><img src='../images/MAP/Igrislocation.png' alt='Cursed Commander Location' style='max-width:420px;width:100%;border-radius:1em;box-shadow:0 0 18px #00d4ff55;'/><div style='color:#00d4ff;font-size:1.08em;margin-top:0.5em;'>Cursed Commander Location</div></div>`;
+          html += `</div>`;
         }
         html += `</div>`;
         document.getElementById('armor-modal-content').innerHTML = html;
         document.getElementById('armor-modal').style.display = 'flex';
+        // Commander Set map mobile logic
+        if (name === "Commander Set") {
+          function isMobile() {
+            return window.innerWidth <= 800;
+          }
+          const mapContainer = document.getElementById('commander-map-container');
+          const mapImgDiv = document.getElementById('commander-map-img');
+          const showBtn = document.getElementById('show-commander-map-btn');
+          if (isMobile()) {
+            mapImgDiv.style.display = 'none';
+            showBtn.style.display = 'inline-block';
+            showBtn.onclick = function() {
+              mapImgDiv.style.display = 'block';
+              showBtn.style.display = 'none';
+            };
+          } else {
+            mapImgDiv.style.display = 'block';
+            showBtn.style.display = 'none';
+          }
+        }
       });
     });
     document.getElementById('close-armor-modal').onclick = function() {
