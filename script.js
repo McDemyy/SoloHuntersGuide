@@ -300,12 +300,46 @@ function initTypingEffect() {
 }
 
 /* ---- Init ---- */
+
 document.addEventListener('DOMContentLoaded', () => {
   initDungeonCardDropdowns();
   initRecommendForm();
   initArtifactMaterialsModal();
   initShinyToggle();
+  initFilters();
+  initCardAnimations();
+  initNavHighlight();
+  initWeaponModal();
 });
+
+// ---- Weapon Modal Logic ----
+function initWeaponModal() {
+  // For Solo Leveling style GUI overlay
+  const overlay = document.getElementById('weapon-gui-overlay');
+  const content = document.getElementById('weapon-gui-content');
+  const closeBtn = overlay ? overlay.querySelector('.weapon-gui-close') : null;
+  if (!overlay || !content || !closeBtn) return;
+  document.querySelectorAll('.weapon-info-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      // Optionally, fetch weapon info via AJAX or static HTML
+      // For now, just show a placeholder or load the linked page in an iframe
+      const href = btn.getAttribute('href');
+      content.innerHTML = `<iframe src="${href}" style="width:100%;height:60vh;border:none;background:#10131e;"></iframe>`;
+      overlay.style.display = 'flex';
+    });
+  });
+  closeBtn.addEventListener('click', function() {
+    overlay.style.display = 'none';
+    content.innerHTML = '';
+  });
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) {
+      overlay.style.display = 'none';
+      content.innerHTML = '';
+    }
+  });
+}
 
 function initShinyToggle() {
   const shinyBtn = document.getElementById('shiny-toggle');
