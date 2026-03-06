@@ -1,3 +1,9 @@
+html, body {
+  overscroll-behavior-y: contain;
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
 /* --- DUNGEON CARD OUTLINE & GLOW --- */
 .dungeon-card {
   border: 3px solid #00d4ff;
