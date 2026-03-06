@@ -6,15 +6,11 @@
       .builds-grid {
         display: flex;
         flex-direction: row;
-        justify-content: center !important;
-        align-items: center !important;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
         gap: 3em;
         margin-top: 2.5em;
-        margin-left: auto !important;
-        margin-right: auto !important;
         z-index: 2;
-        width: 100vw;
-        max-width: 100vw;
         box-sizing: border-box;
       }
       .builds-grid > .build-card {
@@ -151,78 +147,93 @@
         <div class="system-tag">[ DATABASE — BUILDS MODULE ]</div>
         <h1 class="page-title">Best Builds</h1>
         <p class="page-subtitle">Optimized Hunter Configurations · Armor · Weapons · Strategy</p>
-      <div class="builds-grid">
-        <!-- Physical Build -->
-        <article class="build-card physical-glow">
-          <span class="panel-corner tl"></span>
-          <span class="panel-corner tr"></span>
-          <span class="panel-corner bl"></span>
-          <span class="panel-corner br"></span>
-          <div class="build-header">
-            <h2 class="build-name">Physical Build</h2>
-            <p class="build-playstyle">Playstyle: Heavy-hitting tank</p>
-          </div>
-          <div class="build-img-row center-build-row">
-            <a href="weapons/shadowscythe.html"><img src="../images/weapons/ShadowScythe.png" alt="Shadow Scythe" class="build-img" style="height:60px;"></a>
-            <a href="#" class="armor-popup-build" data-armor="Commander Set"><img src="../images/armor/CursedCommander.png" alt="CursedCommander" class="build-img" style="height:60px;cursor:pointer;"></a>
-            <a href="artifacts.html"><img src="../images/Artifacts/ShadowFang.png" alt="Shadow Fang" class="build-img" style="height:60px;"></a>
-          </div>
-          <p class="build-section-label">Recommended Weapon</p>
-          <div class="build-items center-build-items">
-            <a href="weapons/shadowscythe.html" class="build-tag weapon clickable-link">Shadow Scythe</a>
-            <a href="weapons/dualdagger.html" class="build-tag weapon clickable-link">Dual Daggers</a>
-            <a href="weapons/thunderaxe.html" class="build-tag weapon clickable-link">Thunder Axe</a>
-          </div>
-          <p class="build-section-label">Recommended Armor</p>
-          <div class="build-items center-build-items">
-            <a href="#" class="build-tag clickable-link armor-popup-build" data-armor="Commander Set">CursedCommander</a>
-          </div>
-          <p class="build-section-label">Recommended Artifact</p>
-          <div class="build-items center-build-items">
-            <a href="artifacts.html" class="build-tag clickable-link">Shadow Fang</a>
-            <a href="artifacts.html" class="build-tag clickable-link">Wanwood</a>
-          </div>
-          <p class="build-section-label">Stats</p>
-          <div class="build-stats center-build-stats">
-            <span class="build-stat">Magic: <b>1</b></span>
-            <span class="build-stat">Strength: <b>1000</b></span>
-            <span class="build-stat">Defence: <b>700-800</b></span>
-            <span class="build-stat">Energy: <b>50-100</b></span>
-            <span class="build-stat">Agility: <b>1-100</b></span>
-          </div>
-          <p class="build-section-label">Best Class</p>
-          <div class="build-items center-build-items">
-            <span class="build-tag">Tank</span>
-          </div>
-        </article>
-
-        <!-- Magic Build -->
-        <article class="build-card magic-glow">
-          <span class="panel-corner tl"></span>
-          <span class="panel-corner tr"></span>
-          <span class="panel-corner bl"></span>
-          <span class="panel-corner br"></span>
-          <div class="build-header">
-            <h2 class="build-name">Magic Build</h2>
-            <p class="build-playstyle">Playstyle: High magic burst</p>
-          </div>
-          <div class="build-img-row center-build-row">
-            <a href="#" class="magic-popup" data-magic="Werewolf" data-obtain="Acquired from Summoning"><img src="../images/magic/Werewolf.png" alt="Werewolf" class="build-img" style="height:60px;cursor:pointer;"></a>
-            <a href="#" class="armor-popup-build" data-armor="Astral Set"><img src="../images/armor/Astral.png" alt="Astral Armor" class="build-img" style="height:60px;cursor:pointer;"></a>
-            <a href="artifacts.html"><img src="../images/Artifacts/DarkHeart.png" alt="Dark Heart Ring" class="build-img" style="height:60px;"></a>
-          </div>
-          <p class="build-section-label">Recommended Weapon</p>
-          <div class="build-items center-build-items">
-            <a href="#" class="build-tag weapon clickable-link magic-popup" data-magic="Werewolf" data-obtain="Acquired from Summoning">Werewolf</a>
-            <a href="#" class="build-tag weapon clickable-link magic-popup" data-magic="Divine Blade" data-obtain="Acquired from Summoning">Divine Blade</a>
-          </div>
-          <p class="build-section-label">Recommended Armor</p>
-          <div class="build-items center-build-items">
-            <a href="#" class="build-tag clickable-link armor-popup-build" data-armor="Astral Set">Astral</a>
-          </div>
-          <p class="build-section-label">Recommended Artifact</p>
-          <div class="build-items center-build-items">
-            <a href="artifacts.html" class="build-tag clickable-link">Dark Heart Ring</a>
+        <div class="center-builds-wrapper">
+          <!-- Physical Build -->
+          <article class="build-card physical-glow">
+            <span class="panel-corner tl"></span>
+            <span class="panel-corner tr"></span>
+            <span class="panel-corner bl"></span>
+            <span class="panel-corner br"></span>
+            <div class="build-header" style="display:flex;flex-direction:column;align-items:flex-start;justify-content:center;width:100%;">
+              <h2 class="build-name page-title" style="margin:0;text-align:justify;width:100%;">Physical Build</h2>
+              <p class="build-playstyle" style="text-align:justify;width:100%;">Playstyle: Heavy-hitting tank</p>
+            </div>
+            <div class="build-img-row center-build-row">
+              <a href="weapons/shadowscythe.html"><img src="../images/weapons/ShadowScythe.png" alt="Shadow Scythe" class="build-img" style="height:60px;"></a>
+              <a href="#" class="armor-popup-build" data-armor="Commander Set"><img src="../images/armor/CursedCommander.png" alt="CursedCommander" class="build-img" style="height:60px;cursor:pointer;"></a>
+              <a href="artifacts.html"><img src="../images/Artifacts/ShadowFang.png" alt="Shadow Fang" class="build-img" style="height:60px;"></a>
+            </div>
+            <p class="build-section-label">Recommended Weapon</p>
+            <div class="build-items center-build-items">
+              <a href="weapons/shadowscythe.html" class="build-tag weapon clickable-link">Shadow Scythe</a>
+              <a href="weapons/dualdagger.html" class="build-tag weapon clickable-link">Dual Daggers</a>
+              <a href="weapons/thunderaxe.html" class="build-tag weapon clickable-link">Thunder Axe</a>
+            </div>
+            <p class="build-section-label">Recommended Armor</p>
+            <div class="build-items center-build-items">
+              <a href="#" class="build-tag clickable-link armor-popup-build" data-armor="Commander Set">CursedCommander</a>
+            </div>
+            <p class="build-section-label">Recommended Artifact</p>
+            <div class="build-items center-build-items">
+              <a href="artifacts.html" class="build-tag clickable-link">Shadow Fang</a>
+              <a href="artifacts.html" class="build-tag clickable-link">Wanwood</a>
+            </div>
+            <p class="build-section-label">Stats</p>
+            <div class="build-stats center-build-stats">
+              <span class="build-stat">Magic: <b>1</b></span>
+              <span class="build-stat">Strength: <b>1000</b></span>
+              <span class="build-stat">Defence: <b>700-800</b></span>
+              <span class="build-stat">Energy: <b>50-100</b></span>
+              <span class="build-stat">Agility: <b>1-100</b></span>
+            </div>
+            <p class="build-section-label">Best Class</p>
+            <div class="build-items center-build-items">
+              <span class="build-tag">Tank</span>
+            </div>
+          </article>
+          <!-- Magic Build -->
+          <article class="build-card magic-glow">
+            <span class="panel-corner tl"></span>
+            <span class="panel-corner tr"></span>
+            <span class="panel-corner bl"></span>
+            <span class="panel-corner br"></span>
+            <div class="build-header" style="display:flex;flex-direction:column;align-items:flex-start;justify-content:center;width:100%;">
+              <h2 class="build-name page-title" style="margin:0;text-align:justify;width:100%;">Magic Build</h2>
+              <p class="build-playstyle" style="text-align:justify;width:100%;">Playstyle: High magic burst</p>
+            </div>
+            <div class="build-img-row center-build-row">
+              <a href="#" class="magic-popup" data-magic="Werewolf" data-obtain="Acquired from Summoning"><img src="../images/magic/Werewolf.png" alt="Werewolf" class="build-img" style="height:60px;cursor:pointer;"></a>
+              <a href="#" class="armor-popup-build" data-armor="Astral Set"><img src="../images/armor/Astral.png" alt="Astral Armor" class="build-img" style="height:60px;cursor:pointer;"></a>
+              <a href="artifacts.html"><img src="../images/Artifacts/DarkHeart.png" alt="Dark Heart Ring" class="build-img" style="height:60px;"></a>
+            </div>
+            <p class="build-section-label">Recommended Weapon</p>
+            <div class="build-items center-build-items">
+              <a href="#" class="build-tag weapon clickable-link magic-popup" data-magic="Werewolf" data-obtain="Acquired from Summoning">Werewolf</a>
+              <a href="#" class="build-tag weapon clickable-link magic-popup" data-magic="Divine Blade" data-obtain="Acquired from Summoning">Divine Blade</a>
+            </div>
+            <p class="build-section-label">Recommended Armor</p>
+            <div class="build-items center-build-items">
+              <a href="#" class="build-tag clickable-link armor-popup-build" data-armor="Astral Set">Astral</a>
+            </div>
+            <p class="build-section-label">Recommended Artifact</p>
+            <div class="build-items center-build-items">
+              <a href="artifacts.html" class="build-tag clickable-link">Dark Heart Ring</a>
+              <a href="artifacts.html" class="build-tag clickable-link">Mana Stone</a>
+            </div>
+            <p class="build-section-label">Stats</p>
+            <div class="build-stats center-build-stats">
+              <span class="build-stat">Magic: <b>1000</b></span>
+              <span class="build-stat">Strength: <b>1-100</b></span>
+              <span class="build-stat">Defence: <b>400-600</b></span>
+              <span class="build-stat">Energy: <b>100-200</b></span>
+              <span class="build-stat">Agility: <b>1-100</b></span>
+            </div>
+            <p class="build-section-label">Best Class</p>
+            <div class="build-items center-build-items">
+              <span class="build-tag">Mage</span>
+            </div>
+          </article>
+        </div>
           </div>
           <p class="build-section-label">Stats</p>
           <div class="build-stats center-build-stats">
@@ -237,7 +248,6 @@
             <span class="build-tag">Mage</span>
           </div>
         </article>
-</body>
 <script>
     // Glitch animation generator for background
     function spawnGlitch() {
