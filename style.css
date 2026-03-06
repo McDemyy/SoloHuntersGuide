@@ -321,6 +321,17 @@ body {
   background: linear-gradient(120deg, #0a1830 60%, #0e1a2a 100%) !important;
   min-height: 100vh;
   overflow-x: hidden;
+  /* Allow vertical scrolling by default */
+  overflow-y: auto;
+}
+
+@media (max-width: 900px) {
+  html, body {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior: auto !important;
+    touch-action: pan-y !important;
+  }
 }
 body::before {
   content: '';
