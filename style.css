@@ -1,4 +1,10 @@
 @media (max-width: 700px) {
+    .system-modal {
+      align-items: flex-start !important;
+      justify-content: flex-start !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+    }
   .nav-btn {
     font-size: 0.82em !important;
     padding: 0.28em 0.7em !important;
