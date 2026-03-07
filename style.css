@@ -539,8 +539,9 @@ html, body {
     overflow-x: auto !important;
   }
   .system-modal {
-    align-items: flex-end !important;
-    padding-bottom: 2em;
+    align-items: center !important;
+    justify-content: center !important;
+    padding-bottom: 0 !important;
   }
   .dungeon-flex-row, .center-build-row {
     flex-direction: column !important;
