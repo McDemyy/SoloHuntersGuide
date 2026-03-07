@@ -12,10 +12,8 @@
 		<a href="../index.html" class="nav-logo">⚔ SH System DB</a>
 		<ul class="nav-links">
 			<li><a href="../index.html" class="nav-back">⬅ Home</a></li>
-			<li><a href="armor.html">Armor</a></li>
-			<li><a href="weapons.html">Weapons</a></li>
-			<li><a href="builds.html">Builds</a></li>
-			   <li><a href="levelguide.html" class="active">Gate Info</a></li>
+			<li><a href="portals.html">Portals</a></li>
+			<li><a href="tierlists.html">Tierlist</a></li>
 		</ul>
 	</nav>
 	<div class="page-wrapper">
@@ -25,57 +23,11 @@
 				   <h1 class="page-title">Gate Info</h1>
 				<p class="page-subtitle">Dungeon Power, EXP, Gold & Red Gate Progression</p>
 			</header>
-			<div class="level-progression-flow" style="display:flex;flex-direction:column;align-items:center;gap:0.5em;margin-bottom:2.5em;">
-				<div class="level-prog-row" style="display:flex;align-items:center;gap:1.5em;">
-					<div class="level-prog-block">
-						<div class="level-prog-title">Subway</div>
-						<div class="level-prog-lv">Lv 0+</div>
-					</div>
-					<div class="level-prog-arrow">
-						<div class="level-prog-arrow-label">Lv 20+</div>
-						<span style="font-size:2.2em;color:var(--neon-blue);">→</span>
-					</div>
-					<div class="level-prog-block">
-						<div class="level-prog-title">Caves</div>
-						<div class="level-prog-lv">Lv 20+</div>
-					</div>
-					<div class="level-prog-arrow">
-						<div class="level-prog-arrow-label">Lv 80+</div>
-						<span style="font-size:2.2em;color:var(--neon-blue);">→</span>
-					</div>
-					<div class="level-prog-block">
-						<div class="level-prog-title">Jungle</div>
-						<div class="level-prog-lv">Lv 80+</div>
-					</div>
-					<div class="level-prog-arrow">
-						<div class="level-prog-arrow-label">Lv 200+</div>
-						<span style="font-size:2.2em;color:var(--neon-blue);">→</span>
-					</div>
-					<div class="level-prog-block">
-						<div class="level-prog-title desert">Desert</div>
-						<div class="level-prog-lv">Lv 200+</div>
-					</div>
-					<div class="level-prog-arrow">
-						<div class="level-prog-arrow-label">Lv 300+</div>
-						<span style="font-size:2.2em;color:var(--neon-blue);">→</span>
-					</div>
-					<div class="level-prog-block">
-						<div class="level-prog-title">Snow Forest</div>
-						<div class="level-prog-lv">Lv 300+</div>
-					</div>
-					<div class="level-prog-arrow">
-						<div class="level-prog-arrow-label">Lv 380+</div>
-						<span style="font-size:2.2em;color:var(--neon-blue);">→</span>
-					</div>
-					<div class="level-prog-block">
-						<div class="level-prog-title spider">Spider Cave</div>
-						<div class="level-prog-lv">Lv 380+</div>
-					</div>
-				</div>
+			<!-- Removed the level progression flow block -->
 			</div>
 			<div style="display:flex;flex-direction:column;align-items:center;max-width:700px;margin:0 auto 2.5em auto;">
 				<label for="gate-select" style="font-size:1.15em;font-weight:600;margin-bottom:0.7em;color:var(--neon-blue);">Select a Gate:</label>
-				<select id="gate-select" style="font-size:1.1em;padding:0.5em 1.2em;border-radius:0.5em;border:1.5px solid #00d4ff;background:#101a2a;color:#eaf6ff;margin-bottom:2em;">
+				<select id="gate-select" style="font-size:1.1em;padding:0.5em 1.2em;border-radius:0.5em;border:1.5px solid #00d4ff;background:#101a2a;color:#eaf6ff;margin-bottom:0.7em;">
 					<option value="subway">Subway</option>
 					<option value="caves">Caves</option>
 					<option value="jungle">Jungle</option>
@@ -83,6 +35,14 @@
 					<option value="snowforest">Snow Forest</option>
 					<option value="spidercave">Spider Cave</option>
 				</select>
+				<!-- Power Calculator & Gate Recommender (moved here) -->
+				<section class="clean-recommend-panel" style="margin-bottom:0;padding-bottom:0;">
+					<form id="recommend-form" autocomplete="off" class="clean-recommend-form" style="margin-bottom:0;padding-bottom:0;">
+						<input type="number" id="player-power" min="0" max="9999999" placeholder="Power" required style="margin-bottom:0;" />
+						<button type="submit" class="clean-recommend-btn" style="margin-bottom:0;">Recommend</button>
+					</form>
+					<div id="recommend-result" class="clean-recommend-result" style="margin-bottom:0;padding-bottom:0;"></div>
+				</section>
 				<div id="gate-info-container">
 							<div class="gate-section" id="subway" style="display:none;">
 								   <div class="gate-header"><span class="gate-title">Subway</span> <span class="gate-lv">Lv 0+</span></div>
@@ -355,4 +315,57 @@ document.addEventListener('DOMContentLoaded', function() {
 			});
 		}
 	});
+// Power calculator & gate recommender logic
+document.addEventListener('DOMContentLoaded', function() {
+			function recommendDungeon(power) {
+				// Dungeon table (copied from script.js)
+				const dungeonTable = [
+					{ dungeon: 'Subway', power: 0 },
+					{ dungeon: 'Caves', power: 20000 },
+					{ dungeon: 'Jungle', power: 80000 },
+					{ dungeon: 'Desert', power: 200000 },
+					{ dungeon: 'Snow Forest', power: 300000 },
+					{ dungeon: 'Spider Cave', power: 380000 }
+				];
+				let recommended = dungeonTable[0];
+				for (let i = 0; i < dungeonTable.length; i++) {
+					if (power >= dungeonTable[i].power) recommended = dungeonTable[i];
+				}
+				return recommended;
+			}
+	const form = document.getElementById('recommend-form');
+	const result = document.getElementById('recommend-result');
+	if (form && result) {
+		form.addEventListener('submit', function(e) {
+			e.preventDefault();
+			const power = parseInt(document.getElementById('player-power').value, 10);
+			if (isNaN(power) || power < 0) {
+				result.textContent = 'Please enter a valid power value.';
+				return;
+			}
+			const rec = recommendDungeon(power);
+			result.textContent = `Recommended: ${rec.dungeon} (Power: ${rec.power})`;
+			// Also select the recommended gate in the dropdown and show its info
+			const select = document.getElementById('gate-select');
+			if (select) {
+				// Map display names to select values
+				const gateMap = {
+					'Subway': 'subway',
+					'Caves': 'caves',
+					'Jungle': 'jungle',
+					'Desert': 'desert',
+					'Snow Forest': 'snowforest',
+					'Spider Cave': 'spidercave'
+				};
+				const value = gateMap[rec.dungeon];
+				if (value) {
+					select.value = value;
+					// Trigger change event to show the gate info
+					const event = new Event('change', { bubbles: true });
+					select.dispatchEvent(event);
+				}
+			}
+		});
+	}
+});
 </script>
